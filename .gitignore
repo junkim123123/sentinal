@@ -1,0 +1,14 @@
+.next/
+node_modules/
+*.log
+npm-debug.log*
+.env
+.env.local
+.env.production
+.DS_Store
+coverage/
+dist/
+$err
+$out
+.local-start*.log
+review-*.png
