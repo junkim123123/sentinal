@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SignalChart } from "@/components/SignalChart";
 import {
   integrationPoints,
+  productClusters,
   productHeroCapabilities,
   productInclusions,
   workflowStages,
@@ -16,6 +17,24 @@ export const metadata: Metadata = {
   description:
     "Explore Sentinel Imports product coverage, inclusions, workflows, integrations, and sample output visuals.",
 };
+
+const productSignals = [
+  {
+    label: "Coverage design",
+    value: "Watchlist-first",
+    detail: "Configured around the molecules your team actually follows.",
+  },
+  {
+    label: "Decision support",
+    value: "Signal + context",
+    detail: "Supplier movement, landed value, and change interpretation in one read.",
+  },
+  {
+    label: "Delivery model",
+    value: "Analyst-ready",
+    detail: "Excel, Tableau, and secure delivery fit for current workflows.",
+  },
+];
 
 export default function ProductPage() {
   return (
@@ -31,17 +50,22 @@ export default function ProductPage() {
         }
         description="Sentinel is built around recurring molecule monitoring, landed-value context, and delivery formats that fit real operating teams."
         eyebrow="Product"
-        theme="light"
+        theme="dark"
         visual={
-          <div className="product-hero-board">
-            <div className="product-hero-meta">
-              <span className="small-label">Product snapshot</span>
-              <strong>Monthly monitoring with room for custom investigations</strong>
-              <p>Focused coverage, working output, and a clean path to deeper analysis.</p>
+          <div className="page-hero-brief page-hero-brief-dark">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Product snapshot</span>
+                <strong>Monthly monitoring with room for sharper investigations</strong>
+              </div>
+              <p>
+                The product is designed to land like a working brief, not a busy
+                software interface.
+              </p>
             </div>
-            <div className="product-hero-grid">
+            <div className="page-hero-brief-grid page-hero-brief-grid-wide">
               <SignalChart label="Movement signal" title="Monthly import movement" />
-              <div className="table-preview-card">
+              <div className="table-preview-card table-preview-card-dark">
                 <span className="small-label">Working file</span>
                 <strong>Shipment watchlist snapshot</strong>
                 <div className="table-preview">
@@ -60,23 +84,50 @@ export default function ProductPage() {
                 </div>
               </div>
             </div>
+            <div className="page-hero-tag-row">
+              {productHeroCapabilities.map((item) => (
+                <span className="page-hero-tag" key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         }
-        title="Import intelligence built for working teams"
+        title="Import intelligence built to fit how teams already work"
       />
+
+      <section className="section section-evidence home-proof-section">
+        <div className="section-inner">
+          <div className="page-signal-band">
+            {productSignals.map((item) => (
+              <article className="page-signal-card" key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="See the core monitoring, delivery, and integration capabilities that define a Sentinel scope."
-            eyebrow="Core capabilities"
-            title="What the product needs to do well"
+            description="The product works best when the page explains the operating model, the included intelligence, and the delivery fit in one pass."
+            eyebrow="Core design"
+            title="What the Sentinel product is structured to deliver"
           />
-          <div className="line-column-grid">
-            {productHeroCapabilities.map((item, index) => (
-              <article className="line-column" key={item}>
-                <span className="small-label">{`0${index + 1}`}</span>
-                <h3>{item}</h3>
+          <div className="page-panel-grid page-panel-grid-two">
+            {productClusters.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">Capability cluster</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <ul className="detail-list page-checklist">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -86,25 +137,32 @@ export default function ProductPage() {
       <section className="section section-tint page-section-tight">
         <div className="section-inner page-story-grid">
           <div>
-          <SectionHeading
-            description="Understand what is included in a standard reporting engagement and how it fits existing workflows."
-            eyebrow="Inclusions"
-            title="What a Sentinel product scope includes"
-          />
-            <ul className="detail-list">
-              {productInclusions.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <SectionHeading
+              description="A Sentinel scope is clearer when included output and workflow fit are shown together."
+              eyebrow="Scope and fit"
+              title="What teams receive and how the work lands"
+            />
+            <article className="page-panel-card page-panel-card-accent">
+              <span className="small-label">Standard inclusions</span>
+              <h3>What a typical product scope includes</h3>
+              <ul className="detail-list page-checklist">
+                {productInclusions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
 
           <div className="stack-panel">
             <div className="stack-panel-top">
               <div>
                 <span className="small-label">Workflow fit</span>
-                <h3>Reporting designed for existing tools and teams</h3>
+                <h3>Designed for teams reviewing the brief together</h3>
               </div>
-              <p>Sentinel works best when delivery is easy to review, share, and escalate.</p>
+              <p>
+                Sentinel works best when delivery is easy to review, annotate,
+                share, and escalate.
+              </p>
             </div>
             <div className="stack-panel-grid">
               {integrationPoints.map((item) => (
@@ -118,22 +176,18 @@ export default function ProductPage() {
       </section>
 
       <section className="section page-section-tight">
-        <div className="section-inner split-grid">
-          <div>
+        <div className="section-inner">
           <SectionHeading
-            description="Sentinel turns source records into a monthly brief teams can review, share, and escalate."
+            description="The workflow can stay short as long as it is obvious how raw records turn into something the business can use."
             eyebrow="Source to action"
-            title="How Sentinel moves from records to decisions"
+            title="How the product moves from records to decisions"
           />
-          </div>
-          <div className="compact-step-grid">
+          <div className="page-panel-grid page-panel-grid-four">
             {workflowStages.map((item) => (
-              <article className="compact-step" key={item.step}>
-                <span className="home-method-number">{item.step}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
+              <article className="page-panel-card" key={item.step}>
+                <span className="small-label">{item.step}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </article>
             ))}
           </div>

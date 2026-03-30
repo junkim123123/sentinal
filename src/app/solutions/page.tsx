@@ -15,17 +15,17 @@ const solutionTracks = [
   {
     label: "Procurement",
     title: "Track supplier movement before sourcing conversations",
-    text: "Use recurring monitoring to understand quantity shifts, supplier activity, and landed-value context.",
+    text: "Use recurring monitoring to understand quantity shifts, supplier activity, and landed-value context before negotiation starts.",
   },
   {
     label: "Compliance",
     title: "Keep source review and shipment context closer together",
-    text: "Reduce scattered checks and build a cleaner internal trail for escalation and review.",
+    text: "Reduce scattered checks and build a cleaner internal trail for escalation, interpretation, and documentation.",
   },
   {
     label: "Strategy",
     title: "Turn trade movement into a working market read",
-    text: "See what changed, where a custom investigation should begin, and how to frame it internally.",
+    text: "See what changed, where a deeper investigation should begin, and how to frame it internally.",
   },
 ];
 
@@ -43,20 +43,43 @@ export default function SolutionsPage() {
         }
         description="Sentinel supports procurement, compliance, and strategy teams differently because each group needs the same signal framed around a different decision."
         eyebrow="Solutions"
-        theme="light"
-        title="Organize Sentinel around the team using it"
+        theme="dark"
+        visual={
+          <div className="page-hero-brief page-hero-brief-dark">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Decision lanes</span>
+                <strong>One reporting foundation, several different decisions</strong>
+              </div>
+              <p>
+                The solution story works when buyers can immediately see their own
+                workflow reflected in the structure.
+              </p>
+            </div>
+            <div className="page-hero-brief-grid">
+              {solutionTracks.map((track) => (
+                <article className="page-hero-stat" key={track.label}>
+                  <span>{track.label}</span>
+                  <strong>{track.title}</strong>
+                  <p>{track.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        }
+        title="Organize Sentinel around the team using the signal"
       />
 
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="Choose the entry point that best matches the decision your team needs to make."
+            description="Each solution track should feel like a clear entry point into the workflow, not just another feature group."
             eyebrow="Solution tracks"
-            title="Three ways Sentinel enters the workflow"
+            title="Three ways Sentinel enters the work"
           />
-          <div className="line-column-grid">
+          <div className="page-panel-grid page-panel-grid-three">
             {solutionTracks.map((track) => (
-              <article className="line-column" key={track.title}>
+              <article className="page-panel-card" key={track.title}>
                 <span className="small-label">{track.label}</span>
                 <h3>{track.title}</h3>
                 <p>{track.text}</p>
@@ -67,38 +90,43 @@ export default function SolutionsPage() {
       </section>
 
       <section className="section section-tint page-section-tight">
-        <div className="section-inner page-story-grid">
-          <div>
+        <div className="section-inner">
           <SectionHeading
-            description="The same reporting can support procurement, compliance, and market strategy without changing the underlying data discipline."
-            eyebrow="Buyer routes"
-            title="How the same reporting is used differently"
+            description="Buyers usually decide faster when the page shows their challenge and their payoff side by side."
+            eyebrow="Role lens"
+            title="How different teams read the same monthly brief"
           />
-            <div className="simple-text-list">
-              {personaCards.map((card) => (
-                <div className="simple-text-row" key={card.title}>
-                  <strong>{card.role}</strong>
+          <div className="page-panel-grid page-panel-grid-three">
+            {personaCards.map((card) => (
+              <article className="page-panel-card page-panel-card-accent" key={card.title}>
+                <span className="small-label">{card.role}</span>
+                <h3>{card.title}</h3>
+                <p>{card.challenge}</p>
+                <div className="page-panel-note">
+                  <strong>What Sentinel changes</strong>
                   <p>{card.payoff}</p>
                 </div>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="stack-panel">
-            <div className="stack-panel-top">
-              <div>
-                <span className="small-label">Engagement model</span>
-                <h3>How Sentinel packages recurring and custom work</h3>
-              </div>
-            </div>
-            <div className="stack-panel-grid">
-              {engagementModels.map((item) => (
-                <div className="stack-panel-row" key={item.title}>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </div>
-              ))}
-            </div>
+      <section className="section page-section-tight">
+        <div className="section-inner">
+          <SectionHeading
+            description="The solution page is stronger when the commercial model reads like a natural next step from the team problem."
+            eyebrow="Engagement model"
+            title="How Sentinel packages recurring and custom work"
+          />
+          <div className="page-panel-grid page-panel-grid-three">
+            {engagementModels.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">Engagement</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

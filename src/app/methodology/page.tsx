@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { dataSources, methodologySteps, moleculeExamples, reportHighlights } from "@/content/site";
@@ -10,49 +11,98 @@ export const metadata: Metadata = {
     "Explore Sentinel Imports data sources, workflow, and delivery approach for agricultural chemical import intelligence.",
 };
 
+const methodSignals = [
+  {
+    label: "Source stack",
+    value: "7 named inputs",
+    detail: "Trade, customs, regulatory, and crop-data systems inform the current method.",
+  },
+  {
+    label: "Normalization",
+    value: "Molecule-level",
+    detail: "Records are translated into views built for category-specific monitoring.",
+  },
+  {
+    label: "Delivery",
+    value: "Monthly brief",
+    detail: "The output is designed to support review, sharing, and escalation.",
+  },
+];
+
 export default function MethodologyPage() {
   return (
     <>
       <PageHero
+        actions={
+          <LinkButton href="/product" variant="secondary">
+            Review the product
+          </LinkButton>
+        }
         description="Sentinel combines named data sources, molecule-level normalization, and client-ready delivery to make trade records more usable."
         eyebrow="Methodology"
-        theme="light"
-        title="A simple source-to-signal workflow"
-      />
-
-      <section className="section page-section-tight">
-        <div className="section-inner page-story-grid">
-          <div>
-          <SectionHeading
-            description="See how Sentinel moves from raw records to a usable monthly brief."
-            eyebrow="How it works"
-            title="Three steps from records to working output"
-          />
-            <div className="compact-step-grid">
+        theme="dark"
+        visual={
+          <div className="page-hero-brief page-hero-brief-dark">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Source to brief</span>
+                <strong>A short workflow with named inputs and visible discipline</strong>
+              </div>
+              <p>
+                The methodology needs to build trust quickly by showing how raw
+                records become a usable monthly brief.
+              </p>
+            </div>
+            <div className="page-hero-brief-grid">
               {methodologySteps.map((item) => (
-                <article className="compact-step" key={item.step}>
-                  <span className="home-method-number">{item.step}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
+                <article className="page-hero-stat" key={item.step}>
+                  <span>{item.step}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.description}</p>
                 </article>
               ))}
             </div>
-          </div>
-
-          <div className="stack-panel">
-            <div className="stack-panel-top">
-              <div>
-                <span className="small-label">Named inputs</span>
-                <h3>Source stack</h3>
-              </div>
-            </div>
-            <div className="compact-chip-row compact-chip-row-spaced">
-              {dataSources.map((source) => (
-                <span key={source}>{source}</span>
+            <div className="page-hero-tag-row">
+              {dataSources.slice(0, 5).map((source) => (
+                <span className="page-hero-tag" key={source}>
+                  {source}
+                </span>
               ))}
             </div>
+          </div>
+        }
+        title="A disciplined path from source records to usable reporting"
+      />
+
+      <section className="section section-evidence home-proof-section">
+        <div className="section-inner">
+          <div className="page-signal-band">
+            {methodSignals.map((item) => (
+              <article className="page-signal-card" key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section page-section-tight">
+        <div className="section-inner">
+          <SectionHeading
+            description="A method page should show the discipline clearly enough that buyers can understand both the input quality and the transformation logic."
+            eyebrow="How it works"
+            title="Three steps from records to working output"
+          />
+          <div className="page-panel-grid page-panel-grid-three">
+            {methodologySteps.map((item) => (
+              <article className="page-panel-card" key={item.step}>
+                <span className="small-label">{item.step}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -60,30 +110,45 @@ export default function MethodologyPage() {
       <section className="section section-tint page-section-tight">
         <div className="section-inner page-story-grid">
           <div>
-          <SectionHeading
-            description="The reporting is designed to surface the context teams need for sourcing, compliance, and market review."
-            eyebrow="Report detail"
-            title="What Sentinel reporting is designed to surface"
-          />
-            <ul className="detail-list">
-              {reportHighlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <SectionHeading
+              description="The reporting details matter because they explain what teams can actually expect from the output."
+              eyebrow="Report detail"
+              title="What Sentinel reporting is designed to surface"
+            />
+            <article className="page-panel-card page-panel-card-accent">
+              <span className="small-label">Included context</span>
+              <h3>What teams can review in the monthly brief</h3>
+              <ul className="detail-list page-checklist">
+                {reportHighlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
 
-          <div className="stack-panel">
-            <div className="stack-panel-top">
-              <div>
-                <span className="small-label">Representative molecules</span>
-                <h3>Current coverage examples</h3>
+          <div className="page-panel-grid">
+            <article className="page-panel-card">
+              <span className="small-label">Named inputs</span>
+              <h3>Current source stack</h3>
+              <div className="page-hero-tag-row page-hero-tag-row-light">
+                {dataSources.map((source) => (
+                  <span className="page-hero-tag page-hero-tag-light" key={source}>
+                    {source}
+                  </span>
+                ))}
               </div>
-            </div>
-            <div className="compact-chip-row">
-              {moleculeExamples.map((molecule) => (
-                <span key={molecule}>{molecule}</span>
-              ))}
-            </div>
+            </article>
+            <article className="page-panel-card">
+              <span className="small-label">Representative coverage</span>
+              <h3>Molecule examples in the current lens</h3>
+              <div className="page-hero-tag-row page-hero-tag-row-light">
+                {moleculeExamples.map((molecule) => (
+                  <span className="page-hero-tag page-hero-tag-light" key={molecule}>
+                    {molecule}
+                  </span>
+                ))}
+              </div>
+            </article>
           </div>
         </div>
       </section>

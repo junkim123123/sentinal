@@ -54,18 +54,43 @@ export function InquiryPageTemplate({
         actions={actions}
         description={description}
         eyebrow={eyebrow}
+        theme="dark"
         visual={
-          <div className="page-hero-figure">
-            <Image
-              alt={heroImageAlt}
-              fill
-              priority
-              sizes="(max-width: 1100px) 100vw, 34vw"
-              src={heroImageSrc}
-            />
-            <div className="page-hero-figure-card">
-              <span className="small-label">{heroLabel}</span>
-              <strong>{heroHighlight}</strong>
+          <div className="intake-hero-visual">
+            <div className="page-hero-figure page-hero-figure-tall">
+              <Image
+                alt={heroImageAlt}
+                fill
+                priority
+                sizes="(max-width: 1100px) 100vw, 34vw"
+                src={heroImageSrc}
+              />
+              <div className="page-hero-figure-card">
+                <span className="small-label">{heroLabel}</span>
+                <strong>{heroHighlight}</strong>
+              </div>
+            </div>
+            <div className="intake-hero-brief">
+              <article className="intake-hero-card">
+                <span className="small-label">{expectationLabel}</span>
+                <strong>{expectationTitle}</strong>
+                <ul className="page-hero-mini-list">
+                  {expectationItems.slice(0, 2).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+              <article className="intake-hero-card">
+                <span className="small-label">{pathLabel}</span>
+                <strong>{pathTitle}</strong>
+                <div className="intake-chip-row">
+                  {paths.map((item) => (
+                    <span className="intake-chip" key={item.title}>
+                      {item.title}
+                    </span>
+                  ))}
+                </div>
+              </article>
             </div>
           </div>
         }
@@ -73,49 +98,60 @@ export function InquiryPageTemplate({
       />
 
       <section className="section">
-        <div className="section-inner contact-layout">
-          <div>
-            <ContactForm
-              messagePlaceholder={formPlaceholder}
-              submitLabel={submitLabel}
-            />
+        <div className="section-inner">
+          <div className="contact-summary-band">
+            {expectationItems.map((item, index) => (
+              <article className="contact-summary-card" key={item}>
+                <span>{`0${index + 1}`}</span>
+                <p>{item}</p>
+              </article>
+            ))}
           </div>
-          <aside className="contact-sidebar">
-            <article className="source-panel inquiry-info-panel">
-              <div className="inquiry-block">
-                <span className="small-label">{expectationLabel}</span>
-                <h2>{expectationTitle}</h2>
-                <ul className="detail-list">
-                  {expectationItems.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="inquiry-block">
-                <span className="small-label">{promptLabel}</span>
-                <h2>{promptTitle}</h2>
-                <div className="simple-text-list simple-text-list-tight">
-                  {prompts.map((prompt) => (
-                    <div className="simple-text-row" key={prompt}>
-                      <p>{prompt}</p>
-                    </div>
-                  ))}
+
+          <div className="contact-layout contact-layout-refined">
+            <div>
+              <ContactForm
+                messagePlaceholder={formPlaceholder}
+                submitLabel={submitLabel}
+              />
+            </div>
+            <aside className="contact-sidebar">
+              <article className="source-panel inquiry-info-panel">
+                <div className="inquiry-block">
+                  <span className="small-label">{expectationLabel}</span>
+                  <h2>{expectationTitle}</h2>
+                  <ul className="detail-list">
+                    {expectationItems.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <div className="inquiry-block">
-                <span className="small-label">{pathLabel}</span>
-                <h2>{pathTitle}</h2>
-                <div className="simple-text-list simple-text-list-tight">
-                  {paths.map((item) => (
-                    <div className="simple-text-row" key={item.title}>
-                      <strong>{item.title}</strong>
-                      <p>{item.description}</p>
-                    </div>
-                  ))}
+                <div className="inquiry-block">
+                  <span className="small-label">{promptLabel}</span>
+                  <h2>{promptTitle}</h2>
+                  <div className="simple-text-list simple-text-list-tight">
+                    {prompts.map((prompt) => (
+                      <div className="simple-text-row" key={prompt}>
+                        <p>{prompt}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
-          </aside>
+                <div className="inquiry-block">
+                  <span className="small-label">{pathLabel}</span>
+                  <h2>{pathTitle}</h2>
+                  <div className="simple-text-list simple-text-list-tight">
+                    {paths.map((item) => (
+                      <div className="simple-text-row" key={item.title}>
+                        <strong>{item.title}</strong>
+                        <p>{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </aside>
+          </div>
         </div>
       </section>
     </>

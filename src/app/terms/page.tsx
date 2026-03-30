@@ -1,32 +1,85 @@
 import type { Metadata } from "next";
 
+import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
+import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Terms",
   description: "Terms information for the Sentinel Imports website.",
 };
 
+const termsPoints = [
+  {
+    label: "Website content",
+    title: "Public content is informational",
+    text: "The site is designed to explain Sentinel's current offer and start a scoped commercial conversation.",
+  },
+  {
+    label: "Commercial scope",
+    title: "Final delivery is defined directly with clients",
+    text: "Project scope, reporting format, access, and custom work are confirmed during direct engagement.",
+  },
+  {
+    label: "Future update",
+    title: "Approved terms can replace this placeholder",
+    text: "This page gives the site a real legal destination while the final version is still pending.",
+  },
+];
+
 export default function TermsPage() {
   return (
     <>
       <PageHero
-        description="This placeholder terms page gives the footer a real legal destination and can be replaced with approved contract language later."
+        actions={
+          <LinkButton href="/consultation" variant="secondary">
+            Start a consultation
+          </LinkButton>
+        }
+        description="This terms page explains how public website information relates to Sentinel's commercial offer until final contract language is published."
         eyebrow="Terms"
-        title="Website terms and product information notices"
+        theme="dark"
+        visual={
+          <div className="page-hero-brief page-hero-brief-dark">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Current terms posture</span>
+                <strong>Website information starts the conversation, not the final scope</strong>
+              </div>
+              <p>
+                Sentinel uses the public site to frame the offer clearly while final
+                obligations remain part of direct client engagement.
+              </p>
+            </div>
+            <div className="page-hero-brief-grid">
+              {termsPoints.map((item) => (
+                <article className="page-hero-stat" key={item.title}>
+                  <span>{item.label}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        }
+        title="Website terms and information notices"
       />
-      <section className="section">
-        <div className="section-inner narrow">
-          <div className="stacked-copy">
-            <p className="statement">
-              Public website content is informational and intended to start a
-              sales conversation around Sentinel&apos;s current agricultural
-              chemical intelligence services.
-            </p>
-            <p className="statement">
-              Final project scope, delivery format, and reporting access are
-              defined during direct client engagement.
-            </p>
+
+      <section className="section page-section-tight">
+        <div className="section-inner">
+          <SectionHeading
+            description="Like the privacy page, this placeholder should communicate the current posture clearly without pretending to be a final legal document."
+            eyebrow="Current position"
+            title="What the placeholder terms page is meant to cover"
+          />
+          <div className="page-panel-grid page-panel-grid-three">
+            {termsPoints.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

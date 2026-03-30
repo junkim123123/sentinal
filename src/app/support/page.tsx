@@ -25,20 +25,43 @@ export default function SupportPage() {
         }
         description="Support gives clients direct access to the team behind the reporting, with clear paths for delivery issues, interpretation, and advanced questions."
         eyebrow="Support"
-        theme="light"
-        title="Support built around expert access"
+        theme="dark"
+        visual={
+          <div className="page-hero-brief page-hero-brief-dark">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Support model</span>
+                <strong>Expert access, guided review, and escalation when needed</strong>
+              </div>
+              <p>
+                The support page should feel as direct and accountable as the service
+                itself.
+              </p>
+            </div>
+            <div className="page-hero-brief-grid">
+              {supportChannels.map((item) => (
+                <article className="page-hero-stat" key={item.title}>
+                  <span>{item.label ?? "Support"}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        }
+        title="Support built around direct access to the team behind the reporting"
       />
 
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="Choose the support path that matches the issue, urgency, and level of review required."
+            description="The support story is stronger when clients can immediately see what kind of help they can expect."
             eyebrow="Support paths"
             title="Three ways Sentinel supports clients"
           />
-          <div className="line-column-grid">
+          <div className="page-panel-grid page-panel-grid-three">
             {supportChannels.map((item) => (
-              <article className="line-column" key={item.title}>
+              <article className="page-panel-card" key={item.title}>
                 <span className="small-label">{item.label ?? "Support"}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -52,7 +75,7 @@ export default function SupportPage() {
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="Routing matters because support questions do not all deserve the same path."
+              description="Routing matters because delivery issues, interpretation questions, and deeper custom requests should not all travel the same path."
               eyebrow="How support works"
               title="A clear path from question to expert review"
             />
@@ -69,21 +92,14 @@ export default function SupportPage() {
             </div>
           </div>
 
-          <div className="stack-panel">
-            <div className="stack-panel-top">
-              <div>
-                <span className="small-label">Help center direction</span>
-                <h3>Guides, workflow review, and escalation support</h3>
-              </div>
-            </div>
-            <div className="stack-panel-grid">
-              {supportResources.map((item) => (
-                <div className="stack-panel-row" key={item.title}>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </div>
-              ))}
-            </div>
+          <div className="page-panel-grid">
+            {supportResources.map((item) => (
+              <article className="page-panel-card page-panel-card-accent" key={item.title}>
+                <span className="small-label">{item.type}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -91,16 +107,17 @@ export default function SupportPage() {
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="These are the questions clients ask most often once reporting is in motion."
+            description="A support page reads more confidently when common client questions are answered directly instead of hidden deep in the flow."
             eyebrow="Support FAQ"
             title="What clients usually need to know"
           />
-          <div className="simple-text-list">
+          <div className="page-panel-grid page-panel-grid-two">
             {supportFaqs.map((item) => (
-              <div className="simple-text-row" key={item.question}>
-                <strong>{item.question}</strong>
+              <article className="page-panel-card" key={item.question}>
+                <span className="small-label">FAQ</span>
+                <h3>{item.question}</h3>
                 <p>{item.answer}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
