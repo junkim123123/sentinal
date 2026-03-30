@@ -15,17 +15,20 @@ export default function ConsultationPage() {
     <InquiryPageTemplate
       actions={
         <LinkButton href="/about" variant="secondary">
-          Learn how Sentinel works
+          Review Sentinel
         </LinkButton>
       }
-      description="Start here when the business problem is already clear and the next step is a sharper strategy conversation about scope, delivery, and stakeholders."
-      eyebrow="Consultation"
+      assuranceLabel="Advisory standard"
+      assuranceText="Consultations are handled as direct strategic intake, with the business decision clarified before scope, cadence, or reporting format is proposed."
+      assuranceTitle="The advisory conversation starts with judgment, not a canned sequence."
+      description="Start here when the business problem is already clear and the next step is a more private strategy conversation about scope, delivery, and stakeholders."
+      eyebrow="Advisory intake"
       expectationItems={[
         "Sentinel reviews the commercial, sourcing, compliance, or market question behind the request.",
         "The conversation is shaped around the reporting model and stakeholder group that will use the output.",
         "The next step can move directly into scoping recurring work, a custom project, or an executive-ready brief.",
       ]}
-      expectationLabel="Consultation flow"
+      expectationLabel="Advisory flow"
       expectationTitle="The discussion is built around the business decision first, then the reporting model."
       formPlaceholder="Tell us the business problem, stakeholder group, and timing behind the conversation."
       heroHighlight="A strategy conversation grounded in the reporting and decision need"
@@ -38,8 +41,8 @@ export default function ConsultationPage() {
       promptLabel="Best starting points"
       promptTitle="What makes the consultation more productive"
       prompts={consultationPrompts}
-      submitLabel="Start conversation"
-      title="Use a dedicated consultation flow when the next step needs to be defined with more precision"
+      submitLabel="Request consultation"
+      title="Use a dedicated advisory intake when the next step needs to be defined with more precision"
     />
   );
 }

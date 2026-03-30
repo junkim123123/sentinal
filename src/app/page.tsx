@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { LinkButton } from "@/components/LinkButton";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SignalChart } from "@/components/SignalChart";
 import { dataSources, moleculeExamples, proofPoints, siteConfig } from "@/content/site";
 
 const heroHighlights = [
@@ -119,30 +120,51 @@ const methodSteps = [
   },
 ];
 
+const privateServiceFrames = [
+  {
+    label: "Access",
+    title: "Selective client roster",
+    text: "Structured more like a retained intelligence relationship than a broad self-serve product.",
+  },
+  {
+    label: "Delivery",
+    title: "Private monthly briefings",
+    text: "Configured around the watchlist, cadence, and internal review style of the client team.",
+  },
+  {
+    label: "Escalation",
+    title: "Quiet custom follow-through",
+    text: "When the signal changes, Sentinel can move directly into a deeper investigation without platform theatrics.",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
-      <section className="hero-section home-hero-section home-hero-section-refined">
-        <div className="section-inner hero-grid home-hero-grid home-hero-grid-refined">
-          <div className="hero-copy home-hero-copy home-hero-copy-refined">
-            <span className="eyebrow">U.S. agricultural chemical intelligence</span>
-            <h1>Monthly import intelligence that lands like a decision brief.</h1>
+      <section className="hero-section home-hero-section home-hero-section-refined home-private-hero">
+        <div className="section-inner hero-grid home-hero-grid home-hero-grid-refined home-private-grid">
+          <div className="hero-copy home-hero-copy home-hero-copy-refined home-private-copy">
+            <span className="eyebrow">Private client intelligence</span>
+            <h1>A private import intelligence service for teams making high-consequence decisions.</h1>
             <p className="hero-lead">
-              Sentinel turns shipment records, supplier movement, and landed-value
-              context into reporting that sourcing, compliance, and market teams can
-              actually use.
+              Sentinel prepares discreet monthly briefings and scoped investigations
+              for leadership, sourcing, compliance, and market teams tracking
+              agricultural chemical and intermediate flows into the United States.
             </p>
-            <p className="home-hero-note">
-              Focused coverage, named sources, and workflow-ready delivery instead of
-              a generic trade-data portal.
+            <p className="home-hero-note home-private-note">
+              Built for a short client list, secure delivery, and the kind of
+              curated reporting that feels closer to a private advisory desk than a
+              public data platform.
             </p>
             <div className="button-row">
-              <LinkButton href={siteConfig.primaryCta.href}>Request a demo</LinkButton>
+              <LinkButton href={siteConfig.primaryCta.href}>
+                Request a private briefing
+              </LinkButton>
               <LinkButton href="/product" variant="secondary">
-                Explore the product
+                Review the service
               </LinkButton>
             </div>
-            <div className="home-hero-proof-grid">
+            <div className="home-hero-proof-grid home-private-proof-grid">
               {heroHighlights.map((item) => (
                 <article className="home-hero-proof" key={item.label}>
                   <span>{item.label}</span>
@@ -153,64 +175,54 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="home-command-board">
-            <div className="home-command-head">
-              <div>
-                <span className="small-label">Monthly intelligence brief</span>
-                <h2>Signal first. Context close behind.</h2>
+          <div className="home-private-panel">
+            <div className="home-private-photo">
+              <Image
+                alt="Container stacks and logistics infrastructure at a private port terminal"
+                fill
+                priority
+                sizes="(max-width: 1100px) 100vw, 42vw"
+                src="/images/hero-port.jpg"
+              />
+              <div className="home-private-photo-note">
+                <span className="small-label">Private monthly brief</span>
+                <strong>Configured watchlists, secure delivery, and quiet escalation support.</strong>
               </div>
-              <p>
-                Give teams a concise read on movement, coverage, and escalation-worthy
-                change without forcing them to parse raw manifests.
-              </p>
             </div>
 
-            <div className="home-command-chart-grid">
-              <SignalChart
-                label="Movement signal"
-                title="Import activity across the watchlist"
-              />
-              <SignalChart
-                label="Coverage mix"
-                title="Representative origin distribution"
-                variant="bar"
-              />
-            </div>
+            <div className="home-private-ledger">
+              <div className="home-private-ledger-head">
+                <span className="small-label">Service architecture</span>
+                <strong>More private intelligence relationship than public software subscription.</strong>
+              </div>
 
-            <div className="home-command-grid">
-              <article className="home-command-card">
-                <span className="small-label">Included every month</span>
-                <strong>What the brief surfaces</strong>
-                <ul className="home-command-list">
+              <div className="home-private-ledger-grid">
+                {privateServiceFrames.map((item) => (
+                  <article className="home-private-ledger-item" key={item.label}>
+                    <span>{item.label}</span>
+                    <strong>{item.title}</strong>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="home-private-ledger-meta">
+                <div>
+                  <span className="small-label">Representative watchlist</span>
+                  <div className="home-private-chip-row">
+                    {moleculeExamples.slice(0, 6).map((molecule) => (
+                      <span className="home-private-chip" key={molecule}>
+                        {molecule}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <ul className="home-private-list">
                   {monthlyBriefItems.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-              </article>
-
-              <article className="home-command-card">
-                <span className="small-label">Representative watchlist</span>
-                <strong>Current molecule examples</strong>
-                <div className="home-command-chip-row">
-                  {moleculeExamples.slice(0, 8).map((molecule) => (
-                    <span className="chip chip-dark" key={molecule}>
-                      {molecule}
-                    </span>
-                  ))}
-                </div>
-              </article>
-
-              <article className="home-command-card home-command-card-accent">
-                <span className="small-label">Named source stack</span>
-                <strong>Trade, customs, and regulatory context in one view</strong>
-                <div className="home-command-tag-row">
-                  {dataSources.slice(0, 5).map((source) => (
-                    <span className="home-command-tag" key={source}>
-                      {source}
-                    </span>
-                  ))}
-                </div>
-              </article>
+              </div>
             </div>
           </div>
         </div>
@@ -336,7 +348,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="button-row home-cta-actions">
-              <LinkButton href="/demo">Request a demo</LinkButton>
+              <LinkButton href="/demo">Request a private briefing</LinkButton>
               <LinkButton href="/contact" variant="secondary">
                 Contact Sentinel
               </LinkButton>

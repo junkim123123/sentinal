@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -35,7 +36,7 @@ export default function SolutionsPage() {
       <PageHero
         actions={
           <>
-            <LinkButton href="/consultation">Start a conversation</LinkButton>
+            <LinkButton href="/consultation">Request consultation</LinkButton>
             <LinkButton href="/methodology" variant="secondary">
               See the methodology
             </LinkButton>
@@ -44,28 +45,38 @@ export default function SolutionsPage() {
         description="Sentinel supports procurement, compliance, and strategy teams differently because each group needs the same signal framed around a different decision."
         eyebrow="Solutions"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Decision lanes</span>
-                <strong>One reporting foundation, several different decisions</strong>
+          <>
+            <HeroPhotoCard
+              alt="Rows of agricultural crops in a field"
+              label="Decision context"
+              note="The solutions story becomes sharper when it still feels anchored to the category and operating environment clients know."
+              src="/images/fields.jpg"
+              title="Different teams read the same signal through different commercial pressures"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Decision lanes</span>
+                  <strong>One reporting foundation, several different decisions</strong>
+                </div>
+                <p>
+                  The solution story works when buyers can immediately see their own
+                  workflow reflected in the structure.
+                </p>
               </div>
-              <p>
-                The solution story works when buyers can immediately see their own
-                workflow reflected in the structure.
-              </p>
+              <div className="page-hero-brief-grid">
+                {solutionTracks.map((track) => (
+                  <article className="page-hero-stat" key={track.label}>
+                    <span>{track.label}</span>
+                    <strong>{track.title}</strong>
+                    <p>{track.text}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {solutionTracks.map((track) => (
-                <article className="page-hero-stat" key={track.label}>
-                  <span>{track.label}</span>
-                  <strong>{track.title}</strong>
-                  <p>{track.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="Organize Sentinel around the team using the signal"
       />

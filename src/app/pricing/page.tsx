@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -37,35 +38,45 @@ export default function PricingPage() {
           <>
             <LinkButton href="/consultation">Discuss your scope</LinkButton>
             <LinkButton href="/demo" variant="secondary">
-              Request a demo
+              Request a private briefing
             </LinkButton>
           </>
         }
         description="Sentinel uses three buckets to explain how scope expands, while keeping final pricing inside a real commercial conversation."
         eyebrow="Pricing approach"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Commercial structure</span>
-                <strong>Three buckets that clarify how scope expands</strong>
+          <>
+            <HeroPhotoCard
+              alt="Shipping containers stacked in a port terminal"
+              label="Commercial framing"
+              note="The page should feel like a serious buying conversation, with scope tied to the operational reality behind the data."
+              src="/images/hero-port.jpg"
+              title="Pricing makes more sense when buyers can picture the monitoring model behind it"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Commercial structure</span>
+                  <strong>Three buckets that clarify how scope expands</strong>
+                </div>
+                <p>
+                  The pricing page should create confidence about buying logic even
+                  without posting public rates.
+                </p>
               </div>
-              <p>
-                The pricing page should create confidence about buying logic even
-                without posting public rates.
-              </p>
+              <div className="page-hero-brief-grid">
+                {pricingBuckets.map((bucket) => (
+                  <article className="page-hero-stat" key={bucket.name}>
+                    <span>{bucket.name}</span>
+                    <strong>{bucket.fit}</strong>
+                    <p>{bucket.description}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {pricingBuckets.map((bucket) => (
-                <article className="page-hero-stat" key={bucket.name}>
-                  <span>{bucket.name}</span>
-                  <strong>{bucket.fit}</strong>
-                  <p>{bucket.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="Three pricing buckets that make scope easier to understand"
       />

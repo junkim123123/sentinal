@@ -6,10 +6,12 @@ import { navItems, proofPoints, siteConfig } from "@/content/site";
 
 export function SiteFooter() {
   const exploreLinks = navItems.filter((item) =>
-    ["/product", "/solutions", "/pricing", "/methodology"].includes(item.href),
+    ["/product", "/solutions", "/pricing", "/methodology", "/about"].includes(
+      item.href,
+    ),
   );
   const startLinks = [
-    { label: "Demo", href: "/demo" },
+    { label: "Briefing", href: "/demo" },
     { label: "Consultation", href: "/consultation" },
     { label: "Contact", href: "/contact" },
   ];
@@ -29,8 +31,8 @@ export function SiteFooter() {
           </Link>
           <p>{siteConfig.description}</p>
           <span className="footer-value">
-            Focused trade intelligence for teams that need usable reporting, not
-            noisy data access.
+            Private intelligence delivery for teams that want signal, discretion,
+            and a more curated operating model.
           </span>
         </div>
         <div className="footer-column">

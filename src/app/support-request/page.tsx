@@ -15,17 +15,20 @@ export default function SupportRequestPage() {
     <InquiryPageTemplate
       actions={
         <LinkButton href="/support" variant="secondary">
-          Review support model
+          Review client support
         </LinkButton>
       }
+      assuranceLabel="Desk standard"
+      assuranceText="Support issues are handled through a direct client desk, keeping delivery context, urgency, and escalation paths close to the same review thread."
+      assuranceTitle="Support intake is routed like a private service desk, not a generic inbox."
       description="Start here for delivery issues, workflow interpretation, or support questions that need a faster expert response."
-      eyebrow="Support request"
+      eyebrow="Client support"
       expectationItems={[
         "Sentinel reviews the file, workflow, or escalation context behind the request.",
         "The team decides whether the next step is delivery support, guided interpretation, or a deeper custom review.",
         "Existing client issues stay close to the secure delivery path and current reporting workflow.",
       ]}
-      expectationLabel="Support handling"
+      expectationLabel="Support desk"
       expectationTitle="Support requests are routed by urgency and workflow impact, not treated as a generic inbox."
       formPlaceholder="Tell us what changed, which file or workflow is involved, and what help you need."
       heroHighlight="A dedicated intake path for delivery, workflow, and expert support"
@@ -38,8 +41,8 @@ export default function SupportRequestPage() {
       promptLabel="Useful support context"
       promptTitle="What helps the team respond faster"
       prompts={supportRequestPrompts}
-      submitLabel="Send request"
-      title="Start a dedicated support request when the issue needs a faster expert response"
+      submitLabel="Send to support desk"
+      title="Open a private support intake when the issue needs a faster expert response"
     />
   );
 }

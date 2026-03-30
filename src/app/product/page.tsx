@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -42,7 +43,7 @@ export default function ProductPage() {
       <PageHero
         actions={
           <>
-            <LinkButton href="/demo">Request walkthrough</LinkButton>
+            <LinkButton href="/demo">Request private briefing</LinkButton>
             <LinkButton href="/contact" variant="secondary">
               Contact team
             </LinkButton>
@@ -51,47 +52,57 @@ export default function ProductPage() {
         description="Sentinel is built around recurring molecule monitoring, landed-value context, and delivery formats that fit real operating teams."
         eyebrow="Product"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Product snapshot</span>
-                <strong>Monthly monitoring with room for sharper investigations</strong>
+          <>
+            <HeroPhotoCard
+              alt="Container stacks and shipping cranes at a port"
+              label="Import surface"
+              note="The product feels more credible when buyers can connect the reporting to the physical movement it interprets."
+              src="/images/hero-port.jpg"
+              title="Monthly monitoring starts where shipment activity becomes visible"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Product snapshot</span>
+                  <strong>Monthly monitoring with room for sharper investigations</strong>
+                </div>
+                <p>
+                  The product is designed to land like a working brief, not a busy
+                  software interface.
+                </p>
               </div>
-              <p>
-                The product is designed to land like a working brief, not a busy
-                software interface.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid page-hero-brief-grid-wide">
-              <SignalChart label="Movement signal" title="Monthly import movement" />
-              <div className="table-preview-card table-preview-card-dark">
-                <span className="small-label">Working file</span>
-                <strong>Shipment watchlist snapshot</strong>
-                <div className="table-preview">
-                  <span>Molecule</span>
-                  <span>Supplier</span>
-                  <span>CIF</span>
-                  <span>Status</span>
-                  <span>Glyphosate</span>
-                  <span>Supplier A</span>
-                  <span>$1.22</span>
-                  <span>Stable</span>
-                  <span>Dicamba</span>
-                  <span>Supplier B</span>
-                  <span>$1.09</span>
-                  <span>Watch</span>
+              <div className="page-hero-brief-grid page-hero-brief-grid-wide">
+                <SignalChart label="Movement signal" title="Monthly import movement" />
+                <div className="table-preview-card table-preview-card-dark">
+                  <span className="small-label">Working file</span>
+                  <strong>Shipment watchlist snapshot</strong>
+                  <div className="table-preview">
+                    <span>Molecule</span>
+                    <span>Supplier</span>
+                    <span>CIF</span>
+                    <span>Status</span>
+                    <span>Glyphosate</span>
+                    <span>Supplier A</span>
+                    <span>$1.22</span>
+                    <span>Stable</span>
+                    <span>Dicamba</span>
+                    <span>Supplier B</span>
+                    <span>$1.09</span>
+                    <span>Watch</span>
+                  </div>
                 </div>
               </div>
+              <div className="page-hero-tag-row">
+                {productHeroCapabilities.map((item) => (
+                  <span className="page-hero-tag" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-tag-row">
-              {productHeroCapabilities.map((item) => (
-                <span className="page-hero-tag" key={item}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="Import intelligence built to fit how teams already work"
       />

@@ -7,6 +7,7 @@ type PageHeroProps = {
   actions?: ReactNode;
   visual?: ReactNode;
   theme?: "light" | "dark";
+  visualMode?: "single" | "paired" | "intake";
 };
 
 export function PageHero({
@@ -16,6 +17,7 @@ export function PageHero({
   actions,
   visual,
   theme = "light",
+  visualMode = "single",
 }: PageHeroProps) {
   return (
     <section className={`page-hero page-hero-${theme}`}>
@@ -26,7 +28,11 @@ export function PageHero({
           <p>{description}</p>
           {actions ? <div className="button-row">{actions}</div> : null}
         </div>
-        {visual ? <div className="page-hero-visual">{visual}</div> : null}
+        {visual ? (
+          <div className={`page-hero-visual page-hero-visual-${visualMode}`}>
+            {visual}
+          </div>
+        ) : null}
       </div>
     </section>
   );

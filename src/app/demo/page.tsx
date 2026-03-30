@@ -5,9 +5,9 @@ import { LinkButton } from "@/components/LinkButton";
 import { demoPaths, demoPrompts } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Demo",
+  title: "Private Briefing",
   description:
-    "Request a Sentinel Imports demo focused on recurring monitoring, custom analysis, or delivery workflow fit.",
+    "Request a Sentinel Imports private briefing focused on recurring monitoring, custom analysis, or delivery workflow fit.",
 };
 
 export default function DemoPage() {
@@ -15,31 +15,34 @@ export default function DemoPage() {
     <InquiryPageTemplate
       actions={
         <LinkButton href="/product" variant="secondary">
-          Review product coverage
+          Review service coverage
         </LinkButton>
       }
-      description="Request a guided walkthrough of Sentinel's coverage, working output, and delivery model around the molecules and workflows that matter to you."
-      eyebrow="Demo"
+      assuranceLabel="Review standard"
+      assuranceText="Sentinel keeps the session narrow, confidential, and anchored to the decision behind the request rather than running a generic product tour."
+      assuranceTitle="Private briefings are shaped around fit, not volume."
+      description="Request a guided private briefing of Sentinel's coverage, working output, and delivery model around the molecules and workflows that matter to you."
+      eyebrow="Private briefing"
       expectationItems={[
         "Sentinel reviews the molecules, teams, and workflow questions you want to cover in the session.",
         "The walkthrough is shaped around recurring monitoring, custom analysis, or delivery fit rather than a generic product script.",
-        "The follow-up conversation stays tied to the business need surfaced in the demo.",
+        "The follow-up conversation stays tied to the business need surfaced in the private briefing.",
       ]}
-      expectationLabel="Demo process"
+      expectationLabel="Briefing process"
       expectationTitle="Each walkthrough is tailored to the molecules, workflow, and business question you are evaluating."
-      formPlaceholder="Tell us which molecules, workflows, or use cases the demo should cover."
+      formPlaceholder="Tell us which molecules, workflows, or use cases the private briefing should cover."
       heroHighlight="A walkthrough built around the molecules and workflow that matter to you"
       heroImageAlt="Port activity and logistics infrastructure viewed from above"
       heroImageSrc="/images/hero-port.jpg"
-      heroLabel="Live walkthrough"
-      pathLabel="Demo paths"
+      heroLabel="Private session"
+      pathLabel="Briefing paths"
       pathTitle="What the session can be tailored around"
       paths={demoPaths}
-      promptLabel="Best demo context"
+      promptLabel="Best briefing context"
       promptTitle="What helps tailor the session"
       prompts={demoPrompts}
-      submitLabel="Request walkthrough"
-      title="Request a focused Sentinel demo built around your monitoring workflow"
+      submitLabel="Request private briefing"
+      title="Request a private Sentinel briefing built around your monitoring workflow"
     />
   );
 }

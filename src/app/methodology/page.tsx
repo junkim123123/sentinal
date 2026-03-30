@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -41,35 +42,45 @@ export default function MethodologyPage() {
         description="Sentinel combines named data sources, molecule-level normalization, and client-ready delivery to make trade records more usable."
         eyebrow="Methodology"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Source to brief</span>
-                <strong>A short workflow with named inputs and visible discipline</strong>
+          <>
+            <HeroPhotoCard
+              alt="Analysts collaborating in a laboratory environment"
+              label="Research discipline"
+              note="The methodology lands better when the visuals suggest rigor, review, and a controlled workflow rather than generic tech styling."
+              src="/images/lab.jpg"
+              title="Named sources and normalization discipline should feel tangible on the page"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Source to brief</span>
+                  <strong>A short workflow with named inputs and visible discipline</strong>
+                </div>
+                <p>
+                  The methodology needs to build trust quickly by showing how raw
+                  records become a usable monthly brief.
+                </p>
               </div>
-              <p>
-                The methodology needs to build trust quickly by showing how raw
-                records become a usable monthly brief.
-              </p>
+              <div className="page-hero-brief-grid">
+                {methodologySteps.map((item) => (
+                  <article className="page-hero-stat" key={item.step}>
+                    <span>{item.step}</span>
+                    <strong>{item.title}</strong>
+                    <p>{item.description}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="page-hero-tag-row">
+                {dataSources.slice(0, 5).map((source) => (
+                  <span className="page-hero-tag" key={source}>
+                    {source}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {methodologySteps.map((item) => (
-                <article className="page-hero-stat" key={item.step}>
-                  <span>{item.step}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="page-hero-tag-row">
-              {dataSources.slice(0, 5).map((source) => (
-                <span className="page-hero-tag" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="A disciplined path from source records to usable reporting"
       />

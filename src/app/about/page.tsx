@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -24,7 +25,7 @@ export default function AboutPage() {
       <PageHero
         actions={
           <>
-            <LinkButton href="/consultation">Talk with Sentinel</LinkButton>
+            <LinkButton href="/consultation">Request consultation</LinkButton>
             <LinkButton href="/methodology" variant="secondary">
               Review the method
             </LinkButton>
@@ -33,35 +34,45 @@ export default function AboutPage() {
         description="Sentinel focuses on agricultural chemical and intermediate imports, recurring reporting, and workflow-ready delivery instead of broad generic trade-data claims."
         eyebrow="About Sentinel"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Operating posture</span>
-                <strong>Focused intelligence with a working delivery model</strong>
+          <>
+            <HeroPhotoCard
+              alt="Agricultural fields under a clear sky"
+              label="Category focus"
+              note="The offer stays grounded in agricultural chemicals and intermediates instead of drifting into a broad platform story."
+              src="/images/fields.jpg"
+              title="A narrower market lens is part of the brand, not a limitation"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Operating posture</span>
+                  <strong>Focused intelligence with a working delivery model</strong>
+                </div>
+                <p>
+                  Sentinel stays deliberately narrow so clients get a signal they can
+                  trust, share, and act on without wading through platform noise.
+                </p>
               </div>
-              <p>
-                Sentinel stays deliberately narrow so clients get a signal they can
-                trust, share, and act on without wading through platform noise.
-              </p>
+              <div className="page-hero-brief-grid">
+                {aboutCredibility.slice(0, 3).map((item) => (
+                  <article className="page-hero-stat" key={item.label}>
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                    <p>{item.detail}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="page-hero-tag-row">
+                {dataSources.slice(0, 5).map((source) => (
+                  <span className="page-hero-tag" key={source}>
+                    {source}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {aboutCredibility.slice(0, 3).map((item) => (
-                <article className="page-hero-stat" key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
-            <div className="page-hero-tag-row">
-              {dataSources.slice(0, 5).map((source) => (
-                <span className="page-hero-tag" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="A narrower intelligence model built for real operating teams"
       />

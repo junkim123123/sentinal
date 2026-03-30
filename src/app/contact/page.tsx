@@ -15,31 +15,34 @@ export default function ContactPage() {
     <InquiryPageTemplate
       actions={
         <LinkButton external href={siteConfig.loginHref} variant="ghost">
-          Existing client log in
+          Existing client access
         </LinkButton>
       }
+      assuranceLabel="Handling standard"
+      assuranceText="Initial requests are reviewed directly and scoped with discretion, so the first response clarifies fit instead of pushing a generic sales path."
+      assuranceTitle="Private intake is designed to filter for fit, timing, and seriousness."
       description="Start the conversation when you need recurring monitoring, a custom investigation, or a delivery model that fits the way your team works."
-      eyebrow="Contact"
+      eyebrow="Private intake"
       expectationItems={[
         "Sentinel reviews the molecule scope, workflow need, and business context behind the request.",
-        "The team confirms whether the best next step is a demo, a scoped commercial conversation, or a direct project discussion.",
+        "The team confirms whether the best next step is a private briefing, a scoped commercial conversation, or a direct project discussion.",
         "Follow-up stays centered on the decision your team needs to make next.",
       ]}
-      expectationLabel="What happens next"
+      expectationLabel="Intake review"
       expectationTitle="The team routes the conversation around the reporting need, not a generic queue."
       formPlaceholder="Tell us the molecules, reporting need, and business context behind the request."
       heroHighlight="Start with the reporting need and Sentinel will help shape the right scope"
       heroImageAlt="Cargo containers stacked in a port yard"
       heroImageSrc="/images/hero-port.jpg"
       heroLabel="Conversation start"
-      pathLabel="Conversation paths"
+      pathLabel="Scope paths"
       pathTitle="Typical ways a request gets scoped"
       paths={engagementModels}
       promptLabel="Useful context"
       promptTitle="What makes the conversation more useful"
       prompts={contactPrompts}
-      submitLabel="Send inquiry"
-      title="Start with the reporting question and let Sentinel shape the right scope around it"
+      submitLabel="Send private request"
+      title="Begin a private intake and let Sentinel shape the right reporting scope around it"
     />
   );
 }

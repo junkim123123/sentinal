@@ -14,11 +14,13 @@ const initialState: FormState = {
 type ContactFormProps = {
   messagePlaceholder?: string;
   submitLabel?: string;
+  variant?: "default" | "private";
 };
 
 export function ContactForm({
   messagePlaceholder = "Tell us the molecules, market question, or reporting need you want to discuss.",
   submitLabel = "Submit request",
+  variant = "default",
 }: ContactFormProps) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -65,34 +67,55 @@ export function ContactForm({
   }
 
   return (
-    <form action={handleSubmit} className="form-panel" noValidate>
+    <form
+      action={handleSubmit}
+      className={`form-panel ${variant === "private" ? "form-panel-private" : ""}`.trim()}
+      noValidate
+    >
       <div className="form-intro">
-        <span className="small-label">Request details</span>
-        <h2>Give Sentinel the essentials.</h2>
-        <p>The more specific the request, the faster the team can route it well.</p>
+        <span className="small-label">
+          {variant === "private" ? "Private intake" : "Request details"}
+        </span>
+        <h2>
+          {variant === "private"
+            ? "Prepare a private request for Sentinel review."
+            : "Give Sentinel the essentials."}
+        </h2>
+        <p>
+          {variant === "private"
+            ? "A concise brief helps the team route advisory, briefing, or support review with more precision."
+            : "The more specific the request, the faster the team can route it well."}
+        </p>
       </div>
+      {variant === "private" ? (
+        <div className="form-private-strip">
+          <span>Direct team review</span>
+          <span>Curated response</span>
+          <span>Secure follow-up</span>
+        </div>
+      ) : null}
       <div className="field-grid">
         <label className="field">
           <span>Name</span>
           <input autoComplete="name" name="name" required type="text" />
         </label>
         <label className="field">
-          <span>Email</span>
+          <span>Work email</span>
           <input autoComplete="email" name="email" required type="email" />
         </label>
       </div>
       <div className="field-grid">
         <label className="field">
-          <span>Phone</span>
+          <span>Direct line</span>
           <input autoComplete="tel" name="phone" required type="tel" />
         </label>
         <label className="field">
-          <span>Company</span>
+          <span>Company / desk</span>
           <input autoComplete="organization" name="company" type="text" />
         </label>
       </div>
       <label className="field">
-        <span>What are you trying to understand?</span>
+        <span>What should Sentinel review?</span>
         <textarea
           name="message"
           placeholder={messagePlaceholder}
@@ -101,7 +124,9 @@ export function ContactForm({
         />
       </label>
       <p className="form-note">
-        A Sentinel team member reviews each request directly.
+        {variant === "private"
+          ? "Each request is reviewed directly by Sentinel rather than routed through a public queue."
+          : "A Sentinel team member reviews each request directly."}
       </p>
       <div aria-live="polite" className="form-status">
         {state.error ? <p className="error-text">{state.error}</p> : null}

@@ -24,6 +24,9 @@ type InquiryPageTemplateProps = {
   paths: OfferPath[];
   formPlaceholder: string;
   submitLabel: string;
+  assuranceLabel: string;
+  assuranceTitle: string;
+  assuranceText: string;
   actions?: ReactNode;
 };
 
@@ -46,6 +49,9 @@ export function InquiryPageTemplate({
   paths,
   formPlaceholder,
   submitLabel,
+  assuranceLabel,
+  assuranceTitle,
+  assuranceText,
   actions,
 }: InquiryPageTemplateProps) {
   return (
@@ -55,8 +61,9 @@ export function InquiryPageTemplate({
         description={description}
         eyebrow={eyebrow}
         theme="dark"
+        visualMode="intake"
         visual={
-          <div className="intake-hero-visual">
+          <div className="intake-hero-visual private-intake-hero">
             <div className="page-hero-figure page-hero-figure-tall">
               <Image
                 alt={heroImageAlt}
@@ -70,17 +77,20 @@ export function InquiryPageTemplate({
                 <strong>{heroHighlight}</strong>
               </div>
             </div>
-            <div className="intake-hero-brief">
-              <article className="intake-hero-card">
+            <div className="intake-hero-brief private-intake-brief">
+              <article className="intake-hero-card private-intake-card">
                 <span className="small-label">{expectationLabel}</span>
                 <strong>{expectationTitle}</strong>
+                <p className="private-intake-card-copy">
+                  {description}
+                </p>
                 <ul className="page-hero-mini-list">
                   {expectationItems.slice(0, 2).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </article>
-              <article className="intake-hero-card">
+              <article className="intake-hero-card private-intake-card">
                 <span className="small-label">{pathLabel}</span>
                 <strong>{pathTitle}</strong>
                 <div className="intake-chip-row">
@@ -91,6 +101,16 @@ export function InquiryPageTemplate({
                   ))}
                 </div>
               </article>
+              <article className="intake-hero-card private-intake-card private-intake-card-accent">
+                <span className="small-label">{assuranceLabel}</span>
+                <strong>{assuranceTitle}</strong>
+                <p className="private-intake-card-copy">{assuranceText}</p>
+                <div className="private-intake-service-strip">
+                  <span>Direct review</span>
+                  <span>Curated response</span>
+                  <span>Secure follow-up</span>
+                </div>
+              </article>
             </div>
           </div>
         }
@@ -99,7 +119,7 @@ export function InquiryPageTemplate({
 
       <section className="section">
         <div className="section-inner">
-          <div className="contact-summary-band">
+          <div className="contact-summary-band private-intake-summary">
             {expectationItems.map((item, index) => (
               <article className="contact-summary-card" key={item}>
                 <span>{`0${index + 1}`}</span>
@@ -108,15 +128,21 @@ export function InquiryPageTemplate({
             ))}
           </div>
 
-          <div className="contact-layout contact-layout-refined">
+          <div className="contact-layout contact-layout-refined private-intake-shell">
             <div>
               <ContactForm
                 messagePlaceholder={formPlaceholder}
                 submitLabel={submitLabel}
+                variant="private"
               />
             </div>
-            <aside className="contact-sidebar">
-              <article className="source-panel inquiry-info-panel">
+            <aside className="contact-sidebar private-intake-sidebar">
+              <article className="source-panel inquiry-info-panel private-intake-panel">
+                <div className="private-intake-panel-intro">
+                  <span className="small-label">{assuranceLabel}</span>
+                  <h2>{assuranceTitle}</h2>
+                  <p>{assuranceText}</p>
+                </div>
                 <div className="inquiry-block">
                   <span className="small-label">{expectationLabel}</span>
                   <h2>{expectationTitle}</h2>
@@ -148,6 +174,11 @@ export function InquiryPageTemplate({
                       </div>
                     ))}
                   </div>
+                </div>
+                <div className="private-intake-disclosure">
+                  <span>Restricted intake</span>
+                  <span>Named follow-up</span>
+                  <span>Private service fit</span>
                 </div>
               </article>
             </aside>

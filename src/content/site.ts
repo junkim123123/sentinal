@@ -105,7 +105,7 @@ export const siteConfig = {
   contactEndpoint: "/api/contact",
   loginHref: "https://SentinelImports.sharefile.com",
   primaryCta: {
-    label: "Request a demo",
+    label: "Request a private briefing",
     href: "/demo",
   },
   secondaryCta: {

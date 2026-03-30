@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -17,7 +18,7 @@ export default function SupportPage() {
       <PageHero
         actions={
           <>
-            <LinkButton href="/support-request">Contact support</LinkButton>
+            <LinkButton href="/support-request">Contact support desk</LinkButton>
             <LinkButton href="/product" variant="secondary">
               Review product coverage
             </LinkButton>
@@ -26,28 +27,38 @@ export default function SupportPage() {
         description="Support gives clients direct access to the team behind the reporting, with clear paths for delivery issues, interpretation, and advanced questions."
         eyebrow="Support"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Support model</span>
-                <strong>Expert access, guided review, and escalation when needed</strong>
+          <>
+            <HeroPhotoCard
+              alt="A team reviewing work in a laboratory setting"
+              label="Support posture"
+              note="Support feels more premium when it reads like accountable expert access, not a generic ticket queue."
+              src="/images/lab.jpg"
+              title="The page should suggest direct review, faster interpretation, and serious follow-through"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Support model</span>
+                  <strong>Expert access, guided review, and escalation when needed</strong>
+                </div>
+                <p>
+                  The support page should feel as direct and accountable as the service
+                  itself.
+                </p>
               </div>
-              <p>
-                The support page should feel as direct and accountable as the service
-                itself.
-              </p>
+              <div className="page-hero-brief-grid">
+                {supportChannels.map((item) => (
+                  <article className="page-hero-stat" key={item.title}>
+                    <span>{item.label ?? "Support"}</span>
+                    <strong>{item.title}</strong>
+                    <p>{item.description}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {supportChannels.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.label ?? "Support"}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="Support built around direct access to the team behind the reporting"
       />

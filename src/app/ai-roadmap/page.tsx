@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -32,28 +33,38 @@ export default function AiRoadmapPage() {
         description="AI belongs on the site as a validation-backed roadmap, not as a broad product promise."
         eyebrow="AI roadmap"
         theme="dark"
+        visualMode="paired"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Roadmap posture</span>
-                <strong>Measured, validated, and human-reviewed by design</strong>
+          <>
+            <HeroPhotoCard
+              alt="Analyst workstation and research environment"
+              label="Measured adoption"
+              note="The roadmap should feel disciplined and reviewable, with AI presented as an extension of the service rather than a performance claim."
+              src="/images/lab.jpg"
+              title="A private intelligence service needs AI posture to read as controlled, validated, and selective"
+            />
+            <div className="page-hero-brief page-hero-brief-dark">
+              <div className="page-hero-brief-head">
+                <div>
+                  <span className="small-label">Roadmap posture</span>
+                  <strong>Measured, validated, and human-reviewed by design</strong>
+                </div>
+                <p>
+                  The roadmap becomes more credible when it reads like a sequence of
+                  grounded bets rather than a generic AI feature list.
+                </p>
               </div>
-              <p>
-                The roadmap becomes more credible when it reads like a sequence of
-                grounded bets rather than a generic AI feature list.
-              </p>
+              <div className="page-hero-brief-grid">
+                {validatedAiCapabilities.map((item) => (
+                  <article className="page-hero-stat" key={item.title}>
+                    <span>{item.precedent}</span>
+                    <strong>{item.title}</strong>
+                    <p>{item.summary}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="page-hero-brief-grid">
-              {validatedAiCapabilities.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.precedent}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.summary}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          </>
         }
         title="A measured path for Sentinel AI"
       />

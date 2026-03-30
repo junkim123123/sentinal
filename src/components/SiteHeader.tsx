@@ -8,6 +8,21 @@ import { usePathname } from "next/navigation";
 import { LinkButton } from "@/components/LinkButton";
 import { navItems, siteConfig } from "@/content/site";
 
+const headerLabels: Record<string, string> = {
+  "/product": "Product",
+  "/solutions": "Solutions",
+  "/methodology": "Method",
+  "/pricing": "Pricing",
+  "/support": "Support",
+};
+
+const headerNavItems = navItems
+  .filter((item) => headerLabels[item.href] !== undefined)
+  .map((item) => ({
+    ...item,
+    label: headerLabels[item.href],
+  }));
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -43,7 +58,7 @@ export function SiteHeader() {
         </button>
         <div className={`site-nav-menu ${open ? "is-open" : ""}`}>
           <nav aria-label="Primary" className="site-nav">
-            {navItems.map((item) => {
+            {headerNavItems.map((item) => {
               const isActive =
                 item.href === "/"
                   ? pathname === item.href
@@ -51,6 +66,7 @@ export function SiteHeader() {
 
               return (
                 <Link
+                  aria-current={isActive ? "page" : undefined}
                   className={`site-nav-link ${isActive ? "is-active" : ""}`}
                   href={item.href}
                   key={item.href}
@@ -63,7 +79,7 @@ export function SiteHeader() {
           </nav>
           <div className="site-header-actions">
             <LinkButton href={siteConfig.primaryCta.href} onClick={closeMenu}>
-              Request a demo
+              Private briefing
             </LinkButton>
             <LinkButton
               className="login-button"
@@ -72,7 +88,7 @@ export function SiteHeader() {
               onClick={closeMenu}
               variant="ghost"
             >
-              Client login
+              Client access
             </LinkButton>
           </div>
         </div>
