@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { InquiryPageTemplate } from "@/components/InquiryPageTemplate";
-import { LinkButton } from "@/components/LinkButton";
 import { supportRequestPaths, supportRequestPrompts } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function SupportRequestPage() {
   return (
     <InquiryPageTemplate
-      actions={
-        <LinkButton href="/support" variant="secondary">
-          Review client support
-        </LinkButton>
-      }
       assuranceLabel="Desk standard"
       assuranceText="Support issues are handled through a direct client desk, keeping delivery context, urgency, and escalation paths close to the same review thread."
       assuranceTitle="Support intake is routed like a private service desk, not a generic inbox."
@@ -32,8 +26,6 @@ export default function SupportRequestPage() {
       expectationTitle="Support requests are routed by urgency and workflow impact, not treated as a generic inbox."
       formPlaceholder="Tell us what changed, which file or workflow is involved, and what help you need."
       heroHighlight="A dedicated intake path for delivery, workflow, and expert support"
-      heroImageAlt="Analysts working together in a laboratory environment"
-      heroImageSrc="/images/lab.jpg"
       heroLabel="Support intake"
       pathLabel="Support lanes"
       pathTitle="How Sentinel can route the request"

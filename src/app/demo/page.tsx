@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { InquiryPageTemplate } from "@/components/InquiryPageTemplate";
-import { LinkButton } from "@/components/LinkButton";
 import { demoPaths, demoPrompts } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function DemoPage() {
   return (
     <InquiryPageTemplate
-      actions={
-        <LinkButton href="/product" variant="secondary">
-          Review service coverage
-        </LinkButton>
-      }
       assuranceLabel="Review standard"
       assuranceText="Sentinel keeps the session narrow, confidential, and anchored to the decision behind the request rather than running a generic product tour."
       assuranceTitle="Private briefings are shaped around fit, not volume."
@@ -32,8 +26,6 @@ export default function DemoPage() {
       expectationTitle="Each walkthrough is tailored to the molecules, workflow, and business question you are evaluating."
       formPlaceholder="Tell us which molecules, workflows, or use cases the private briefing should cover."
       heroHighlight="A walkthrough built around the molecules and workflow that matter to you"
-      heroImageAlt="Port activity and logistics infrastructure viewed from above"
-      heroImageSrc="/images/hero-port.jpg"
       heroLabel="Private session"
       pathLabel="Briefing paths"
       pathTitle="What the session can be tailored around"

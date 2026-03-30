@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
-import { HeroPhotoCard } from "@/components/HeroPhotoCard";
+import { BriefArtifactPreview } from "@/components/BriefArtifactPreview";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SignalChart } from "@/components/SignalChart";
 import {
   integrationPoints,
   productClusters,
@@ -41,68 +40,21 @@ export default function ProductPage() {
   return (
     <>
       <PageHero
-        actions={
-          <>
-            <LinkButton href="/demo">Request private briefing</LinkButton>
-            <LinkButton href="/contact" variant="secondary">
-              Contact team
-            </LinkButton>
-          </>
-        }
+        actions={<LinkButton href="/demo">Request private briefing</LinkButton>}
         description="Sentinel is built around recurring molecule monitoring, landed-value context, and delivery formats that fit real operating teams."
         eyebrow="Product"
         theme="dark"
-        visualMode="paired"
         visual={
-          <>
-            <HeroPhotoCard
-              alt="Container stacks and shipping cranes at a port"
-              label="Import surface"
-              note="The product feels more credible when buyers can connect the reporting to the physical movement it interprets."
-              src="/images/hero-port.jpg"
-              title="Monthly monitoring starts where shipment activity becomes visible"
-            />
-            <div className="page-hero-brief page-hero-brief-dark">
-              <div className="page-hero-brief-head">
-                <div>
-                  <span className="small-label">Product snapshot</span>
-                  <strong>Monthly monitoring with room for sharper investigations</strong>
-                </div>
-                <p>
-                  The product is designed to land like a working brief, not a busy
-                  software interface.
-                </p>
-              </div>
-              <div className="page-hero-brief-grid page-hero-brief-grid-wide">
-                <SignalChart label="Movement signal" title="Monthly import movement" />
-                <div className="table-preview-card table-preview-card-dark">
-                  <span className="small-label">Working file</span>
-                  <strong>Shipment watchlist snapshot</strong>
-                  <div className="table-preview">
-                    <span>Molecule</span>
-                    <span>Supplier</span>
-                    <span>CIF</span>
-                    <span>Status</span>
-                    <span>Glyphosate</span>
-                    <span>Supplier A</span>
-                    <span>$1.22</span>
-                    <span>Stable</span>
-                    <span>Dicamba</span>
-                    <span>Supplier B</span>
-                    <span>$1.09</span>
-                    <span>Watch</span>
-                  </div>
-                </div>
-              </div>
-              <div className="page-hero-tag-row">
-                {productHeroCapabilities.map((item) => (
-                  <span className="page-hero-tag" key={item}>
-                    {item}
-                  </span>
-                ))}
-              </div>
+          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero product-hero-artifact">
+            <BriefArtifactPreview />
+            <div className="page-hero-tag-row">
+              {productHeroCapabilities.map((item) => (
+                <span className="page-hero-tag" key={item}>
+                  {item}
+                </span>
+              ))}
             </div>
-          </>
+          </div>
         }
         title="Import intelligence built to fit how teams already work"
       />
@@ -121,8 +73,8 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight">
-        <div className="section-inner">
+      <section className="section page-section-tight product-core-section">
+        <div className="section-inner product-core-shell">
           <SectionHeading
             description="The product works best when the page explains the operating model, the included intelligence, and the delivery fit in one pass."
             eyebrow="Core design"

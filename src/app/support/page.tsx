@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -16,54 +15,37 @@ export default function SupportPage() {
   return (
     <>
       <PageHero
-        actions={
-          <>
-            <LinkButton href="/support-request">Contact support desk</LinkButton>
-            <LinkButton href="/product" variant="secondary">
-              Review product coverage
-            </LinkButton>
-          </>
-        }
+        actions={<LinkButton href="/support-request">Contact support desk</LinkButton>}
         description="Support gives clients direct access to the team behind the reporting, with clear paths for delivery issues, interpretation, and advanced questions."
         eyebrow="Support"
         theme="dark"
-        visualMode="paired"
         visual={
-          <>
-            <HeroPhotoCard
-              alt="A team reviewing work in a laboratory setting"
-              label="Support posture"
-              note="Support feels more premium when it reads like accountable expert access, not a generic ticket queue."
-              src="/images/lab.jpg"
-              title="The page should suggest direct review, faster interpretation, and serious follow-through"
-            />
-            <div className="page-hero-brief page-hero-brief-dark">
-              <div className="page-hero-brief-head">
-                <div>
-                  <span className="small-label">Support model</span>
-                  <strong>Expert access, guided review, and escalation when needed</strong>
-                </div>
-                <p>
-                  The support page should feel as direct and accountable as the service
-                  itself.
-                </p>
+          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Support model</span>
+                <strong>Expert access, guided review, and escalation when needed</strong>
               </div>
-              <div className="page-hero-brief-grid">
-                {supportChannels.map((item) => (
-                  <article className="page-hero-stat" key={item.title}>
-                    <span>{item.label ?? "Support"}</span>
-                    <strong>{item.title}</strong>
-                    <p>{item.description}</p>
-                  </article>
-                ))}
-              </div>
+              <p>
+                The support page should feel as direct and accountable as the service
+                itself.
+              </p>
             </div>
-          </>
+            <div className="page-hero-brief-grid">
+              {supportChannels.map((item) => (
+                <article className="page-hero-stat" key={item.title}>
+                  <span>{item.label ?? "Support"}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         }
         title="Support built around direct access to the team behind the reporting"
       />
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight sentinel-subpage-emphasis support-paths-section">
         <div className="section-inner">
           <SectionHeading
             description="The support story is stronger when clients can immediately see what kind of help they can expect."
@@ -82,7 +64,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight">
+      <section className="section section-tint page-section-tight support-flow-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
@@ -115,7 +97,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight support-faq-section">
         <div className="section-inner">
           <SectionHeading
             description="A support page reads more confidently when common client questions are answered directly instead of hidden deep in the flow."

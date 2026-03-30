@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 import { InquiryPageTemplate } from "@/components/InquiryPageTemplate";
-import { LinkButton } from "@/components/LinkButton";
-import { contactPrompts, engagementModels, siteConfig } from "@/content/site";
+import { contactPrompts, engagementModels } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <InquiryPageTemplate
-      actions={
-        <LinkButton external href={siteConfig.loginHref} variant="ghost">
-          Existing client access
-        </LinkButton>
-      }
       assuranceLabel="Handling standard"
       assuranceText="Initial requests are reviewed directly and scoped with discretion, so the first response clarifies fit instead of pushing a generic sales path."
       assuranceTitle="Private intake is designed to filter for fit, timing, and seriousness."
@@ -32,8 +26,6 @@ export default function ContactPage() {
       expectationTitle="The team routes the conversation around the reporting need, not a generic queue."
       formPlaceholder="Tell us the molecules, reporting need, and business context behind the request."
       heroHighlight="Start with the reporting need and Sentinel will help shape the right scope"
-      heroImageAlt="Cargo containers stacked in a port yard"
-      heroImageSrc="/images/hero-port.jpg"
       heroLabel="Conversation start"
       pathLabel="Scope paths"
       pathTitle="Typical ways a request gets scoped"

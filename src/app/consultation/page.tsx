@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { InquiryPageTemplate } from "@/components/InquiryPageTemplate";
-import { LinkButton } from "@/components/LinkButton";
 import { consultationPaths, consultationPrompts } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function ConsultationPage() {
   return (
     <InquiryPageTemplate
-      actions={
-        <LinkButton href="/about" variant="secondary">
-          Review Sentinel
-        </LinkButton>
-      }
       assuranceLabel="Advisory standard"
       assuranceText="Consultations are handled as direct strategic intake, with the business decision clarified before scope, cadence, or reporting format is proposed."
       assuranceTitle="The advisory conversation starts with judgment, not a canned sequence."
@@ -32,8 +26,6 @@ export default function ConsultationPage() {
       expectationTitle="The discussion is built around the business decision first, then the reporting model."
       formPlaceholder="Tell us the business problem, stakeholder group, and timing behind the conversation."
       heroHighlight="A strategy conversation grounded in the reporting and decision need"
-      heroImageAlt="Agricultural field operation captured from above"
-      heroImageSrc="/images/fields.jpg"
       heroLabel="Advisory start"
       pathLabel="Conversation types"
       pathTitle="How Sentinel can frame the discussion"

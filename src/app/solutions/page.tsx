@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -34,54 +33,37 @@ export default function SolutionsPage() {
   return (
     <>
       <PageHero
-        actions={
-          <>
-            <LinkButton href="/consultation">Request consultation</LinkButton>
-            <LinkButton href="/methodology" variant="secondary">
-              See the methodology
-            </LinkButton>
-          </>
-        }
+        actions={<LinkButton href="/consultation">Request consultation</LinkButton>}
         description="Sentinel supports procurement, compliance, and strategy teams differently because each group needs the same signal framed around a different decision."
         eyebrow="Solutions"
         theme="dark"
-        visualMode="paired"
         visual={
-          <>
-            <HeroPhotoCard
-              alt="Rows of agricultural crops in a field"
-              label="Decision context"
-              note="The solutions story becomes sharper when it still feels anchored to the category and operating environment clients know."
-              src="/images/fields.jpg"
-              title="Different teams read the same signal through different commercial pressures"
-            />
-            <div className="page-hero-brief page-hero-brief-dark">
-              <div className="page-hero-brief-head">
-                <div>
-                  <span className="small-label">Decision lanes</span>
-                  <strong>One reporting foundation, several different decisions</strong>
-                </div>
-                <p>
-                  The solution story works when buyers can immediately see their own
-                  workflow reflected in the structure.
-                </p>
+          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Decision lanes</span>
+                <strong>One reporting foundation, several different decisions</strong>
               </div>
-              <div className="page-hero-brief-grid">
-                {solutionTracks.map((track) => (
-                  <article className="page-hero-stat" key={track.label}>
-                    <span>{track.label}</span>
-                    <strong>{track.title}</strong>
-                    <p>{track.text}</p>
-                  </article>
-                ))}
-              </div>
+              <p>
+                The solution story works when buyers can immediately see their own
+                workflow reflected in the structure.
+              </p>
             </div>
-          </>
+            <div className="page-hero-brief-grid">
+              {solutionTracks.map((track) => (
+                <article className="page-hero-stat" key={track.label}>
+                  <span>{track.label}</span>
+                  <strong>{track.title}</strong>
+                  <p>{track.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         }
         title="Organize Sentinel around the team using the signal"
       />
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight sentinel-subpage-emphasis solutions-track-section">
         <div className="section-inner">
           <SectionHeading
             description="Each solution track should feel like a clear entry point into the workflow, not just another feature group."
@@ -100,7 +82,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight">
+      <section className="section section-tint page-section-tight solutions-role-section">
         <div className="section-inner">
           <SectionHeading
             description="Buyers usually decide faster when the page shows their challenge and their payoff side by side."
@@ -123,7 +105,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight solutions-engagement-section">
         <div className="section-inner">
           <SectionHeading
             description="The solution page is stronger when the commercial model reads like a natural next step from the team problem."

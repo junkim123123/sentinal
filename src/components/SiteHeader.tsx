@@ -1,19 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { LinkButton } from "@/components/LinkButton";
 import { navItems, siteConfig } from "@/content/site";
 
 const headerLabels: Record<string, string> = {
   "/product": "Product",
-  "/solutions": "Solutions",
   "/methodology": "Method",
-  "/pricing": "Pricing",
-  "/support": "Support",
+  "/pricing": "Engagement",
+  "/contact": "Contact",
 };
 
 const headerNavItems = navItems
@@ -33,19 +30,14 @@ export function SiteHeader() {
       <div className="section-inner site-header-inner">
         <Link
           aria-label={siteConfig.name}
-          className="brand-lockup"
+          className="sentinel-header-logo"
           href="/"
           onClick={closeMenu}
         >
-          <Image
-            alt={siteConfig.name}
-            className="brand-logo"
-            height={56}
-            priority
-            src="/brand/sentinel-logo-white.png"
-            width={210}
-          />
+          {siteConfig.shortName}
+          <span>.</span>
         </Link>
+
         <button
           aria-expanded={open}
           aria-label="Toggle navigation"
@@ -56,13 +48,12 @@ export function SiteHeader() {
           <span />
           <span />
         </button>
+
         <div className={`site-nav-menu ${open ? "is-open" : ""}`}>
           <nav aria-label="Primary" className="site-nav">
             {headerNavItems.map((item) => {
               const isActive =
-                item.href === "/"
-                  ? pathname === item.href
-                  : pathname.startsWith(item.href);
+                item.href === "/" ? pathname === item.href : pathname.startsWith(item.href);
 
               return (
                 <Link
@@ -77,19 +68,17 @@ export function SiteHeader() {
               );
             })}
           </nav>
+
           <div className="site-header-actions">
-            <LinkButton href={siteConfig.primaryCta.href} onClick={closeMenu}>
-              Private briefing
-            </LinkButton>
-            <LinkButton
-              className="login-button"
-              external
+            <a
+              className="site-nav-link site-nav-utility"
               href={siteConfig.loginHref}
               onClick={closeMenu}
-              variant="ghost"
+              rel="noreferrer"
+              target="_blank"
             >
-              Client access
-            </LinkButton>
+              Client Login
+            </a>
           </div>
         </div>
       </div>

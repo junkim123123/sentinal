@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { HeroPhotoCard } from "@/components/HeroPhotoCard";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -23,61 +22,44 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        actions={
-          <>
-            <LinkButton href="/consultation">Request consultation</LinkButton>
-            <LinkButton href="/methodology" variant="secondary">
-              Review the method
-            </LinkButton>
-          </>
-        }
+        actions={<LinkButton href="/consultation">Request consultation</LinkButton>}
         description="Sentinel focuses on agricultural chemical and intermediate imports, recurring reporting, and workflow-ready delivery instead of broad generic trade-data claims."
         eyebrow="About Sentinel"
         theme="dark"
-        visualMode="paired"
         visual={
-          <>
-            <HeroPhotoCard
-              alt="Agricultural fields under a clear sky"
-              label="Category focus"
-              note="The offer stays grounded in agricultural chemicals and intermediates instead of drifting into a broad platform story."
-              src="/images/fields.jpg"
-              title="A narrower market lens is part of the brand, not a limitation"
-            />
-            <div className="page-hero-brief page-hero-brief-dark">
-              <div className="page-hero-brief-head">
-                <div>
-                  <span className="small-label">Operating posture</span>
-                  <strong>Focused intelligence with a working delivery model</strong>
-                </div>
-                <p>
-                  Sentinel stays deliberately narrow so clients get a signal they can
-                  trust, share, and act on without wading through platform noise.
-                </p>
+          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
+            <div className="page-hero-brief-head">
+              <div>
+                <span className="small-label">Operating posture</span>
+                <strong>Focused intelligence with a working delivery model</strong>
               </div>
-              <div className="page-hero-brief-grid">
-                {aboutCredibility.slice(0, 3).map((item) => (
-                  <article className="page-hero-stat" key={item.label}>
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                    <p>{item.detail}</p>
-                  </article>
-                ))}
-              </div>
-              <div className="page-hero-tag-row">
-                {dataSources.slice(0, 5).map((source) => (
-                  <span className="page-hero-tag" key={source}>
-                    {source}
-                  </span>
-                ))}
-              </div>
+              <p>
+                Sentinel stays deliberately narrow so clients get a signal they can
+                trust, share, and act on without wading through platform noise.
+              </p>
             </div>
-          </>
+            <div className="page-hero-brief-grid">
+              {aboutCredibility.slice(0, 3).map((item) => (
+                <article className="page-hero-stat" key={item.label}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                  <p>{item.detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="page-hero-tag-row">
+              {dataSources.slice(0, 5).map((source) => (
+                <span className="page-hero-tag" key={source}>
+                  {source}
+                </span>
+              ))}
+            </div>
+          </div>
         }
         title="A narrower intelligence model built for real operating teams"
       />
 
-      <section className="section section-evidence home-proof-section">
+      <section className="section section-evidence home-proof-section about-proof-section">
         <div className="section-inner">
           <div className="page-signal-band">
             {aboutCredibility.map((item) => (
@@ -91,7 +73,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight sentinel-subpage-emphasis about-value-section">
         <div className="section-inner">
           <SectionHeading
             description="Sentinel is designed to create confidence quickly: narrow category focus, disciplined interpretation, and output that fits existing client workflows."
@@ -110,7 +92,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight">
+      <section className="section section-tint page-section-tight about-operating-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
@@ -139,7 +121,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight about-growth-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading

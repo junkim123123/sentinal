@@ -117,7 +117,7 @@ export const siteConfig = {
 export const navItems: NavItem[] = [
   { label: "Product", href: "/product" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Engagement", href: "/pricing" },
   { label: "Methodology", href: "/methodology" },
   { label: "Support", href: "/support" },
   { label: "About", href: "/about" },
@@ -691,10 +691,10 @@ export const aboutExpertise = [
 
 export const pricingBuckets: PricingBucket[] = [
   {
-    name: "Monitor",
-    fit: "For teams that need dependable recurring visibility first.",
+    name: "Monitoring",
+    fit: "A standing relationship for teams that need dependable recurring visibility.",
     description:
-      "The starting bucket focuses on monthly molecule monitoring and practical delivery without adding unnecessary complexity.",
+      "Best when the core need is a disciplined monthly watchlist, a private briefing rhythm, and quiet escalation when something shifts.",
     inclusions: [
       "Configured molecule watchlists",
       "Monthly reporting cadence",
@@ -703,24 +703,24 @@ export const pricingBuckets: PricingBucket[] = [
     ],
   },
   {
-    name: "Investigate",
-    fit: "For teams that need custom questions answered alongside recurring reporting.",
+    name: "Investigation",
+    fit: "An expanded scope for teams that need deeper questions answered alongside monitoring.",
     description:
-      "This bucket adds deeper supplier, competitor, and market work when a standard monthly file is not enough on its own.",
+      "Adds sharper supplier, competitor, and market work when a standard recurring brief is not enough on its own.",
     inclusions: [
-      "Everything in Monitor",
+      "Everything in Monitoring",
       "Custom market or supplier investigations",
       "Benchmarking and change analysis",
       "More tailored delivery around the business question",
     ],
   },
   {
-    name: "Strategic",
-    fit: "For teams that want Sentinel integrated into a broader decision workflow.",
+    name: "Embedded",
+    fit: "A more private operating model for teams that want Sentinel inside a broader decision workflow.",
     description:
-      "The highest bucket is framed around executive-ready communication, cross-functional workflows, and a more embedded intelligence relationship.",
+      "Framed around executive communication, cross-functional review, and a more embedded intelligence relationship.",
     inclusions: [
-      "Everything in Investigate",
+      "Everything in Investigation",
       "Executive-ready summaries and stakeholder views",
       "Workflow design for recurring review and escalation",
       "Custom reporting structure across teams and leadership needs",
@@ -729,8 +729,8 @@ export const pricingBuckets: PricingBucket[] = [
 ];
 
 export const pricingNotes = [
-  "Public pricing is still handled through conversation rather than posted dollar figures.",
-  "The three buckets help clients understand scope before detailed scoping and commercial discussion.",
+  "Commercial specifics are still handled through conversation rather than posted dollar figures.",
+  "The three engagement models help clients understand scope before detailed scoping and commercial discussion.",
   "Final proposals still depend on molecule coverage, delivery format, and customization depth.",
 ];
 

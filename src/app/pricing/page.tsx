@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
-import { HeroPhotoCard } from "@/components/HeroPhotoCard";
+import { AmbientSignalField } from "@/components/AmbientSignalField";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { pricingBuckets, pricingNotes } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Pricing Approach",
+  title: "Engagement Models",
   description:
-    "See Sentinel Imports' three-bucket pricing approach for recurring monitoring, custom intelligence, and strategic workflow support.",
+    "See how Sentinel Imports scopes monitoring, investigation, and embedded intelligence relationships without forcing a public price-card model.",
 };
 
 const pricingProcess = [
@@ -31,62 +31,36 @@ const pricingProcess = [
 ];
 
 export default function PricingPage() {
+  const engagementSignals = pricingBuckets.map((bucket) => ({
+    label: bucket.name,
+    title: bucket.fit,
+    text: bucket.description,
+  }));
+
   return (
     <>
       <PageHero
-        actions={
-          <>
-            <LinkButton href="/consultation">Discuss your scope</LinkButton>
-            <LinkButton href="/demo" variant="secondary">
-              Request a private briefing
-            </LinkButton>
-          </>
-        }
-        description="Sentinel uses three buckets to explain how scope expands, while keeping final pricing inside a real commercial conversation."
-        eyebrow="Pricing approach"
+        actions={<LinkButton href="/consultation">Discuss engagement fit</LinkButton>}
+        description="Sentinel scopes work around monitoring depth, investigation pressure, and stakeholder complexity rather than a public SaaS rate card."
+        eyebrow="Engagement models"
         theme="dark"
-        visualMode="paired"
         visual={
-          <>
-            <HeroPhotoCard
-              alt="Shipping containers stacked in a port terminal"
-              label="Commercial framing"
-              note="The page should feel like a serious buying conversation, with scope tied to the operational reality behind the data."
-              src="/images/hero-port.jpg"
-              title="Pricing makes more sense when buyers can picture the monitoring model behind it"
-            />
-            <div className="page-hero-brief page-hero-brief-dark">
-              <div className="page-hero-brief-head">
-                <div>
-                  <span className="small-label">Commercial structure</span>
-                  <strong>Three buckets that clarify how scope expands</strong>
-                </div>
-                <p>
-                  The pricing page should create confidence about buying logic even
-                  without posting public rates.
-                </p>
-              </div>
-              <div className="page-hero-brief-grid">
-                {pricingBuckets.map((bucket) => (
-                  <article className="page-hero-stat" key={bucket.name}>
-                    <span>{bucket.name}</span>
-                    <strong>{bucket.fit}</strong>
-                    <p>{bucket.description}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </>
+          <AmbientSignalField
+            description="The relationship expands as cadence, investigative depth, and internal stakeholder surface expand."
+            items={engagementSignals}
+            label="Scope architecture"
+            title="Three engagement models explain how Sentinel can sit inside the work."
+          />
         }
-        title="Three pricing buckets that make scope easier to understand"
+        title="Three engagement models that make scope easier to understand"
       />
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight sentinel-subpage-emphasis engagement-models-section">
         <div className="section-inner">
           <SectionHeading
-            description="The page should read like a serious commercial framework: clear fit, clear inclusions, and a clear path to the next conversation."
-            eyebrow="Three buckets"
-            title="How Sentinel packages recurring and custom work"
+            description="This page is meant to clarify operating fit, not publish public sticker prices."
+            eyebrow="Relationship models"
+            title="How Sentinel scopes recurring and custom work"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {pricingBuckets.map((bucket) => (
@@ -105,13 +79,13 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight">
+      <section className="section section-tint page-section-tight engagement-notes-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The pricing notes do the trust-building work here by showing how Sentinel scopes responsibly."
-              eyebrow="Commercial notes"
-              title="What the buckets are meant to clarify"
+              description="These notes do the trust-building work by showing how Sentinel scopes responsibly."
+              eyebrow="Scope notes"
+              title="What the engagement models are meant to clarify"
             />
             <div className="simple-text-list">
               {pricingNotes.map((note) => (

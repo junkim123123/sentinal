@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
 import { ContactForm } from "@/components/ContactForm";
@@ -9,8 +8,6 @@ type InquiryPageTemplateProps = {
   eyebrow: string;
   title: string;
   description: string;
-  heroImageAlt: string;
-  heroImageSrc: string;
   heroLabel: string;
   heroHighlight: string;
   expectationLabel: string;
@@ -34,8 +31,6 @@ export function InquiryPageTemplate({
   eyebrow,
   title,
   description,
-  heroImageAlt,
-  heroImageSrc,
   heroLabel,
   heroHighlight,
   expectationLabel,
@@ -64,23 +59,10 @@ export function InquiryPageTemplate({
         visualMode="intake"
         visual={
           <div className="intake-hero-visual private-intake-hero">
-            <div className="page-hero-figure page-hero-figure-tall">
-              <Image
-                alt={heroImageAlt}
-                fill
-                priority
-                sizes="(max-width: 1100px) 100vw, 34vw"
-                src={heroImageSrc}
-              />
-              <div className="page-hero-figure-card">
+            <div className="intake-hero-brief private-intake-brief">
+              <article className="intake-hero-card private-intake-card private-intake-card-lead">
                 <span className="small-label">{heroLabel}</span>
                 <strong>{heroHighlight}</strong>
-              </div>
-            </div>
-            <div className="intake-hero-brief private-intake-brief">
-              <article className="intake-hero-card private-intake-card">
-                <span className="small-label">{expectationLabel}</span>
-                <strong>{expectationTitle}</strong>
                 <p className="private-intake-card-copy">
                   {description}
                 </p>
@@ -117,9 +99,9 @@ export function InquiryPageTemplate({
         title={title}
       />
 
-      <section className="section">
+      <section className="section sentinel-inquiry-section">
         <div className="section-inner">
-          <div className="contact-summary-band private-intake-summary">
+          <div className="contact-summary-band private-intake-summary sentinel-inquiry-track">
             {expectationItems.map((item, index) => (
               <article className="contact-summary-card" key={item}>
                 <span>{`0${index + 1}`}</span>
@@ -128,7 +110,7 @@ export function InquiryPageTemplate({
             ))}
           </div>
 
-          <div className="contact-layout contact-layout-refined private-intake-shell">
+          <div className="contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout">
             <div>
               <ContactForm
                 messagePlaceholder={formPlaceholder}
@@ -137,7 +119,7 @@ export function InquiryPageTemplate({
               />
             </div>
             <aside className="contact-sidebar private-intake-sidebar">
-              <article className="source-panel inquiry-info-panel private-intake-panel">
+              <article className="source-panel inquiry-info-panel private-intake-panel sentinel-inquiry-panel">
                 <div className="private-intake-panel-intro">
                   <span className="small-label">{assuranceLabel}</span>
                   <h2>{assuranceTitle}</h2>

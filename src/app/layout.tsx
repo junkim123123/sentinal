@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import {
-  Cormorant_Garamond,
-  IBM_Plex_Mono,
-  Manrope,
-  Space_Grotesk,
+  EB_Garamond,
+  Instrument_Sans,
+  JetBrains_Mono,
 } from "next/font/google";
 
 import { SiteFooter } from "@/components/SiteFooter";
@@ -14,26 +13,26 @@ import { siteConfig } from "@/content/site";
 
 import "./globals.css";
 
-const headingFont = Space_Grotesk({
+const headingFont = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const displayFont = Cormorant_Garamond({
+const displayFont = EB_Garamond({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const bodyFont = Manrope({
+const bodyFont = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
 });
 
-const monoFont = IBM_Plex_Mono({
+const monoFont = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   weight: ["400", "500", "600"],
