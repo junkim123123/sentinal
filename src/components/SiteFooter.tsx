@@ -27,14 +27,12 @@ export function SiteFooter() {
                 {item.label}
               </Link>
             ))}
-            <a
-              className="footer-link"
-              href={siteConfig.loginHref}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Client Login
-            </a>
+            <Link className="footer-link" href={siteConfig.dashboardPreviewHref}>
+              Dashboard Preview
+            </Link>
+            <Link className="footer-link" href={siteConfig.reportsPreviewHref}>
+              Reports Preview
+            </Link>
           </nav>
         </div>
 

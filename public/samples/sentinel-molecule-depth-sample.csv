@@ -1,0 +1,10 @@
+molecule,category,company_focus,supplier_surface,origin_country,arrival_port,formulation_or_grade,quantity_mt,import_value_usd,freight_usd,insurance_usd,cif_usd,movement_note
+Glyphosate,Agrochemical,US crop-protection importer,East Asia producer cluster,China,Houston,95% technical,420,514500,22600,4100,541200,Repeated consignee activity with higher landed value
+Dicamba,Agrochemical,Regional herbicide formulator,Independent supplier group B,India,Savannah,48% SL,185,171300,9400,1700,182400,Volume softened month over month
+Imidacloprid,Agrochemical,Multi-state insecticide distributor,Named producer set,China,Los Angeles,70% WDG,96,327800,12100,2100,342000,Stable monthly read with no escalation
+Acetaminophen,Pharma,OTC formulation network,API supplier cluster,India,Newark,USP API,132,486000,13800,2600,502400,Steady replenishment pattern
+Ibuprofen,Pharma,Private-label pain relief buyer,EU and Asia blend,Spain,New York,USP API,88,391200,11200,1900,404300,Higher unit value but normal route profile
+Metformin HCl,Pharma,Generic oral solids manufacturer,Integrated API producer,India,Charleston,Pharma grade,141,258900,9700,1800,270400,Consistent shipper cadence across quarters
+Urea,Fertilizers,Midwest nutrient distributor,MENA export house,Egypt,New Orleans,Prilled,880,342100,28600,4200,374900,Large seasonal build ahead of application window
+Diammonium Phosphate (DAP),Fertilizers,Wholesale crop input network,Global phosphate supplier,Morocco,Tampa,DAP 18-46-0,740,418500,25100,3600,447200,Elevated inbound volumes against prior month
+Potassium Chloride (MOP),Fertilizers,Retail agronomy supply chain,Canadian potash producer,Canada,Duluth,MOP standard,965,301800,17400,2500,321700,Rate pressure eased while tonnage stayed high

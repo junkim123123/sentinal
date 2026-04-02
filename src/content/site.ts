@@ -101,9 +101,11 @@ export const siteConfig = {
   shortName: "Sentinel",
   url: "https://www.sentinelimports.online",
   description:
-    "Import intelligence for agricultural chemicals and intermediates entering the United States.",
+    "Molecule-level import intelligence for company, supplier, and shipment monitoring across strategic chemical categories entering the United States.",
   contactEndpoint: "/api/contact",
   loginHref: "https://SentinelImports.sharefile.com",
+  dashboardPreviewHref: "/dashboard",
+  reportsPreviewHref: "/reports",
   primaryCta: {
     label: "Request a private briefing",
     href: "/demo",
@@ -357,8 +359,8 @@ export const contactPrompts = [
 
 export const demoPrompts = [
   "Which molecules or product categories do you want to see in a live walkthrough?",
-  "Do you want the demo framed around procurement, compliance, or market visibility?",
-  "Should the session focus on recurring monitoring, custom analysis, or workflow delivery?",
+  "Do you want the demo framed around procurement, compliance, market visibility, or sample-data depth?",
+  "Should the session focus on recurring monitoring, custom analysis, sample review, or workflow delivery?",
 ];
 
 export const consultationPrompts = [
@@ -501,6 +503,129 @@ export const productInclusions = [
   "Monthly delivery cadence for recurring monitoring",
   "Custom project support for one-off market questions",
   "Excel, Tableau, and secure client-delivery workflows",
+];
+
+export const companyDetailCards: InfoCard[] = [
+  {
+    label: "Company detail",
+    title: "See what a company is importing, sourcing, and shipping",
+    description:
+      "Track importer, supplier, consignee, origin, port, and movement cadence so teams can see what a company is doing and what it is dealing with.",
+  },
+  {
+    label: "Commercial depth",
+    title: "Read quantity, formulation, value, and CIF context faster",
+    description:
+      "Move beyond a shipment count into formulation detail, landed value, freight, insurance, and CIF context where available.",
+  },
+  {
+    label: "Competitive lens",
+    title: "Benchmark suppliers, competitors, and category pressure",
+    description:
+      "Compare changes across named companies, route shifts, and watchlist movement before a negotiation or escalation becomes urgent.",
+  },
+  {
+    label: "Working files",
+    title: "Inspect downloadable sample depth before scoping work",
+    description:
+      "Use an illustrative sample file to review field depth by molecule and decide whether a broader Sentinel scope fits the team.",
+  },
+];
+
+export const verticalIntegrationCards: InfoCard[] = [
+  {
+    label: "01 Source",
+    title: "Named trade, customs, regulatory, and crop-data inputs",
+    description:
+      "Sentinel begins with raw import and supporting records rather than a thin dashboard summary.",
+  },
+  {
+    label: "02 Normalize",
+    title: "Company, supplier, and molecule cleanup",
+    description:
+      "Records are translated into company views and molecule-level structure that teams can review without manual cleanup first.",
+  },
+  {
+    label: "03 Integrate",
+    title: "Excel, Tableau, and briefing delivery that fits the workflow",
+    description:
+      "Sentinel connects the data to the files, briefings, and internal review motions clients already use.",
+  },
+  {
+    label: "04 Support",
+    title: "Direct follow-through with the Sentinel team",
+    description:
+      "Teams can move from monitoring into custom investigation quickly when a molecule, supplier, or company needs a deeper read.",
+  },
+];
+
+export const moleculeCategoryGroups: ContentCluster[] = [
+  {
+    title: "Agrochemical",
+    description:
+      "Illustrative herbicide, fungicide, and insecticide watchlists grouped for active-ingredient review.",
+    bullets: [
+      "Glyphosate",
+      "Dicamba",
+      "2,4-D",
+      "Imidacloprid",
+      "Clothianidin",
+      "Propiconazole",
+    ],
+  },
+  {
+    title: "Pharma",
+    description:
+      "Illustrative pharmaceutical molecules and intermediates that can be organized into the same molecule-first structure.",
+    bullets: [
+      "Acetaminophen",
+      "Ibuprofen",
+      "Metformin HCl",
+      "Amoxicillin",
+      "Ciprofloxacin",
+      "Aspirin",
+    ],
+  },
+  {
+    title: "Fertilizers",
+    description:
+      "Illustrative nutrient and fertilizer inputs grouped into a comparable import-intelligence view.",
+    bullets: [
+      "Urea",
+      "Ammonium Sulfate",
+      "Monoammonium Phosphate (MAP)",
+      "Diammonium Phosphate (DAP)",
+      "Potassium Chloride (MOP)",
+      "Ammonium Nitrate",
+    ],
+  },
+];
+
+export const accessPathCards: InfoCard[] = [
+  {
+    label: "Request a demo",
+    title: "Review a live workflow around your target molecules",
+    description:
+      "Walk through company detail, landed-value depth, and delivery fit with the Sentinel team in a private session.",
+  },
+  {
+    label: "Free sample",
+    title: "Download an illustrative dataset and inspect field depth",
+    description:
+      "Use a sample file to see how molecule, supplier, shipment, route, and CIF detail can be structured before commercial scoping starts.",
+  },
+  {
+    label: "Direct contact",
+    title: "Reach the team without waiting on a generic support queue",
+    description:
+      "Send a molecule, company, or category question directly to Sentinel when the next step is a conversation, not another form field.",
+  },
+];
+
+export const sampleDataHighlights = [
+  "Illustrative downloadable CSV",
+  "Company, supplier, route, formulation, and CIF fields",
+  "Depth preview before commercial scoping",
 ];
 
 export const workflowStages: WorkflowStage[] = [

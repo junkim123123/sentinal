@@ -70,15 +70,13 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header-actions">
-            <a
+            <Link
               className="site-nav-link site-nav-utility"
-              href={siteConfig.loginHref}
+              href={siteConfig.dashboardPreviewHref}
               onClick={closeMenu}
-              rel="noreferrer"
-              target="_blank"
             >
-              Client Login
-            </a>
+              Dashboard Preview
+            </Link>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ type LinkButtonProps = {
   children: ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   external?: boolean;
+  download?: boolean;
   className?: string;
   onClick?: () => void;
 };
@@ -15,19 +16,21 @@ export function LinkButton({
   children,
   variant = "primary",
   external = false,
+  download = false,
   className = "",
   onClick,
 }: LinkButtonProps) {
   const classes = `button button-${variant} ${className}`.trim();
 
-  if (external) {
+  if (external || download) {
     return (
       <a
         className={classes}
+        download={download}
         href={href}
         onClick={onClick}
         rel="noreferrer"
-        target="_blank"
+        target={external ? "_blank" : undefined}
       >
         {children}
       </a>
