@@ -38,7 +38,7 @@ export default function AiRoadmapPage() {
               </p>
             </div>
             <div className="page-hero-brief-grid">
-              {validatedAiCapabilities.map((item) => (
+              {validatedAiCapabilities.slice(0, 3).map((item) => (
                 <article className="page-hero-stat" key={item.title}>
                   <span>{item.precedent}</span>
                   <strong>{item.title}</strong>

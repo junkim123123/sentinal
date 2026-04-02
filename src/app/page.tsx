@@ -79,7 +79,7 @@ export default function HomePage() {
                 <span>Illustrative molecule depth - Apr 2026</span>
                 <div className="sentinel-terminal-dot" />
               </div>
-              {heroWatchlist.map((item) => (
+              {heroWatchlist.slice(0, 4).map((item) => (
                 <div className="sentinel-data-row" key={item.molecule}>
                   <span className="sentinel-molecule-name">{item.molecule}</span>
                   <span className="sentinel-molecule-value">{item.value}</span>

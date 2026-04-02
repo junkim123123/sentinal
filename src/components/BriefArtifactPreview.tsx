@@ -42,7 +42,7 @@ export function BriefArtifactPreview() {
             <span className="small-label">Brief composition</span>
             <strong>Structured more like a client dossier than a dashboard.</strong>
             <div className="brief-artifact-note-stack">
-              {artifactNotes.map((item) => (
+              {artifactNotes.slice(0, 2).map((item) => (
                 <div className="brief-artifact-note-row" key={item}>
                   <span>{item}</span>
                   <i />
@@ -75,7 +75,7 @@ export function BriefArtifactPreview() {
             <span>Action</span>
           </div>
           <div className="brief-artifact-table-body">
-            {artifactRows.map((row) => (
+            {artifactRows.slice(0, 2).map((row) => (
               <div className="brief-artifact-table-row" key={row.molecule}>
                 <span>{row.molecule}</span>
                 <span>{row.supplier}</span>

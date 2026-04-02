@@ -63,9 +63,6 @@ export function InquiryPageTemplate({
               <article className="intake-hero-card private-intake-card private-intake-card-lead">
                 <span className="small-label">{heroLabel}</span>
                 <strong>{heroHighlight}</strong>
-                <p className="private-intake-card-copy">
-                  {description}
-                </p>
                 <ul className="page-hero-mini-list">
                   {expectationItems.slice(0, 2).map((item) => (
                     <li key={item}>{item}</li>
