@@ -3,26 +3,19 @@ const artifactRows = [
     molecule: "Glyphosate",
     supplier: "East Asia cluster",
     movement: "Repeated consignee activity with CIF pressure",
-    action: "Escalate to buyer review",
+    action: "Escalate",
   },
   {
     molecule: "Metformin HCl",
     supplier: "Integrated API producer",
     movement: "Stable cadence, unit value higher",
-    action: "Flag for adjacent category note",
-  },
-  {
-    molecule: "Urea",
-    supplier: "MENA export house",
-    movement: "Seasonal tonnage build",
-    action: "Include in executive summary",
+    action: "Flag",
   },
 ];
 
 const artifactNotes = [
   "Executive summary with account-specific movement notes",
-  "Supplier and route commentary shaped for analyst review",
-  "Workbook tabs, export naming, and version-ready delivery cues",
+  "Workbook tabs and export cues ready for circulation",
 ];
 
 export function BriefArtifactPreview() {
@@ -40,7 +33,7 @@ export function BriefArtifactPreview() {
         <div className="brief-artifact-summary">
           <div className="brief-artifact-summary-card">
             <span className="small-label">Brief composition</span>
-            <strong>Structured more like a deliverable pack than a teaser dashboard.</strong>
+            <strong>Built like a working monthly pack, not a teaser.</strong>
             <div className="brief-artifact-note-stack">
               {artifactNotes.map((item) => (
                 <div className="brief-artifact-note-row" key={item}>
@@ -64,10 +57,6 @@ export function BriefArtifactPreview() {
               <span>Format</span>
               <strong>Excel + Tableau + brief</strong>
             </article>
-            <article>
-              <span>Versioning</span>
-              <strong>Client-ready naming</strong>
-            </article>
           </div>
         </div>
 
@@ -79,7 +68,7 @@ export function BriefArtifactPreview() {
             <span>Action</span>
           </div>
           <div className="brief-artifact-table-body">
-            {artifactRows.slice(0, 3).map((row) => (
+            {artifactRows.slice(0, 2).map((row) => (
               <div className="brief-artifact-table-row" key={row.molecule}>
                 <span>{row.molecule}</span>
                 <span>{row.supplier}</span>
@@ -95,7 +84,6 @@ export function BriefArtifactPreview() {
         <span>Workbook tabs</span>
         <span>Executive summary</span>
         <span>Export-ready rows</span>
-        <span>Secure transfer</span>
       </div>
     </div>
   );

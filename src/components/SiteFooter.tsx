@@ -4,8 +4,10 @@ import { siteConfig } from "@/content/site";
 
 const footerLinks = [
   { label: "Product", href: "/product" },
+  { label: "Solutions", href: "/solutions" },
   { label: "Method", href: "/methodology" },
   { label: "Engagement", href: "/pricing" },
+  { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ] as const;
@@ -36,7 +38,9 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="sentinel-site-footer-right">{`© ${year} ${siteConfig.name}`}</div>
+        <div className="sentinel-site-footer-right">
+          {`© ${year} ${siteConfig.name}`}
+        </div>
       </div>
     </footer>
   );

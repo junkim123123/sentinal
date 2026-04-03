@@ -41,6 +41,9 @@ type InquiryPageTemplateProps = {
   comparisonLinks: ComparisonLink[];
   supportingFields?: SupportingField[];
   actions?: ReactNode;
+  layoutVariant?: "institutional";
+  railDensity?: "compact" | "regular";
+  heroDensity?: "tight" | "regular";
 };
 
 export function InquiryPageTemplate({
@@ -74,17 +77,27 @@ export function InquiryPageTemplate({
   comparisonLinks,
   supportingFields,
   actions,
+  layoutVariant = "institutional",
+  railDensity = "compact",
+  heroDensity = "tight",
 }: InquiryPageTemplateProps) {
   return (
     <>
       <PageHero
         actions={actions}
+        actionsMode="compact"
         description={description}
+        density={heroDensity}
         eyebrow={eyebrow}
+        family="conversion"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         theme="light"
-        visualMode="intake"
+        visualStyle="intake"
         visual={
-          <div className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant}`}>
+          <div
+            className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant} inquiry-hero-layout-${layoutVariant}`}
+          >
             <div className="inquiry-hero-brief">
               <article className="intake-hero-card private-intake-card private-intake-card-lead inquiry-hero-card inquiry-hero-card-primary">
                 <span className="small-label">{heroLabel}</span>
@@ -95,14 +108,14 @@ export function InquiryPageTemplate({
                 <span className="small-label">Use this page for</span>
                 <strong>{bestFor[0]}</strong>
                 <ul className="page-hero-mini-list">
-                  {bestFor.slice(1, 3).map((item) => (
+                  {bestFor.slice(1, 2).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </article>
               <article className="intake-hero-card private-intake-card private-intake-card-accent inquiry-hero-card inquiry-hero-card-accent">
                 <span className="small-label">Need another route?</span>
-                <strong>Jump straight to the better fit</strong>
+                <strong>Jump to the better fit</strong>
                 <div className="inquiry-hero-link-list">
                   {comparisonLinks.map((item) => (
                     <Link className="inquiry-hero-link" href={item.href} key={item.href}>
@@ -119,7 +132,9 @@ export function InquiryPageTemplate({
 
       <section className="section sentinel-inquiry-section">
         <div className="section-inner">
-          <div className="contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout">
+          <div
+            className={`contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout sentinel-inquiry-layout-${layoutVariant}`}
+          >
             <div className="sentinel-inquiry-form-column">
               <article className="page-panel-card sentinel-inquiry-callout">
                 <span className="small-label">Response window</span>
@@ -137,7 +152,9 @@ export function InquiryPageTemplate({
                 variant="private"
               />
             </div>
-            <aside className="contact-sidebar private-intake-sidebar sentinel-inquiry-sidegrid">
+            <aside
+              className={`contact-sidebar private-intake-sidebar sentinel-inquiry-sidegrid sentinel-inquiry-sidegrid-${railDensity}`}
+            >
               <article className="page-panel-card sentinel-inquiry-sidecard">
                 <span className="small-label">{expectationLabel}</span>
                 <h3>{expectationTitle}</h3>

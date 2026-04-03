@@ -45,17 +45,18 @@ export default function MethodologyPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
+            <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
             <LinkButton href="/product" variant="secondary">
               Review product
             </LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
-              {ctaDirectory.contact.label}
-            </LinkButton>
           </>
         }
-        description="Sentinel combines named sources, molecule-level normalization, human review, and client-ready delivery into a method buyers can inspect."
+        description="Sentinel makes source inputs, review ownership, and delivery mechanics visible enough for buyers to inspect."
         eyebrow="Methodology"
         theme="light"
         visual={
@@ -88,7 +89,7 @@ export default function MethodologyPage() {
             </div>
           </div>
         }
-        title="From source records to review-ready output"
+        title="A method buyers can inspect"
       />
 
       <section className="section section-evidence home-proof-section methodology-proof-section">
@@ -128,8 +129,8 @@ export default function MethodologyPage() {
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The page should also show what teams can actually inspect in the deliverable, not only how the data is sourced."
-              eyebrow="Report detail"
+              description="The method should show what teams can inspect in the deliverable, not only where the data comes from."
+              eyebrow="Delivery detail"
               title="What the brief shows"
             />
             <article className="page-panel-card page-panel-card-accent">

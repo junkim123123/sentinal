@@ -38,6 +38,9 @@ export default function SolutionsPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
             <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
@@ -72,7 +75,7 @@ export default function SolutionsPage() {
             </div>
           </div>
         }
-        title="Map Sentinel to the team"
+        title="One reporting spine, different team outputs"
       />
 
       <section className="section section-tint page-section-tight subpage-shorthead solutions-output-section">
@@ -99,7 +102,7 @@ export default function SolutionsPage() {
           <SectionHeading
             description="Different functions need a different payoff from the same monthly file."
             eyebrow="Role lens"
-            title="How teams read one brief"
+            title="How teams read the same brief"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {personaCards.map((card) => (
@@ -122,7 +125,7 @@ export default function SolutionsPage() {
           <SectionHeading
             description="The commercial model should follow the team problem and the expected output."
             eyebrow="Engagement model"
-            title="Which relationship shape fits"
+            title="Which relationship shape fits best"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {engagementModels.map((item) => (

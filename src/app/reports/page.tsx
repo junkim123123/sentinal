@@ -68,15 +68,18 @@ export default function ReportsPage() {
   return (
     <>
       <PageHero
+        family="proof"
+        headingMeasure="balanced"
+        surfaceTone="proof"
         actions={
           <>
-            <LinkButton href="/dashboard">Open dashboard preview</LinkButton>
-            <LinkButton href={ctaDirectory.demo.href} variant="secondary">
-              {ctaDirectory.demo.label}
+            <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
+            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+              {ctaDirectory.contact.label}
             </LinkButton>
           </>
         }
-        description="This report preview is arranged like a real deliverable. Even in preview mode it shows how a reviewed monthly pack can move from executive summary into row-level detail, export, and circulation."
+        description="This report preview is arranged like a real deliverable. Even in preview mode it shows how a reviewed monthly pack moves from executive summary into row-level detail and circulation."
         eyebrow="Reports preview"
         theme="light"
         visual={
@@ -102,7 +105,7 @@ export default function ReportsPage() {
             </div>
           </div>
         }
-        title="A report preview that already reads like a real deliverable"
+        title="A report preview that already reads like a deliverable"
       />
 
       <section className="section section-evidence home-proof-section">
@@ -124,7 +127,7 @@ export default function ReportsPage() {
           <div>
             <SectionHeading
               eyebrow="Report structure"
-              title="What this report preview already communicates well"
+              title="What this report communicates in one pass"
               description="The preview is static, but the sections are arranged like a deliverable buyers can actually contract for and circulate."
             />
             <article className="page-panel-card page-panel-card-accent">

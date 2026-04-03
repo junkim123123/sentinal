@@ -157,11 +157,11 @@ export const siteConfig = {
   dashboardPreviewHref: "/dashboard",
   reportsPreviewHref: "/reports",
   primaryCta: {
-    label: "Request demo",
+    label: "Demo",
     href: "/demo",
   },
   secondaryCta: {
-    label: "Request consultation",
+    label: "Consultation",
     href: "/consultation",
   },
 } as const;
@@ -1028,22 +1028,22 @@ export const promptWorkflows: PromptWorkflow[] = [
 export const ctaDirectory = {
   demo: {
     href: "/demo",
-    label: "Request demo",
+    label: "Demo",
     purpose: "Validate the product and working output in a live session.",
   },
   contact: {
     href: "/contact",
-    label: "Contact Sentinel",
+    label: "Contact",
     purpose: "Start a commercial conversation when scope is still broad.",
   },
   consultation: {
     href: "/consultation",
-    label: "Request consultation",
+    label: "Consultation",
     purpose: "Open a strategic advisory discussion around scope and stakeholders.",
   },
   support: {
     href: "/support-request",
-    label: "Support request",
+    label: "Support Request",
     purpose: "Route delivery, workflow, and escalation questions quickly.",
   },
 } as const;
@@ -1051,11 +1051,11 @@ export const ctaDirectory = {
 export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = {
   contact: {
     eyebrow: "Commercial intake",
-    title: "Start a commercial intake when the need is real but the next move is not settled",
+    title: "Bring Sentinel the commercial question",
     description:
-      "Use Contact when Sentinel should help route the conversation into demo, consultation, or scoped commercial follow-up.",
+      "Use Contact when the need is real but the next step still needs routing.",
     heroLabel: "Commercial intake",
-    heroHighlight: "Start with the business need and Sentinel will route the right next step.",
+    heroHighlight: "Start with the business question and Sentinel will route the next move.",
     expectationLabel: "What happens next",
     expectationTitle: "The first reply clarifies route, timing, and who should join.",
     expectationItems: [
@@ -1064,10 +1064,10 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
       "You get a named follow-up with a concrete next step instead of a generic sales sequence.",
     ],
     promptLabel: "Useful intake context",
-    promptTitle: "What helps the team route a commercial request well",
+    promptTitle: "What helps Sentinel route the request well",
     prompts: contactPrompts,
     pathLabel: "Typical routes",
-    pathTitle: "Where a broad commercial intake usually goes next",
+    pathTitle: "Where a broad intake usually goes next",
     paths: engagementModels,
     formPlaceholder:
       "Tell Sentinel what changed, which molecules matter, and what decision your team is trying to make.",
@@ -1077,11 +1077,11 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     assuranceText:
       "The goal is to narrow ambiguity quickly and point you to the most useful next conversation.",
     intentKey: "contact",
-    introTitle: "Brief the commercial situation.",
+    introTitle: "Brief the situation.",
     introBody:
-      "A short note on timing, category pressure, and the team involved is enough to route the request well.",
+      "A short note on timing, category pressure, and the team involved is enough.",
     bestFor: [
-      "A real intelligence need exists, but the right engagement shape is still unclear.",
+      "The need is real, but the best next move is still unclear.",
       "You need help choosing between recurring monitoring, custom work, or workflow-fit discussion.",
       "A commercial owner wants Sentinel to recommend the next motion before a deeper call is booked.",
     ],
@@ -1098,12 +1098,12 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     comparisonLinks: [
       {
         href: "/demo",
-        label: "Need product validation instead?",
+        label: "Need Demo?",
         description: "Go to Demo if the main question is what the workflow, file depth, and walkthrough will look like.",
       },
       {
         href: "/consultation",
-        label: "Need strategic scoping?",
+        label: "Need Consultation?",
         description: "Go to Consultation if the discussion starts with business stakes, executive alignment, or advisory framing.",
       },
     ],
@@ -1122,20 +1122,20 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
   },
   demo: {
     eyebrow: "Product validation",
-    title: "Request a demo when the next step is to inspect the workflow and sample depth",
+    title: "Use Demo to validate the workflow",
     description:
-      "Use Demo when the team already wants to pressure-test the product through a live walkthrough, sample review, or both.",
+      "Use Demo when the team wants a live walkthrough, a sample review, or both.",
     heroLabel: "Demo session",
-    heroHighlight: "This is a working walkthrough, not a generic product tour.",
+    heroHighlight: "This is a working session, not a generic product tour.",
     expectationLabel: "Session structure",
-    expectationTitle: "The session is organized around what the buying team needs to verify.",
+    expectationTitle: "The session is organized around what the team needs to verify.",
     expectationItems: [
       "Sentinel confirms the category scope, target stakeholders, and whether the session should emphasize live walkthrough or sample review.",
       "The session agenda typically covers workflow fit, watchlist logic, company drill-down, and delivery mechanics in one pass.",
       "Follow-up focuses on whether the product is credible enough for the next buying conversation, not on keeping the meeting alive.",
     ],
     promptLabel: "Best demo inputs",
-    promptTitle: "What helps Sentinel prepare a sharper walkthrough",
+    promptTitle: "What helps Sentinel prepare a sharper session",
     prompts: demoPrompts,
     pathLabel: "Session types",
     pathTitle: "How the walkthrough can be tailored",
@@ -1150,9 +1150,9 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     intentKey: "demo",
     introTitle: "Shape the session before it is booked.",
     introBody:
-      "A short note on buyer questions, sample-review needs, and attendees helps Sentinel prepare a sharper walkthrough.",
+      "A short note on buyer questions, sample-review needs, and attendees helps Sentinel prepare well.",
     bestFor: [
-      "You want a live walkthrough of company drill-down, watchlists, or delivery structure.",
+      "You want a live walkthrough or sample review next.",
       "The team wants to compare live workflow against sample-file depth before committing.",
       "You want to know who should attend, how long the session runs, and what Sentinel will show.",
     ],
@@ -1169,12 +1169,12 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     comparisonLinks: [
       {
         href: "/contact",
-        label: "Still deciding on the route?",
+        label: "Need Contact?",
         description: "Go to Contact if the conversation is still broad and you want Sentinel to recommend the next move.",
       },
       {
         href: "/consultation",
-        label: "Need advisory framing first?",
+        label: "Need Consultation?",
         description: "Go to Consultation if the main issue is strategic scope, stakeholder alignment, or executive decision support.",
       },
     ],
@@ -1193,23 +1193,23 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
   },
   consultation: {
     eyebrow: "Strategic advisory",
-    title: "Request consultation when stakeholder alignment and scope shape matter more than a product tour",
+    title: "Use Consultation to shape scope",
     description:
-      "Use Consultation when the team needs a sharper discussion about scope, stakeholders, and how Sentinel should fit the operating model.",
+      "Use Consultation when scope judgment and stakeholder alignment matter more than another walkthrough.",
     heroLabel: "Advisory path",
-    heroHighlight: "Consultation starts with strategic judgment and ends with a recommended operating shape.",
+    heroHighlight: "Start with the decision and end with a clearer operating shape.",
     expectationLabel: "Advisory flow",
-    expectationTitle: "The conversation is designed for executive, cross-functional, or higher-stakes scoping moments.",
+    expectationTitle: "The conversation is designed for executive or cross-functional scoping moments.",
     expectationItems: [
       "Sentinel clarifies the business decision, the stakeholder group, and the timing pressure behind the request.",
       "The session can end with a proposed engagement shape, stakeholder sequence, or scoped advisory path rather than a generic next-call suggestion.",
       "Outputs often include scope framing, delivery guidance, and what leadership should see first.",
     ],
     promptLabel: "Useful strategy context",
-    promptTitle: "What makes a consultation more valuable",
+    promptTitle: "What makes the consultation sharper",
     prompts: consultationPrompts,
     pathLabel: "Advisory outcomes",
-    pathTitle: "Where consultation usually creates leverage",
+    pathTitle: "Where consultation usually helps most",
     paths: consultationPaths,
     formPlaceholder:
       "Tell Sentinel what decision is in front of the business, which stakeholders need to align, and what pressure is driving the request.",
@@ -1219,11 +1219,11 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     assuranceText:
       "Use this page when the real need is scoping judgment around category surface, executive audience, and workflow fit.",
     intentKey: "consultation",
-    introTitle: "Outline the decision environment.",
+    introTitle: "Outline the decision.",
     introBody:
-      "A short note on business stakes, stakeholders, and the decision in front of the team is enough to start.",
+      "A short note on stakes, stakeholders, and the decision in front of the team is enough.",
     bestFor: [
-      "Leadership or cross-functional teams need clarity on scope, cadence, or stakeholder communication.",
+      "Leadership needs scope judgment before another walkthrough.",
       "The main question is how Sentinel should fit the operating model, not just what the product looks like.",
       "You want an advisory conversation about recurring monitoring, custom work, or executive-facing delivery.",
     ],
@@ -1240,12 +1240,12 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     comparisonLinks: [
       {
         href: "/demo",
-        label: "Need a walkthrough first?",
+        label: "Need Demo?",
         description: "Go to Demo if your team first needs to verify the product and working files before advisory scoping.",
       },
       {
         href: "/contact",
-        label: "Need a broader commercial intake?",
+        label: "Need Contact?",
         description: "Go to Contact if the route is still broad and you want Sentinel to recommend the right motion.",
       },
     ],
@@ -1264,11 +1264,11 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
   },
   "support-request": {
     eyebrow: "Support desk",
-    title: "Open a support request when delivery, interpretation, or escalation needs fast routing",
+    title: "Open a support request for delivery or escalation",
     description:
-      "Use this desk for delivery problems, workflow interpretation, and deeper escalations. Client status and request type make routing clear immediately.",
+      "Use this desk for delivery issues, workflow help, and deeper escalations.",
     heroLabel: "Support routing",
-    heroHighlight: "Choose this path when a file, workflow, or active question needs fast handling.",
+    heroHighlight: "Route file, workflow, and escalation issues through the right owner quickly.",
     expectationLabel: "Routing logic",
     expectationTitle: "Support requests are separated by client status, request type, and urgency.",
     expectationItems: [
@@ -1277,10 +1277,10 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
       "Response timing is set by impact and current relationship status so the request lands with the right owner.",
     ],
     promptLabel: "Fastest-response inputs",
-    promptTitle: "What helps the support desk route correctly",
+    promptTitle: "What helps the support desk route quickly",
     prompts: supportRequestPrompts,
     pathLabel: "Support lanes",
-    pathTitle: "How Sentinel routes help requests",
+    pathTitle: "How Sentinel routes support requests",
     paths: supportRequestPaths,
     formPlaceholder:
       "Tell Sentinel what changed, which file or workflow is involved, whether you are a current client, and what response is needed.",
@@ -1290,11 +1290,11 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     assuranceText:
       "Current-client issues, pre-onboarding questions, interpretation help, and escalations each follow a clearer route and response expectation.",
     intentKey: "support-request",
-    introTitle: "Describe the support situation clearly.",
+    introTitle: "Describe the support issue.",
     introBody:
-      "Client status, request type, and urgency are enough to route the issue quickly.",
+      "Client status, request type, and urgency are enough to route the issue.",
     bestFor: [
-      "You need help with file delivery, access, interpretation, or workflow use.",
+      "A file, workflow, or escalation needs fast routing.",
       "A recurring file surfaced a deeper question that needs guided escalation.",
       "A pre-onboarding team needs operational help before a broader engagement is fully underway.",
     ],
@@ -1311,12 +1311,12 @@ export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = 
     comparisonLinks: [
       {
         href: "/support",
-        label: "Need support policy first?",
+        label: "Need Support Policy?",
         description: "Go to Support to review response expectations, ownership, and escalation rules before submitting.",
       },
       {
         href: "/contact",
-        label: "Need a commercial conversation instead?",
+        label: "Need Contact?",
         description: "Go to Contact if the question is really about fit, scope, or a new commercial request.",
       },
     ],
@@ -1360,9 +1360,9 @@ export const thanksPageContent: Record<
 > = {
   contact: {
     eyebrow: "Commercial intake received",
-    title: "Sentinel has the intake and will recommend the right next motion.",
+    title: "Sentinel has the intake.",
     description:
-      "The reply will usually confirm whether the request should move into demo, consultation, or scoped commercial follow-up.",
+      "The reply will confirm the route, likely participants, and the next step.",
     responseWindow: "Usually within one business day.",
     nextSteps: [
       "Expect a response that clarifies route, likely participants, and whether a demo or consultation makes more sense.",
@@ -1375,9 +1375,9 @@ export const thanksPageContent: Record<
   },
   demo: {
     eyebrow: "Demo request received",
-    title: "Sentinel has the demo request and will shape the walkthrough around your questions.",
+    title: "Sentinel has the demo request.",
     description:
-      "The follow-up should clarify agenda, attendees, and whether live walkthrough or sample review should lead.",
+      "The follow-up will confirm agenda, attendees, and whether live walkthrough or sample review should lead.",
     responseWindow: "Usually within one business day.",
     nextSteps: [
       "Expect agenda guidance, attendee recommendations, and a note on whether a sample review should accompany the session.",
@@ -1390,9 +1390,9 @@ export const thanksPageContent: Record<
   },
   consultation: {
     eyebrow: "Consultation request received",
-    title: "Sentinel has the consultation request and will frame the next conversation around the decision.",
+    title: "Sentinel has the consultation request.",
     description:
-      "The response should clarify likely participants, likely outputs, and what context would sharpen the advisory discussion.",
+      "The response will clarify participants, likely outputs, and what context sharpens the discussion.",
     responseWindow: "Usually within one business day.",
     nextSteps: [
       "Expect a note on who should join, what decision the consultation can help resolve, and what scope framing is realistic.",
@@ -1405,9 +1405,9 @@ export const thanksPageContent: Record<
   },
   "support-request": {
     eyebrow: "Support request received",
-    title: "Sentinel has the support request and will route it by status, urgency, and request type.",
+    title: "Sentinel has the support request.",
     description:
-      "Current-client operational issues are prioritized first, while interpretation and escalation requests are directed to the right owner.",
+      "Current-client operational issues are prioritized first, while interpretation and escalation requests go to the right owner.",
     responseWindow: "Current-client issues first; other requests within one business day.",
     nextSteps: [
       "Expect a reply that confirms the owner, urgency band, and whether the issue stays in support or moves into a deeper escalation.",

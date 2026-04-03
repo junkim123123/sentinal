@@ -23,7 +23,7 @@ export default async function ThanksPage({ searchParams }: ThanksPageProps) {
   const content = thanksPageContent[intent];
 
   return (
-    <section className="page-hero">
+    <section className="page-hero page-hero-light page-hero-family-conversion page-hero-density-tight page-hero-measure-balanced page-hero-actions-compact page-hero-surface-soft">
       <div className="section-inner narrow thanks-panel">
         <span className="eyebrow">{content.eyebrow}</span>
         <h1>{content.title}</h1>

@@ -45,6 +45,9 @@ export default function ProductPage() {
   return (
     <>
       <PageHero
+        family="proof"
+        headingMeasure="balanced"
+        surfaceTone="proof"
         actions={
           <>
             <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
@@ -53,14 +56,14 @@ export default function ProductPage() {
             </LinkButton>
           </>
         }
-        description="Sentinel centers on recurring molecule monitoring, company drill-down, landed-value context, and output that already feels client-ready."
+        description="Sentinel combines recurring monitoring, company drill-down, and files that already feel ready to circulate."
         eyebrow="Product"
         theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-hero product-hero-artifact">
             <BriefArtifactPreview />
             <div className="page-hero-tag-row">
-              {productHeroCapabilities.map((item) => (
+              {productHeroCapabilities.slice(0, 2).map((item) => (
                 <span className="page-hero-tag" key={item}>
                   {item}
                 </span>
@@ -68,7 +71,7 @@ export default function ProductPage() {
             </div>
           </div>
         }
-        title="Import intelligence that reads like output"
+        title="Reviewed monitoring built like a deliverable"
       />
 
       <section className="section section-evidence home-proof-section">
@@ -154,11 +157,11 @@ export default function ProductPage() {
       <section className="section page-section-tight subpage-shorthead">
         <div className="section-inner">
           <SectionHeading
-            description="Keep the routes clear so buyers do not guess which page to use."
+            description="Keep the routes clear so buyers do not guess which page to use. Consultation stays contextual when scope judgment matters more than another walkthrough."
             eyebrow="Next move"
             title="Choose the next step"
           />
-          <div className="page-panel-grid page-panel-grid-three">
+          <div className="page-panel-grid page-panel-grid-two">
             <article className="page-panel-card">
               <span className="small-label">{ctaDirectory.demo.label}</span>
               <h3>Use Demo to review the workflow</h3>
@@ -167,23 +170,13 @@ export default function ProductPage() {
                 <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
               </div>
             </article>
-            <article className="page-panel-card">
+            <article className="page-panel-card page-panel-card-accent">
               <span className="small-label">{ctaDirectory.contact.label}</span>
               <h3>Use Contact to route the need</h3>
               <p>Best when the intelligence need is clear but the right next motion still needs routing.</p>
               <div className="button-row page-button-row">
                 <LinkButton href={ctaDirectory.contact.href} variant="secondary">
                   {ctaDirectory.contact.label}
-                </LinkButton>
-              </div>
-            </article>
-            <article className="page-panel-card">
-              <span className="small-label">{ctaDirectory.consultation.label}</span>
-              <h3>Use Consultation for scope judgment</h3>
-              <p>Best when stakeholder alignment, executive framing, or scope judgment matters more than another walkthrough.</p>
-              <div className="button-row page-button-row">
-                <LinkButton href={ctaDirectory.consultation.href} variant="secondary">
-                  {ctaDirectory.consultation.label}
                 </LinkButton>
               </div>
             </article>

@@ -8,8 +8,6 @@ import {
   aiPrinciples,
   aiRoadmapFrames,
   ctaDirectory,
-  openAiProductWorkflowReference,
-  promptWorkflows,
   validatedAiCapabilities,
 } from "@/content/site";
 
@@ -23,17 +21,20 @@ export default function AiRoadmapPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
             <LinkButton href="/product" variant="secondary">
               Review current product
             </LinkButton>
-            <LinkButton href={ctaDirectory.consultation.href} variant="ghost">
-              {ctaDirectory.consultation.label}
+            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
+              {ctaDirectory.contact.label}
             </LinkButton>
           </>
         }
-        description="AI belongs on the site as a later acceleration layer. Sentinel leads with current reviewed monitoring, delivery clarity, and human accountability first, then explains where AI could responsibly help."
+        description="Sentinel leads with reviewed monitoring and working files first. AI only earns space after the core trust model already feels complete."
         eyebrow="AI roadmap"
         theme="light"
         visual={
@@ -60,7 +61,7 @@ export default function AiRoadmapPage() {
             </div>
           </div>
         }
-        title="A measured AI path that follows the core product, not the other way around"
+        title="Keep AI behind the core product"
       />
 
       <section className="section section-evidence home-proof-section">
@@ -80,9 +81,9 @@ export default function AiRoadmapPage() {
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="Each capability area should connect precedent, buyer value, and Sentinel's practical use case in the same card, while staying visibly downstream of the current product."
+            description="Each capability area should connect precedent, buyer value, and a practical Sentinel use case while staying downstream of the current product."
             eyebrow="Validated capabilities"
-            title="Where AI could create leverage after the trust model is established"
+            title="Where AI could help later"
           />
           <div className="page-panel-grid page-panel-grid-four">
             {validatedAiCapabilities.map((item) => (
@@ -130,45 +131,6 @@ export default function AiRoadmapPage() {
                 <span className="small-label">{`Phase 0${index + 1}`}</span>
                 <h3>{item.split(":")[0]}</h3>
                 <p>{item.split(":")[1]?.trim() ?? item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section page-section-tight">
-        <div className="section-inner page-story-grid">
-          <div>
-            <SectionHeading
-              description="The workflow reference is useful because it turns AI from a vague claim into repeatable operating patterns that can support the current product team."
-              eyebrow="Prompt-pack reference"
-              title="How Sentinel can use the product workflow pattern internally"
-            />
-            <article className="page-panel-card page-panel-card-accent">
-              <span className="small-label">{openAiProductWorkflowReference.source}</span>
-              <h3>{openAiProductWorkflowReference.title}</h3>
-              <p>
-                Published {openAiProductWorkflowReference.published}. Updated{" "}
-                {openAiProductWorkflowReference.updated}.
-              </p>
-              <div className="inline-cta">
-                <LinkButton
-                  external
-                  href={openAiProductWorkflowReference.href}
-                  variant="secondary"
-                >
-                  Open OpenAI Academy reference
-                </LinkButton>
-              </div>
-            </article>
-          </div>
-
-          <div className="page-panel-grid page-panel-grid-two">
-            {promptWorkflows.map((item) => (
-              <article className="page-panel-card" key={item.category}>
-                <span className="small-label">{item.category}</span>
-                <h3>{item.description}</h3>
-                <p>{item.sentinelUse}</p>
               </article>
             ))}
           </div>

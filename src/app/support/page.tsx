@@ -8,7 +8,6 @@ import {
   supportAccessPoints,
   supportChannels,
   supportFaqs,
-  supportResources,
   supportResponseCards,
 } from "@/content/site";
 
@@ -28,6 +27,9 @@ export default function SupportPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
             <LinkButton href={ctaDirectory.support.href}>{ctaDirectory.support.label}</LinkButton>
@@ -36,7 +38,7 @@ export default function SupportPage() {
             </LinkButton>
           </>
         }
-        description="Support is part of the relationship, not an afterthought. Buyers should be able to see response ownership, priority rules, and escalation paths before they submit."
+        description="Support is part of the relationship, not an afterthought. Buyers should be able to see response ownership, priority rules, and escalation paths quickly."
         eyebrow="Support"
         theme="light"
         visual={
@@ -62,17 +64,17 @@ export default function SupportPage() {
             </div>
           </div>
         }
-        title="Support with clear ownership, priority, and escalation rules"
+        title="Support with clear ownership and escalation"
       />
 
       <section className="section page-section-tight sentinel-subpage-emphasis support-standards-section">
         <div className="section-inner page-story-grid">
           <div>
-            <SectionHeading
-              description="A buyer or current client should be able to quote these rules back after one pass through the page."
-              eyebrow="Response expectations"
-              title="How support is prioritized"
-            />
+          <SectionHeading
+            description="A buyer or current client should be able to quote these rules back after one pass through the page."
+            eyebrow="Response expectations"
+            title="How support is prioritized"
+          />
             <div className="simple-text-list">
               {supportStandards.map((item) => (
                 <div className="simple-text-row" key={item}>
@@ -113,7 +115,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight support-flow-section">
+      <section className="section section-tint page-section-tight support-faq-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
@@ -134,26 +136,13 @@ export default function SupportPage() {
             </div>
           </div>
 
-          <div className="page-panel-grid">
-            {supportResources.map((item) => (
-              <article className="page-panel-card" key={item.title}>
-                <span className="small-label">{item.type}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tint page-section-tight support-faq-section">
-        <div className="section-inner">
+          <div>
             <SectionHeading
-            description="Common questions about access, escalation, and help scope should be answered directly."
-            eyebrow="Support FAQ"
-            title="What clients usually need to know"
-          />
-          <div className="page-panel-grid page-panel-grid-two">
+              description="Common questions about access, escalation, and help scope should be answered directly."
+              eyebrow="Support FAQ"
+              title="What clients usually need to know"
+            />
+            <div className="page-panel-grid page-panel-grid-two">
             {supportFaqs.map((item) => (
               <article className="page-panel-card" key={item.question}>
                 <span className="small-label">FAQ</span>
@@ -161,6 +150,7 @@ export default function SupportPage() {
                 <p>{item.answer}</p>
               </article>
             ))}
+            </div>
           </div>
         </div>
       </section>

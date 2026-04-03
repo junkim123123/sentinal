@@ -45,6 +45,9 @@ export default function PricingPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
             <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
@@ -64,7 +67,7 @@ export default function PricingPage() {
             title="Three models frame the commercial shape."
           />
         }
-        title="What expands scope before price"
+        title="Scope before price"
       />
 
       <section className="section section-evidence home-proof-section subpage-shorthead">
@@ -91,7 +94,7 @@ export default function PricingPage() {
           <SectionHeading
             description="These models clarify relationship shape, not a SaaS-style pricing table."
             eyebrow="Relationship models"
-            title="How Sentinel packages work"
+            title="How Sentinel structures the work"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {pricingBuckets.map((bucket) => (
@@ -116,7 +119,7 @@ export default function PricingPage() {
             <SectionHeading
               description="The point is to replace price-card confusion with clearer scope language."
               eyebrow="Scope notes"
-              title="What this page answers"
+              title="What this page should answer"
             />
             <div className="simple-text-list">
               {pricingNotes.map((note) => (
@@ -131,7 +134,7 @@ export default function PricingPage() {
             <SectionHeading
               description="A visible path lowers uncertainty before the first commercial call."
               eyebrow="How buying starts"
-              title="How scope starts"
+              title="How scope gets set"
             />
             <div className="compact-step-grid">
               {pricingProcess.map((item) => (

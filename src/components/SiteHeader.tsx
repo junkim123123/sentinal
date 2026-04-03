@@ -75,10 +75,10 @@ export function SiteHeader() {
               Dashboard
             </Link>
             <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu} variant="ghost">
-              Contact
+              {ctaDirectory.contact.label}
             </LinkButton>
             <LinkButton className="site-header-cta" href={ctaDirectory.demo.href} onClick={closeMenu}>
-              Demo
+              {ctaDirectory.demo.label}
             </LinkButton>
           </div>
         </div>

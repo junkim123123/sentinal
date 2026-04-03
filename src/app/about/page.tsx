@@ -22,15 +22,18 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
+        family="marketing"
+        headingMeasure="balanced"
+        surfaceTone="soft"
         actions={
           <>
-            <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
-              {ctaDirectory.contact.label}
+            <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
+            <LinkButton href="/product" variant="secondary">
+              Review product
             </LinkButton>
           </>
         }
-        description="Sentinel stays narrow on purpose: focused coverage, named sources, accountable review, and delivery built for serious buying teams."
+        description="Sentinel stays narrow on purpose: named sources, visible review, and delivery built for buying teams that need signal they can circulate."
         eyebrow="About Sentinel"
         theme="light"
         visual={
@@ -63,7 +66,7 @@ export default function AboutPage() {
             </div>
           </div>
         }
-        title="An operator-led model that earns trust fast"
+        title="A narrow operating model built for serious buying teams"
       />
 
       <section className="section section-evidence home-proof-section about-proof-section">
@@ -83,9 +86,9 @@ export default function AboutPage() {
       <section className="section page-section-tight sentinel-subpage-emphasis subpage-shorthead about-operator-section">
         <div className="section-inner">
           <SectionHeading
-            description="Buyers should be able to see who owns the work, how delivery runs, and why the model stays intentionally narrow."
+            description="Buyers should be able to see who owns the work, how delivery runs, and why the model stays intentionally focused."
             eyebrow="Operator credibility"
-            title="Why it feels credible"
+            title="Why the model feels credible"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {aboutOperatorCards.map((item) => (
@@ -103,9 +106,9 @@ export default function AboutPage() {
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="Product posture, service boundaries, and client workflow should read together instead of as separate brand claims."
+              description="Product posture, service boundaries, and workflow fit should read together instead of as separate brand claims."
               eyebrow="Operating model"
-              title="How Sentinel runs"
+              title="How Sentinel works"
             />
             <div className="simple-text-list">
               {aboutPoints.map((point) => (
