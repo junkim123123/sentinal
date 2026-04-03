@@ -12,53 +12,22 @@ export const metadata: Metadata = {
     "View the Sentinel Imports dashboard preview without authentication.",
 };
 
-const heroSummaryCards = [
-  { label: "Tracked molecules", value: "148", note: "Across agrochemical, pharma, and fertilizer watchlists" },
-  { label: "Priority alerts", value: "12", note: "Signals ready for manager review this week" },
-] as const;
-
 export default function DashboardPage() {
   return (
     <>
       <PageHero
+        variant="proof"
         actions={
           <>
             <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
               {ctaDirectory.contact.label}
             </LinkButton>
           </>
         }
         description="This preview is no longer static. Click views, filters, rows, and company cards to move through the operating story."
         eyebrow="Dashboard preview"
-        family="proof"
-        headingMeasure="balanced"
-        surfaceTone="proof"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Interactive mode</span>
-                <strong>Preview the working dashboard structure</strong>
-              </div>
-              <p>
-                The preview now keeps the first click, the hierarchy, and the export
-                path visible in one interactive surface.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {heroSummaryCards.map((item) => (
-                <article className="page-hero-stat" key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                  <p>{item.note}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
-        title="A dashboard preview you can actually move through"
+        title="A dashboard preview you can move through"
       />
 
       <section className="section page-section-tight sentinel-subpage-emphasis">

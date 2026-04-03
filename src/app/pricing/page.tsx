@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { AmbientSignalField } from "@/components/AmbientSignalField";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -36,37 +35,15 @@ const pricingProcess = [
 ] as const;
 
 export default function PricingPage() {
-  const engagementSignals = pricingBuckets.map((bucket) => ({
-    label: bucket.name,
-    title: bucket.fit,
-    text: bucket.description,
-  }));
-
   return (
     <>
       <PageHero
-        family="marketing"
-        headingMeasure="balanced"
-        surfaceTone="soft"
         actions={
-          <>
-            <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
-              {ctaDirectory.contact.label}
-            </LinkButton>
-          </>
+          <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
         }
         description="Sentinel does not post a rate card because scope changes with molecule breadth, cadence, investigation depth, and stakeholder surface."
         eyebrow="Engagement models"
-        theme="light"
-        visual={
-          <AmbientSignalField
-            description="The relationship grows as coverage, review cadence, depth, and stakeholder count expand."
-            items={engagementSignals}
-            label="Scope architecture"
-            title="Three models frame the commercial shape."
-          />
-        }
+        variant="method"
         title="Scope before price"
       />
 

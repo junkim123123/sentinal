@@ -43,7 +43,7 @@ type InquiryPageTemplateProps = {
   actions?: ReactNode;
   layoutVariant?: "institutional";
   railDensity?: "compact" | "regular";
-  heroDensity?: "tight" | "regular";
+  layoutMode?: "full" | "simple";
 };
 
 export function InquiryPageTemplate({
@@ -79,22 +79,16 @@ export function InquiryPageTemplate({
   actions,
   layoutVariant = "institutional",
   railDensity = "compact",
-  heroDensity = "tight",
+  layoutMode = "full",
 }: InquiryPageTemplateProps) {
   return (
     <>
       <PageHero
+        variant="contact"
         actions={actions}
-        actionsMode="compact"
         description={description}
-        density={heroDensity}
         eyebrow={eyebrow}
-        family="conversion"
-        headingMeasure="balanced"
-        surfaceTone="soft"
-        theme="light"
-        visualStyle="intake"
-        visual={
+        visual={layoutMode === "simple" ? undefined : (
           <div
             className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant} inquiry-hero-layout-${layoutVariant}`}
           >
@@ -126,21 +120,23 @@ export function InquiryPageTemplate({
               </article>
             </div>
           </div>
-        }
+        )}
         title={title}
       />
 
       <section className="section sentinel-inquiry-section">
         <div className="section-inner">
           <div
-            className={`contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout sentinel-inquiry-layout-${layoutVariant}`}
+            className={`contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout sentinel-inquiry-layout-${layoutVariant} sentinel-inquiry-layout-mode-${layoutMode}`}
           >
             <div className="sentinel-inquiry-form-column">
-              <article className="page-panel-card sentinel-inquiry-callout">
-                <span className="small-label">Response window</span>
-                <h3>{responseWindow}</h3>
-                <p>{nextStep}</p>
-              </article>
+              {layoutMode === "full" ? (
+                <article className="page-panel-card sentinel-inquiry-callout">
+                  <span className="small-label">Response window</span>
+                  <h3>{responseWindow}</h3>
+                  <p>{nextStep}</p>
+                </article>
+              ) : null}
               <ContactForm
                 intent={intentKey}
                 introBody={introBody}
@@ -165,33 +161,35 @@ export function InquiryPageTemplate({
                 </ul>
               </article>
 
-              <article className="page-panel-card sentinel-inquiry-sidecard">
-                <span className="small-label">{promptLabel}</span>
-                <h3>{promptTitle}</h3>
-                <div className="simple-text-list simple-text-list-tight">
-                  {prompts.map((prompt) => (
-                    <div className="simple-text-row" key={prompt}>
-                      <p>{prompt}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="inquiry-chip-stack">
-                  <span className="small-label">{pathLabel}</span>
-                  <p className="inquiry-chip-stack-copy">{pathTitle}</p>
-                  <div className="intake-chip-row">
-                    {paths.map((item) => (
-                      <span className="intake-chip" key={item.title}>
-                        {item.title}
-                      </span>
+              {layoutMode === "full" ? (
+                <article className="page-panel-card sentinel-inquiry-sidecard">
+                  <span className="small-label">{promptLabel}</span>
+                  <h3>{promptTitle}</h3>
+                  <div className="simple-text-list simple-text-list-tight">
+                    {prompts.map((prompt) => (
+                      <div className="simple-text-row" key={prompt}>
+                        <p>{prompt}</p>
+                      </div>
                     ))}
                   </div>
-                </div>
-              </article>
+                  <div className="inquiry-chip-stack">
+                    <span className="small-label">{pathLabel}</span>
+                    <p className="inquiry-chip-stack-copy">{pathTitle}</p>
+                    <div className="intake-chip-row">
+                      {paths.map((item) => (
+                        <span className="intake-chip" key={item.title}>
+                          {item.title}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ) : null}
 
               <article className="page-panel-card sentinel-inquiry-sidecard sentinel-inquiry-sidecard-accent">
-                <span className="small-label">{assuranceLabel}</span>
-                <h3>{assuranceTitle}</h3>
-                <p>{assuranceText}</p>
+                <span className="small-label">{layoutMode === "simple" ? "Best next step" : assuranceLabel}</span>
+                <h3>{layoutMode === "simple" ? responseWindow : assuranceTitle}</h3>
+                <p>{layoutMode === "simple" ? nextStep : assuranceText}</p>
                 <div className="inquiry-choice-list">
                   {comparisonLinks.map((item) => (
                     <Link className="inquiry-choice-link" href={item.href} key={item.href}>

@@ -68,43 +68,17 @@ export default function ReportsPage() {
   return (
     <>
       <PageHero
-        family="proof"
-        headingMeasure="balanced"
-        surfaceTone="proof"
+        variant="proof"
         actions={
           <>
             <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
               {ctaDirectory.contact.label}
             </LinkButton>
           </>
         }
         description="This report preview is arranged like a real deliverable. Even in preview mode it shows how a reviewed monthly pack moves from executive summary into row-level detail and circulation."
         eyebrow="Reports preview"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Deliverable posture</span>
-                <strong>Readable on its own, briefable in a room, and export-ready by design</strong>
-              </div>
-              <p>
-                The page is strongest when buyers can tell what package this report
-                belongs to, how it circulates, and what follows after the first read.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {reportHighlights.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.title}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
         title="A report preview that already reads like a deliverable"
       />
 

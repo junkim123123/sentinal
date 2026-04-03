@@ -27,43 +27,12 @@ export default function SupportPage() {
   return (
     <>
       <PageHero
-        family="marketing"
-        headingMeasure="balanced"
-        surfaceTone="soft"
         actions={
-          <>
-            <LinkButton href={ctaDirectory.support.href}>{ctaDirectory.support.label}</LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
-              {ctaDirectory.contact.label}
-            </LinkButton>
-          </>
+          <LinkButton href={ctaDirectory.support.href}>{ctaDirectory.support.label}</LinkButton>
         }
         description="Support is part of the relationship, not an afterthought. Buyers should be able to see response ownership, priority rules, and escalation paths quickly."
         eyebrow="Support"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Support model</span>
-                <strong>Expert access, visible routing, and accountable follow-through</strong>
-              </div>
-              <p>
-                This page should answer three things quickly: who gets priority,
-                who responds, and what happens when the issue gets deeper.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {supportResponseCards.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.label}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
+        variant="method"
         title="Support with clear ownership and escalation"
       />
 

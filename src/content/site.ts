@@ -157,22 +157,19 @@ export const siteConfig = {
   dashboardPreviewHref: "/dashboard",
   reportsPreviewHref: "/reports",
   primaryCta: {
-    label: "Demo",
-    href: "/demo",
+    label: "Contact",
+    href: "/contact",
   },
   secondaryCta: {
-    label: "Consultation",
-    href: "/consultation",
+    label: "View Product",
+    href: "/product",
   },
 } as const;
 
 export const navItems: NavItem[] = [
   { label: "Product", href: "/product" },
-  { label: "Solutions", href: "/solutions" },
   { label: "Engagement", href: "/pricing" },
-  { label: "Methodology", href: "/methodology" },
-  { label: "Support", href: "/support" },
-  { label: "About", href: "/about" },
+  { label: "Method", href: "/methodology" },
   { label: "Contact", href: "/contact" },
 ];
 

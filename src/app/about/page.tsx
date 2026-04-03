@@ -9,7 +9,6 @@ import {
   aboutOperatorCards,
   aboutPoints,
   ctaDirectory,
-  dataSources,
 } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -22,50 +21,14 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        family="marketing"
-        headingMeasure="balanced"
-        surfaceTone="soft"
         actions={
-          <>
-            <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
-            <LinkButton href="/product" variant="secondary">
-              Review product
-            </LinkButton>
-          </>
+          <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+            {ctaDirectory.contact.label}
+          </LinkButton>
         }
         description="Sentinel stays narrow on purpose: named sources, visible review, and delivery built for buying teams that need signal they can circulate."
         eyebrow="About Sentinel"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Operating posture</span>
-                <strong>Operator-led review, narrow focus</strong>
-              </div>
-              <p>
-                Buyers trust Sentinel faster when the site shows a controlled model
-                instead of a broad portal story.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {aboutCredibility.slice(0, 3).map((item) => (
-                <article className="page-hero-stat" key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
-            <div className="page-hero-tag-row">
-              {dataSources.slice(0, 5).map((source) => (
-                <span className="page-hero-tag" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
-        }
+        variant="method"
         title="A narrow operating model built for serious buying teams"
       />
 

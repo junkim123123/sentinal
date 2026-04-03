@@ -7,7 +7,6 @@ import {
   aiPilotSequence,
   aiPrinciples,
   aiRoadmapFrames,
-  ctaDirectory,
   validatedAiCapabilities,
 } from "@/content/site";
 
@@ -21,46 +20,14 @@ export default function AiRoadmapPage() {
   return (
     <>
       <PageHero
-        family="marketing"
-        headingMeasure="balanced"
-        surfaceTone="soft"
         actions={
-          <>
-            <LinkButton href="/product" variant="secondary">
-              Review current product
-            </LinkButton>
-            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
-              {ctaDirectory.contact.label}
-            </LinkButton>
-          </>
+          <LinkButton href="/product" variant="secondary">
+            Review current product
+          </LinkButton>
         }
         description="Sentinel leads with reviewed monitoring and working files first. AI only earns space after the core trust model already feels complete."
         eyebrow="AI roadmap"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Roadmap posture</span>
-                <strong>Current product first, AI later</strong>
-              </div>
-              <p>
-                The roadmap becomes more credible when it reads like a sequence of
-                measured additions on top of a working product, not a shortcut
-                around unfinished trust work.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {aiRoadmapFrames.map((item) => (
-                <article className="page-hero-stat" key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
+        variant="method"
         title="Keep AI behind the core product"
       />
 

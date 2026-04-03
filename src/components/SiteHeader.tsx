@@ -7,20 +7,6 @@ import { usePathname } from "next/navigation";
 import { LinkButton } from "@/components/LinkButton";
 import { ctaDirectory, navItems, siteConfig } from "@/content/site";
 
-const headerLabels: Record<string, string> = {
-  "/product": "Product",
-  "/pricing": "Engagement",
-  "/methodology": "Method",
-  "/contact": "Contact",
-};
-
-const headerNavItems = navItems
-  .filter((item) => headerLabels[item.href] !== undefined)
-  .map((item) => ({
-    ...item,
-    label: headerLabels[item.href],
-  }));
-
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -52,7 +38,7 @@ export function SiteHeader() {
 
         <div className={`site-nav-menu ${open ? "is-open" : ""}`}>
           <nav aria-label="Primary" className="site-nav">
-            {headerNavItems.map((item) => {
+            {navItems.map((item) => {
               const isActive =
                 item.href === "/" ? pathname === item.href : pathname.startsWith(item.href);
 
@@ -71,14 +57,8 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header-actions">
-            <Link className="site-nav-link site-nav-utility" href={siteConfig.dashboardPreviewHref} onClick={closeMenu}>
-              Dashboard
-            </Link>
-            <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu} variant="ghost">
+            <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu}>
               {ctaDirectory.contact.label}
-            </LinkButton>
-            <LinkButton className="site-header-cta" href={ctaDirectory.demo.href} onClick={closeMenu}>
-              {ctaDirectory.demo.label}
             </LinkButton>
           </div>
         </div>

@@ -32,36 +32,13 @@ export default function TermsPage() {
     <>
       <PageHero
         actions={
-          <LinkButton href="/consultation" variant="secondary">
-            Start a consultation
+          <LinkButton href="/contact" variant="secondary">
+            Contact Sentinel
           </LinkButton>
         }
         description="This terms page explains how public website information relates to Sentinel's commercial offer until final contract language is published."
         eyebrow="Terms"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Current terms posture</span>
-                <strong>Website information starts the conversation, not the final scope</strong>
-              </div>
-              <p>
-                Sentinel uses the public site to frame the offer clearly while final
-                obligations remain part of direct client engagement.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {termsPoints.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.label}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
+        variant="method"
         title="Website terms and information notices"
       />
 

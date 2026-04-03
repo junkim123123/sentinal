@@ -3,14 +3,7 @@ import type { Metadata } from "next";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import {
-  ctaDirectory,
-  dataSources,
-  methodologyGovernanceCards,
-  methodologySteps,
-  moleculeExamples,
-  reportHighlights,
-} from "@/content/site";
+import { ctaDirectory, methodologyGovernanceCards, reportHighlights } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Methodology",
@@ -20,24 +13,19 @@ export const metadata: Metadata = {
 
 const methodSignals = [
   {
-    label: "Source stack",
-    value: "7 named inputs",
-    detail: "Trade, customs, regulatory, and crop-data systems feed the current method.",
+    label: "Sources",
+    value: "Named trade and regulatory inputs",
+    detail: "The method starts with traceable inputs rather than a generic feed.",
   },
   {
-    label: "Normalization",
-    value: "Molecule-level structure",
-    detail: "Records are translated into views built for monitoring and company drill-down.",
-  },
-  {
-    label: "Review ownership",
-    value: "Human checks stay visible",
-    detail: "Human review stays explicit so buyers can see where interpretation enters.",
+    label: "Review",
+    value: "Human checks stay explicit",
+    detail: "Interpretation points remain visible from cleanup to escalation framing.",
   },
   {
     label: "Delivery",
-    value: "Monthly brief + follow-through",
-    detail: "The output is built for review, sharing, escalation, and support.",
+    value: "Monthly brief plus follow-through",
+    detail: "The output is built to move from review into sharing and action.",
   },
 ] as const;
 
@@ -45,58 +33,22 @@ export default function MethodologyPage() {
   return (
     <>
       <PageHero
-        family="marketing"
-        headingMeasure="balanced"
-        surfaceTone="soft"
+        variant="method"
         actions={
-          <>
-            <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
-            <LinkButton href="/product" variant="secondary">
-              Review product
-            </LinkButton>
-          </>
+          <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+            {ctaDirectory.contact.label}
+          </LinkButton>
         }
-        description="Sentinel makes source inputs, review ownership, and delivery mechanics visible enough for buyers to inspect."
+        description="Sentinel keeps source inputs, review ownership, and delivery logic visible enough for buyers to inspect."
         eyebrow="Methodology"
-        theme="light"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Source to delivery</span>
-                <strong>A short workflow with visible review</strong>
-              </div>
-              <p>
-                Trust improves when buyers can see where data is normalized,
-                where judgment enters, and how the output gets packaged.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {methodologySteps.map((item) => (
-                <article className="page-hero-stat" key={item.step}>
-                  <span>{item.step}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="page-hero-tag-row">
-              {dataSources.slice(0, 5).map((source) => (
-                <span className="page-hero-tag" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
-        }
         title="A method buyers can inspect"
       />
 
       <section className="section section-evidence home-proof-section methodology-proof-section">
         <div className="section-inner">
-          <div className="page-signal-band">
+          <div className="method-strip">
             {methodSignals.map((item) => (
-              <article className="page-signal-card" key={item.label}>
+              <article className="method-strip-card" key={item.label}>
                 <span>{item.label}</span>
                 <strong>{item.value}</strong>
                 <p>{item.detail}</p>
@@ -107,33 +59,31 @@ export default function MethodologyPage() {
       </section>
 
       <section className="section section-tint page-section-tight subpage-shorthead methodology-governance-section">
-        <div className="section-inner">
-          <SectionHeading
-            description="Method buyers usually want three answers: who reviews anomalies, how escalations are handled, and where judgment enters."
-            eyebrow="Review control"
-            title="Where review happens"
-          />
-          <div className="page-panel-grid page-panel-grid-three">
-            {methodologyGovernanceCards.map((item) => (
-              <article className="page-panel-card page-panel-card-accent" key={item.title}>
-                <span className="small-label">{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section page-section-tight subpage-shorthead methodology-detail-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The method should show what teams can inspect in the deliverable, not only where the data comes from."
+              description="Method buyers usually want to know where judgment enters, who owns escalations, and how caution is communicated."
+              eyebrow="Review control"
+              title="Where review happens"
+            />
+            <div className="methodology-note-list">
+              {methodologyGovernanceCards.map((item) => (
+                <article className="page-panel-card page-panel-card-accent" key={item.title}>
+                  <span className="small-label">{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <SectionHeading
+              description="The site should show what teams actually receive without restarting the page with another grid."
               eyebrow="Delivery detail"
               title="What the brief shows"
             />
-            <article className="page-panel-card page-panel-card-accent">
+            <article className="page-panel-card">
               <span className="small-label">Included context</span>
               <h3>What teams review each cycle</h3>
               <ul className="detail-list page-checklist">
@@ -141,31 +91,6 @@ export default function MethodologyPage() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
-          </div>
-
-          <div className="page-panel-grid">
-            <article className="page-panel-card">
-              <span className="small-label">Named inputs</span>
-              <h3>Current source stack</h3>
-              <div className="page-hero-tag-row page-hero-tag-row-light">
-                {dataSources.map((source) => (
-                  <span className="page-hero-tag page-hero-tag-light" key={source}>
-                    {source}
-                  </span>
-                ))}
-              </div>
-            </article>
-            <article className="page-panel-card">
-              <span className="small-label">Representative coverage</span>
-              <h3>Molecule examples in scope</h3>
-              <div className="page-hero-tag-row page-hero-tag-row-light">
-                {moleculeExamples.map((molecule) => (
-                  <span className="page-hero-tag page-hero-tag-light" key={molecule}>
-                    {molecule}
-                  </span>
-                ))}
-              </div>
             </article>
           </div>
         </div>
