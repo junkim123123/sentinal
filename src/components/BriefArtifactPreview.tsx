@@ -18,13 +18,35 @@ const artifactNotes = [
   "Workbook tabs and export cues ready for circulation",
 ];
 
+const artifactStats = [
+  {
+    label: "Cadence",
+    value: "Monthly refresh",
+  },
+  {
+    label: "Files",
+    value: "Workbook + export tab",
+  },
+  {
+    label: "Format",
+    value: "Excel + Tableau + brief",
+  },
+] as const;
+
+const artifactSections = [
+  "Workbook tabs",
+  "Executive summary",
+  "Export-ready rows",
+] as const;
+
 export function BriefArtifactPreview() {
   return (
     <div className="brief-artifact">
       <div className="brief-artifact-top">
-        <div>
+        <div className="brief-artifact-top-copy">
           <span className="small-label">Representative delivery</span>
           <strong>Illustrative monthly reporting pack</strong>
+          <p className="brief-artifact-top-note">Built like a working monthly pack, not a teaser.</p>
         </div>
         <span className="brief-artifact-badge">Private client format</span>
       </div>
@@ -33,30 +55,22 @@ export function BriefArtifactPreview() {
         <div className="brief-artifact-summary">
           <div className="brief-artifact-summary-card">
             <span className="small-label">Brief composition</span>
-            <strong>Built like a working monthly pack, not a teaser.</strong>
-            <div className="brief-artifact-note-stack">
+            <ul className="brief-artifact-note-list">
               {artifactNotes.map((item) => (
-                <div className="brief-artifact-note-row" key={item}>
-                  <span>{item}</span>
-                  <i />
-                </div>
+                <li className="brief-artifact-note-item" key={item}>
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           <div className="brief-artifact-status-grid">
-            <article>
-              <span>Cadence</span>
-              <strong>Monthly refresh</strong>
-            </article>
-            <article>
-              <span>Files</span>
-              <strong>Workbook + export tab</strong>
-            </article>
-            <article>
-              <span>Format</span>
-              <strong>Excel + Tableau + brief</strong>
-            </article>
+            {artifactStats.map((item) => (
+              <article key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </article>
+            ))}
           </div>
         </div>
 
@@ -70,10 +84,12 @@ export function BriefArtifactPreview() {
           <div className="brief-artifact-table-body">
             {artifactRows.slice(0, 2).map((row) => (
               <div className="brief-artifact-table-row" key={row.molecule}>
-                <span>{row.molecule}</span>
-                <span>{row.supplier}</span>
-                <span>{row.movement}</span>
-                <span>{row.action}</span>
+                <span data-label="Molecule">{row.molecule}</span>
+                <span data-label="Supplier surface">{row.supplier}</span>
+                <span data-label="Movement note">{row.movement}</span>
+                <span className="brief-artifact-action" data-label="Action">
+                  {row.action}
+                </span>
               </div>
             ))}
           </div>
@@ -81,9 +97,9 @@ export function BriefArtifactPreview() {
       </div>
 
       <div className="brief-artifact-strip">
-        <span>Workbook tabs</span>
-        <span>Executive summary</span>
-        <span>Export-ready rows</span>
+        {artifactSections.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     </div>
   );
