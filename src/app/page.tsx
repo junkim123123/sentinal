@@ -1,5 +1,6 @@
 import { LinkButton } from "@/components/LinkButton";
 import { SectionHeading } from "@/components/SectionHeading";
+import Link from "next/link";
 import {
   companyDetailCards,
   ctaDirectory,
@@ -68,33 +69,24 @@ export default function HomePage() {
               view of strategic chemical imports.
             </h1>
             <p className="sentinel-home-desc">
-              Start with agrochemical monitoring, then extend the same molecule-first
-              discipline into pharma and fertilizer lanes when the category surface
-              matters. Sentinel combines named sources, analyst review, and
-              working-file delivery so teams can move from raw movement to a usable
-              commercial signal faster.
+              Start with agrochemical monitoring. Extend the same molecule-first
+              view into pharma and fertilizer when scope expands. Named sources,
+              analyst review, and working-file delivery keep the signal usable.
             </p>
             <div className="sentinel-home-quicklist" aria-label="Key trust cues">
               <span className="sentinel-home-quickitem">Named sources + analyst review</span>
-              <span className="sentinel-home-quickitem">Company and supplier drill-down</span>
-              <span className="sentinel-home-quickitem">Excel, Tableau, and briefing delivery</span>
+              <span className="sentinel-home-quickitem">Company drill-down + file delivery</span>
             </div>
             <div className="sentinel-home-actions">
               <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
               <LinkButton href={ctaDirectory.contact.href} variant="secondary">
                 {ctaDirectory.contact.label}
               </LinkButton>
-              <LinkButton href={ctaDirectory.consultation.href} variant="ghost">
-                {ctaDirectory.consultation.label}
-              </LinkButton>
             </div>
-            <div className="button-row sentinel-home-proof-links">
-              <LinkButton href="/dashboard" variant="ghost">
-                Open dashboard preview
-              </LinkButton>
-              <LinkButton href="/reports" variant="ghost">
-                Open reports preview
-              </LinkButton>
+            <div className="sentinel-home-inline-links">
+              <span>Preview the output:</span>
+              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/reports">Reports</Link>
             </div>
           </div>
 

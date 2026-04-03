@@ -57,7 +57,7 @@ export default function ProductPage() {
         eyebrow="Product"
         theme="light"
         visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero product-hero-artifact">
+          <div className="page-hero-brief page-hero-brief-hero product-hero-artifact">
             <BriefArtifactPreview />
             <div className="page-hero-tag-row">
               {productHeroCapabilities.map((item) => (
