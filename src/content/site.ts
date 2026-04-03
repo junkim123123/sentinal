@@ -149,6 +149,11 @@ export type PromptWorkflow = {
 export const siteConfig = {
   name: "Sentinel Imports",
   shortName: "Sentinel",
+  logo: {
+    src: "/brand/sentinel-logo-white.png",
+    width: 735,
+    height: 584,
+  },
   url: "https://www.sentinelimports.online",
   description:
     "Molecule-level import intelligence for company, supplier, and shipment monitoring across strategic chemical categories entering the United States.",
@@ -170,7 +175,6 @@ export const navItems: NavItem[] = [
   { label: "Product", href: "/product" },
   { label: "Engagement", href: "/pricing" },
   { label: "Method", href: "/methodology" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const proofPoints: ProofPoint[] = [

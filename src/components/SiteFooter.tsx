@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/content/site";
@@ -29,9 +30,20 @@ export function SiteFooter() {
     <footer className="site-footer sentinel-site-footer">
       <div className="section-inner sentinel-site-footer-inner">
         <div className="sentinel-site-footer-left">
-          <Link aria-label={siteConfig.name} className="sentinel-site-footer-logo" href="/">
-            {siteConfig.shortName}
-            <span>.</span>
+          <Link
+            aria-label={siteConfig.name}
+            className="brand-lockup footer-brand-lockup sentinel-site-footer-logo"
+            href="/"
+          >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="brand-logo footer-brand-logo"
+              height={siteConfig.logo.height}
+              sizes="(max-width: 700px) 132px, 168px"
+              src={siteConfig.logo.src}
+              width={siteConfig.logo.width}
+            />
           </Link>
 
           <div className="sentinel-site-footer-groups">

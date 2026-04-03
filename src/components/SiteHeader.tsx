@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -17,12 +18,20 @@ export function SiteHeader() {
       <div className="section-inner site-header-inner">
         <Link
           aria-label={siteConfig.name}
-          className="sentinel-header-logo"
+          className="brand-lockup header-brand-lockup"
           href="/"
           onClick={closeMenu}
         >
-          {siteConfig.shortName}
-          <span>.</span>
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="brand-logo"
+            height={siteConfig.logo.height}
+            priority
+            sizes="(max-width: 700px) 120px, (max-width: 1040px) 138px, 156px"
+            src={siteConfig.logo.src}
+            width={siteConfig.logo.width}
+          />
         </Link>
 
         <button
