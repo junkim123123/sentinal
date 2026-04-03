@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import {
   aiPilotSequence,
   aiPrinciples,
+  aiRoadmapFrames,
+  ctaDirectory,
   openAiProductWorkflowReference,
   promptWorkflows,
   validatedAiCapabilities,
@@ -14,15 +16,24 @@ import {
 export const metadata: Metadata = {
   title: "AI Roadmap",
   description:
-    "See the four AI capability areas Sentinel can credibly pursue, each framed with market precedent and a staged rollout approach.",
+    "See the AI capability areas Sentinel can credibly pursue after the core product and trust model are established.",
 };
 
 export default function AiRoadmapPage() {
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/consultation">Discuss the roadmap</LinkButton>}
-        description="AI belongs on the site as a validation-backed roadmap, not as a broad product promise."
+        actions={
+          <>
+            <LinkButton href="/product" variant="secondary">
+              Review current product
+            </LinkButton>
+            <LinkButton href={ctaDirectory.consultation.href} variant="ghost">
+              {ctaDirectory.consultation.label}
+            </LinkButton>
+          </>
+        }
+        description="AI belongs on the site as a later acceleration layer. Sentinel leads with current reviewed monitoring, delivery clarity, and human accountability first, then explains where AI could responsibly help."
         eyebrow="AI roadmap"
         theme="dark"
         visual={
@@ -30,33 +41,48 @@ export default function AiRoadmapPage() {
             <div className="page-hero-brief-head">
               <div>
                 <span className="small-label">Roadmap posture</span>
-                <strong>Measured, validated, and human-reviewed by design</strong>
+                <strong>Current product first, AI later</strong>
               </div>
               <p>
                 The roadmap becomes more credible when it reads like a sequence of
-                grounded bets rather than a generic AI feature list.
+                measured additions on top of a working product, not a shortcut
+                around unfinished trust work.
               </p>
             </div>
             <div className="page-hero-brief-grid">
-              {validatedAiCapabilities.slice(0, 3).map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.precedent}</span>
+              {aiRoadmapFrames.map((item) => (
+                <article className="page-hero-stat" key={item.label}>
+                  <span>{item.label}</span>
                   <strong>{item.title}</strong>
-                  <p>{item.summary}</p>
+                  <p>{item.description}</p>
                 </article>
               ))}
             </div>
           </div>
         }
-        title="A measured path for Sentinel AI"
+        title="A measured AI path that follows the core product, not the other way around"
       />
+
+      <section className="section section-evidence home-proof-section">
+        <div className="section-inner">
+          <div className="page-panel-grid page-panel-grid-three">
+            {aiRoadmapFrames.map((item) => (
+              <article className="page-panel-card" key={item.label}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="Each capability area should connect precedent, buyer value, and Sentinel's practical use case in the same card."
+            description="Each capability area should connect precedent, buyer value, and Sentinel's practical use case in the same card, while staying visibly downstream of the current product."
             eyebrow="Validated capabilities"
-            title="Where AI could create the most leverage"
+            title="Where AI could create leverage after the trust model is established"
           />
           <div className="page-panel-grid page-panel-grid-four">
             {validatedAiCapabilities.map((item) => (
@@ -114,7 +140,7 @@ export default function AiRoadmapPage() {
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The workflow reference is useful because it turns AI from a vague product claim into repeatable operating patterns."
+              description="The workflow reference is useful because it turns AI from a vague claim into repeatable operating patterns that can support the current product team."
               eyebrow="Prompt-pack reference"
               title="How Sentinel can use the product workflow pattern internally"
             />

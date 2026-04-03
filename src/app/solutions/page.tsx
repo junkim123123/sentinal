@@ -3,38 +3,50 @@ import type { Metadata } from "next";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { engagementModels, personaCards } from "@/content/site";
+import {
+  ctaDirectory,
+  engagementModels,
+  personaCards,
+  solutionWorkflowCards,
+} from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "See how Sentinel Imports supports procurement, compliance, and strategy teams with recurring and custom agricultural chemical intelligence.",
+    "See how Sentinel Imports supports procurement, compliance, and strategy teams with recurring and custom intelligence.",
 };
 
 const solutionTracks = [
   {
     label: "Procurement",
-    title: "Track supplier movement before sourcing conversations",
+    title: "Track supplier movement before sourcing conversations harden.",
     text: "Use recurring monitoring to understand quantity shifts, supplier activity, and landed-value context before negotiation starts.",
   },
   {
     label: "Compliance",
-    title: "Keep source review and shipment context closer together",
+    title: "Keep source review and shipment context closer together.",
     text: "Reduce scattered checks and build a cleaner internal trail for escalation, interpretation, and documentation.",
   },
   {
     label: "Strategy",
-    title: "Turn trade movement into a working market read",
-    text: "See what changed, where a deeper investigation should begin, and how to frame it internally.",
+    title: "Turn trade movement into a usable market read.",
+    text: "See what changed, where a deeper investigation should begin, and how to frame it for leadership.",
   },
-];
+] as const;
 
 export default function SolutionsPage() {
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/consultation">Request consultation</LinkButton>}
-        description="Sentinel supports procurement, compliance, and strategy teams differently because each group needs the same signal framed around a different decision."
+        actions={
+          <>
+            <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
+            <LinkButton href={ctaDirectory.demo.href} variant="secondary">
+              {ctaDirectory.demo.label}
+            </LinkButton>
+          </>
+        }
+        description="Sentinel supports procurement, compliance, and strategy teams differently because each group needs the same underlying signal framed as a different output and a different next action."
         eyebrow="Solutions"
         theme="dark"
         visual={
@@ -45,8 +57,8 @@ export default function SolutionsPage() {
                 <strong>One reporting foundation, several different decisions</strong>
               </div>
               <p>
-                The solution story works when buyers can immediately see their own
-                workflow reflected in the structure.
+                The page becomes more credible when buyers can see what their team
+                actually receives and how it changes the review workflow.
               </p>
             </div>
             <div className="page-hero-brief-grid">
@@ -66,7 +78,7 @@ export default function SolutionsPage() {
       <section className="section page-section-tight sentinel-subpage-emphasis solutions-track-section">
         <div className="section-inner">
           <SectionHeading
-            description="Each solution track should feel like a clear entry point into the workflow, not just another feature group."
+            description="Each solution track should feel like a real operating motion rather than a simple persona label."
             eyebrow="Solution tracks"
             title="Three ways Sentinel enters the work"
           />
@@ -82,16 +94,35 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight solutions-role-section">
+      <section className="section section-tint page-section-tight solutions-output-section">
         <div className="section-inner">
           <SectionHeading
-            description="Buyers usually decide faster when the page shows their challenge and their payoff side by side."
+            description="This section closes the gap between role language and contractable output by showing what each team actually gets and what changes in the workflow."
+            eyebrow="Outputs by role"
+            title="What each team receives and what changes in their workflow"
+          />
+          <div className="page-panel-grid page-panel-grid-three">
+            {solutionWorkflowCards.map((item) => (
+              <article className="page-panel-card page-panel-card-accent" key={item.role}>
+                <span className="small-label">{item.role}</span>
+                <h3>{item.output}</h3>
+                <p>{item.change}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section page-section-tight solutions-role-section">
+        <div className="section-inner">
+          <SectionHeading
+            description="Teams usually decide faster when the page shows their challenge and the concrete payoff side by side."
             eyebrow="Role lens"
             title="How different teams read the same monthly brief"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {personaCards.map((card) => (
-              <article className="page-panel-card page-panel-card-accent" key={card.title}>
+              <article className="page-panel-card" key={card.title}>
                 <span className="small-label">{card.role}</span>
                 <h3>{card.title}</h3>
                 <p>{card.challenge}</p>
@@ -105,10 +136,10 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight solutions-engagement-section">
+      <section className="section section-tint page-section-tight solutions-engagement-section">
         <div className="section-inner">
           <SectionHeading
-            description="The solution page is stronger when the commercial model reads like a natural next step from the team problem."
+            description="The solution page reads more credibly when the commercial model follows naturally from the team problem and the expected output."
             eyebrow="Engagement model"
             title="How Sentinel packages recurring and custom work"
           />

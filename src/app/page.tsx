@@ -1,41 +1,56 @@
 import { LinkButton } from "@/components/LinkButton";
+import { SectionHeading } from "@/components/SectionHeading";
 import {
-  accessPathCards,
   companyDetailCards,
+  ctaDirectory,
   dataSources,
+  homeCategoryProof,
   moleculeCategoryGroups,
   pricingBuckets,
   proofPoints,
-  siteConfig,
   verticalIntegrationCards,
 } from "@/content/site";
 
-const sampleDataHref = "/samples/sentinel-molecule-depth-sample.csv";
-
 const heroWatchlist = [
   { molecule: "Glyphosate", value: "$1.22 CIF", delta: "+4.2%", direction: "up" },
-  { molecule: "Dicamba", value: "$1.09 CIF", delta: "-2.1%", direction: "down" },
-  { molecule: "2,4-D", value: "$0.87 CIF", delta: "+7.8%", direction: "up" },
+  { molecule: "Metformin HCl", value: "$3.08 CIF", delta: "+2.7%", direction: "up" },
+  { molecule: "Urea", value: "$0.51 CIF", delta: "+6.3%", direction: "up" },
   { molecule: "Imidacloprid", value: "$3.41 CIF", delta: "0.0%", direction: "flat" },
-  { molecule: "Clothianidin", value: "$4.18 CIF", delta: "+1.5%", direction: "up" },
-  { molecule: "Trifluralin", value: "$1.56 CIF", delta: "-3.4%", direction: "down" },
 ] as const;
 
 const deliveryCards = [
   {
     number: "01",
-    title: "Company activity",
-    text: "See what companies are importing, sourcing, and routing across the molecules your team follows.",
+    title: "Company and supplier drill-down",
+    text: "Move from a watchlist signal into importer, supplier, route, and landed-value context without rebuilding the question from scratch.",
   },
   {
     number: "02",
-    title: "Molecule depth",
-    text: "Inspect formulation, quantity, landed value, freight, insurance, and CIF context in one working view.",
+    title: "Named-source signal with human review",
+    text: "Sentinel combines named trade and regulatory inputs with analyst review so the output feels closer to a working brief than a raw data portal.",
   },
   {
     number: "03",
-    title: "Direct follow-through",
-    text: "Move from recurring monitoring into custom investigation when a supplier, competitor, or route needs a deeper read.",
+    title: "Files built for real circulation",
+    text: "Excel, Tableau, and briefing-ready delivery help commercial, compliance, and strategy teams work from the same reviewed signal.",
+  },
+] as const;
+
+const priorityPathCards = [
+  {
+    label: ctaDirectory.demo.label,
+    href: ctaDirectory.demo.href,
+    description: "Best when the team wants to validate workflow, sample depth, and what Sentinel will actually show in a session.",
+  },
+  {
+    label: ctaDirectory.contact.label,
+    href: ctaDirectory.contact.href,
+    description: "Best when the commercial need is clear but the right next motion still needs to be routed.",
+  },
+  {
+    label: ctaDirectory.consultation.label,
+    href: ctaDirectory.consultation.href,
+    description: "Best when leadership framing, stakeholder alignment, or advisory scope matters more than a product tour.",
   },
 ] as const;
 
@@ -49,26 +64,28 @@ export default function HomePage() {
           <div className="sentinel-home-content">
             <div className="sentinel-home-tag">Private import intelligence</div>
             <h1>
-              <em className="sentinel-home-name">Sentinel</em> makes molecule-level import
-              intelligence usable.
+              <em className="sentinel-home-name">Sentinel</em> gives buying teams a reviewed
+              view of strategic chemical imports.
             </h1>
             <p className="sentinel-home-desc">
-              Track what companies are doing, what they are dealing with, and how
-              supplier, route, and landed-value pressure is changing across
-              agrochemical, pharma, and fertilizer portfolios.
+              Start with agrochemical monitoring, then extend the same molecule-first
+              discipline into pharma and fertilizer lanes when the category surface
+              matters. Sentinel combines named sources, analyst review, and
+              working-file delivery so teams can move from raw movement to a usable
+              commercial signal faster.
             </p>
-            <div className="sentinel-home-quicklist" aria-label="Key highlights">
-              <span className="sentinel-home-quickitem">Company drill-down</span>
-              <span className="sentinel-home-quickitem">Downloadable sample depth</span>
-              <span className="sentinel-home-quickitem">Direct team access</span>
+            <div className="sentinel-home-quicklist" aria-label="Key trust cues">
+              <span className="sentinel-home-quickitem">Named sources + analyst review</span>
+              <span className="sentinel-home-quickitem">Company and supplier drill-down</span>
+              <span className="sentinel-home-quickitem">Excel, Tableau, and briefing delivery</span>
             </div>
             <div className="sentinel-home-actions">
-              <LinkButton href={siteConfig.primaryCta.href}>Request a private demo</LinkButton>
-              <LinkButton download href={sampleDataHref} variant="ghost">
-                Download free sample
+              <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
+              <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+                {ctaDirectory.contact.label}
               </LinkButton>
-              <LinkButton href="/contact" variant="ghost">
-                Contact the team
+              <LinkButton href={ctaDirectory.consultation.href} variant="ghost">
+                {ctaDirectory.consultation.label}
               </LinkButton>
             </div>
           </div>
@@ -76,10 +93,10 @@ export default function HomePage() {
           <div className="sentinel-home-data">
             <div className="sentinel-data-terminal">
               <div className="sentinel-data-header">
-                <span>Illustrative molecule depth - Apr 2026</span>
+                <span>Illustrative reviewed watchlist - Apr 2026</span>
                 <div className="sentinel-terminal-dot" />
               </div>
-              {heroWatchlist.slice(0, 4).map((item) => (
+              {heroWatchlist.map((item) => (
                 <div className="sentinel-data-row" key={item.molecule}>
                   <span className="sentinel-molecule-name">{item.molecule}</span>
                   <span className="sentinel-molecule-value">{item.value}</span>
@@ -89,10 +106,24 @@ export default function HomePage() {
                 </div>
               ))}
               <div className="sentinel-data-footer">
-                <span>Sample CSV available</span>
-                <span>Drill down by molecule</span>
+                <span>Named-source review</span>
+                <span>Company drill-down next</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-evidence home-proof-section sentinel-home-proof-cues">
+        <div className="section-inner">
+          <div className="page-panel-grid page-panel-grid-three">
+            {homeCategoryProof.map((item) => (
+              <article className="page-panel-card" key={item.label}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -111,14 +142,15 @@ export default function HomePage() {
       <section className="sentinel-section" id="company-detail">
         <div className="section-inner">
           <div className="sentinel-section-intro">
-            <span className="sentinel-section-tag">Company detail</span>
+            <span className="sentinel-section-tag">Operating view</span>
             <h2 className="sentinel-section-title">
-              See what companies are doing and what they are dealing with.
+              See what companies are doing, what they are dealing with, and what to
+              escalate next.
             </h2>
             <p className="sentinel-section-desc">
-              The site now makes the core buyer promise clearer: company detail,
-              molecule depth, downloadable working data, and direct access to the
-              Sentinel team.
+              The product promise is clearest when buyers can see company drill-down,
+              molecule depth, workflow-ready output, and direct follow-through in the
+              same pass.
             </p>
           </div>
 
@@ -137,13 +169,13 @@ export default function HomePage() {
       <section className="sentinel-section sentinel-section-dark" id="product">
         <div className="section-inner">
           <div className="sentinel-section-intro">
-            <span className="sentinel-section-tag">Product</span>
+            <span className="sentinel-section-tag">Trust model</span>
             <h2 className="sentinel-section-title">
-              What Sentinel Imports delivers at the company and molecule level.
+              Source records become a reviewed operating signal before they reach the team.
             </h2>
             <p className="sentinel-section-desc">
-              Built around real import records, a cleaner operating model, and output
-              that feels closer to a working file than a generic trade-data platform.
+              Sentinel feels stronger when the site makes its method visible: named
+              inputs, analyst review, and files designed for actual circulation.
             </p>
           </div>
 
@@ -162,14 +194,14 @@ export default function HomePage() {
       <section className="sentinel-section" id="molecules">
         <div className="section-inner">
           <div className="sentinel-section-intro">
-            <span className="sentinel-section-tag">Molecule groups</span>
+            <span className="sentinel-section-tag">Category coverage</span>
             <h2 className="sentinel-section-title">
-              Group molecules by agrochemical, pharma, and fertilizers.
+              Keep agrochemical depth while showing where adjacent category coverage can fit.
             </h2>
             <p className="sentinel-section-desc">
-              Category views can be configured into focused watchlists so clients can
-              scroll through the molecules that matter most without digging through a
-              generic data dump.
+              Buyers should be able to see that agrochemical remains the deepest lane,
+              while pharma and fertilizer are treated as credible adjacent category
+              surfaces inside the same molecule-first structure.
             </p>
           </div>
 
@@ -195,14 +227,14 @@ export default function HomePage() {
       <section className="sentinel-section sentinel-section-dark" id="vertical-integration">
         <div className="section-inner">
           <div className="sentinel-section-intro">
-            <span className="sentinel-section-tag">Vertical integration</span>
+            <span className="sentinel-section-tag">Method and delivery</span>
             <h2 className="sentinel-section-title">
-              Sentinel Imports connects source records to decision-ready delivery.
+              Sentinel connects source records to working files, briefings, and direct follow-up.
             </h2>
             <p className="sentinel-section-desc">
-              The vertical integration story is simple: source the records, normalize
-              the entities, integrate the output into working files, and stay close to
-              the client when the signal changes.
+              The story is stronger when buyers can see the chain clearly: source,
+              normalize, deliver, and stay close when a signal turns into a bigger
+              question.
             </p>
           </div>
 
@@ -227,11 +259,11 @@ export default function HomePage() {
       <section className="sentinel-section sentinel-engagement-section" id="pricing-model">
         <div className="section-inner">
           <div className="sentinel-section-intro">
-            <span className="sentinel-section-tag">Pricing model</span>
-            <h2 className="sentinel-section-title">Scope-based pricing, not a public rate card.</h2>
+            <span className="sentinel-section-tag">Engagement models</span>
+            <h2 className="sentinel-section-title">Scope grows with category breadth, cadence, and stakeholder complexity.</h2>
             <p className="sentinel-section-desc">
-              Sentinel prices around molecule coverage, investigative depth, delivery
-              expectations, and the level of direct support required by the team.
+              Sentinel prices around molecule breadth, investigative depth, delivery
+              cadence, and how many people need to trust and circulate the output.
             </p>
           </div>
 
@@ -257,38 +289,26 @@ export default function HomePage() {
 
       <section className="sentinel-section sentinel-cta-section">
         <div className="section-inner sentinel-cta-inner">
-          <span className="sentinel-section-tag">Start here</span>
-          <h2 className="sentinel-section-title">
-            Request a demo, download a free sample, or contact the team directly.
-          </h2>
-          <p className="sentinel-section-desc">
-            Buyers expect to see the workflow, inspect sample depth, and reach a real
-            person before committing to a broader intelligence scope.
-          </p>
+          <SectionHeading
+            align="center"
+            eyebrow="Choose the next move"
+            title="Use the path that matches what your team is trying to decide right now"
+            description="Sentinel keeps demo, commercial contact, and consultation separate so the website can route product validation, intake, and strategic scoping more cleanly."
+          />
 
           <div className="sentinel-access-grid">
-            {accessPathCards.map((item) => (
+            {priorityPathCards.map((item, index) => (
               <article
-                className={`sentinel-access-card ${
-                  item.label === "Free sample" ? "is-featured" : ""
-                }`}
-                key={item.title}
+                className={`sentinel-access-card ${index === 0 ? "is-featured" : ""}`}
+                key={item.label}
               >
-                {item.label ? <span className="sentinel-card-label">{item.label}</span> : null}
-                <h3>{item.title}</h3>
+                <span className="sentinel-card-label">{item.label}</span>
+                <h3>{item.label}</h3>
                 <p>{item.description}</p>
                 <div className="sentinel-access-action">
-                  {item.label === "Request a demo" ? (
-                    <LinkButton href="/demo">Request a private demo</LinkButton>
-                  ) : null}
-                  {item.label === "Free sample" ? (
-                    <LinkButton download href={sampleDataHref}>
-                      Download free sample
-                    </LinkButton>
-                  ) : null}
-                  {item.label === "Direct contact" ? (
-                    <LinkButton href="/contact">Contact the team</LinkButton>
-                  ) : null}
+                  <LinkButton href={item.href} variant={index === 0 ? "primary" : "secondary"}>
+                    {item.label}
+                  </LinkButton>
                 </div>
               </article>
             ))}

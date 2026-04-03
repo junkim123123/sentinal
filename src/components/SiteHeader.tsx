@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { navItems, siteConfig } from "@/content/site";
+import { LinkButton } from "@/components/LinkButton";
+import { ctaDirectory, navItems, siteConfig } from "@/content/site";
 
 const headerLabels: Record<string, string> = {
   "/product": "Product",
-  "/methodology": "Method",
   "/pricing": "Engagement",
+  "/methodology": "Method",
   "/contact": "Contact",
 };
 
@@ -70,13 +71,15 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header-actions">
-            <Link
-              className="site-nav-link site-nav-utility"
-              href={siteConfig.dashboardPreviewHref}
-              onClick={closeMenu}
-            >
-              Dashboard Preview
+            <Link className="site-nav-link site-nav-utility" href={ctaDirectory.consultation.href} onClick={closeMenu}>
+              {ctaDirectory.consultation.label}
             </Link>
+            <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu} variant="ghost">
+              {ctaDirectory.contact.label}
+            </LinkButton>
+            <LinkButton className="site-header-cta" href={ctaDirectory.demo.href} onClick={closeMenu}>
+              {ctaDirectory.demo.label}
+            </LinkButton>
           </div>
         </div>
       </div>

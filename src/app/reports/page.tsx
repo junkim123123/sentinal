@@ -3,11 +3,12 @@ import type { Metadata } from "next";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
+import { ctaDirectory, reportDeliveryCards } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Reports Preview",
   description:
-    "View the Sentinel Imports report MVP in preview mode without authentication.",
+    "View the Sentinel Imports report preview without authentication.",
 };
 
 const reportHighlights = [
@@ -21,7 +22,7 @@ const reportHighlights = [
   },
   {
     title: "Manager takeaway",
-    text: "The current report structure makes it easy to move from a headline read into row-level company and supplier detail.",
+    text: "The current report structure makes it easy to move from headline read into row-level company and supplier detail.",
   },
 ] as const;
 
@@ -57,7 +58,7 @@ const reportRows = [
 ] as const;
 
 const reportSections = [
-  "Executive summary page for Dean and leadership review",
+  "Executive summary page for manager and leadership review",
   "Importer-by-molecule table with route and landed-value context",
   "Category summary blocks for agrochemical, pharma, and fertilizers",
   "Action notes section for escalation and follow-up",
@@ -70,24 +71,24 @@ export default function ReportsPage() {
         actions={
           <>
             <LinkButton href="/dashboard">Open dashboard preview</LinkButton>
-            <LinkButton href="/demo" variant="ghost">
-              Request walkthrough
+            <LinkButton href={ctaDirectory.demo.href} variant="secondary">
+              {ctaDirectory.demo.label}
             </LinkButton>
           </>
         }
-        description="This report MVP is designed to be readable on its own. Even without export logic or auth, stakeholders can open the page and understand the deliverable immediately."
+        description="This report preview is arranged like a real deliverable. Even in preview mode it shows how a reviewed monthly pack can move from executive summary into row-level detail, export, and circulation."
         eyebrow="Reports preview"
         theme="dark"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">
               <div>
-                <span className="small-label">Dean review pack</span>
-                <strong>Readable without login, export flow, or backend setup</strong>
+                <span className="small-label">Deliverable posture</span>
+                <strong>Readable on its own, briefable in a room, and export-ready by design</strong>
               </div>
               <p>
-                The MVP emphasizes report clarity first so the team can present a
-                complete product story even before automation is connected.
+                The page is strongest when buyers can tell what package this report
+                belongs to, how it circulates, and what follows after the first read.
               </p>
             </div>
             <div className="page-hero-brief-grid">
@@ -101,20 +102,34 @@ export default function ReportsPage() {
             </div>
           </div>
         }
-        title="Report preview that already feels presentation-ready"
+        title="A report preview that already reads like a real deliverable"
       />
+
+      <section className="section section-evidence home-proof-section">
+        <div className="section-inner">
+          <div className="page-panel-grid page-panel-grid-three">
+            {reportDeliveryCards.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section section-tint page-section-tight">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
               eyebrow="Report structure"
-              title="What this MVP report already communicates well"
-              description="The preview is static, but the sections are arranged like a deliverable the client can actually consume."
+              title="What this report preview already communicates well"
+              description="The preview is static, but the sections are arranged like a deliverable buyers can actually contract for and circulate."
             />
             <article className="page-panel-card page-panel-card-accent">
               <span className="small-label">Included sections</span>
-              <h3>Dean-facing report anatomy</h3>
+              <h3>Monthly report anatomy</h3>
               <ul className="detail-list page-checklist">
                 {reportSections.map((item) => (
                   <li key={item}>{item}</li>
@@ -151,19 +166,19 @@ export default function ReportsPage() {
               </div>
               {reportRows.map((row) => (
                 <div className="report-preview-table-row" key={`${row.molecule}-${row.importer}`}>
-                  <span>{row.molecule}</span>
-                  <span>{row.importer}</span>
-                  <span>{row.route}</span>
-                  <span>{row.cif}</span>
-                  <span>{row.note}</span>
+                  <span data-label="Molecule">{row.molecule}</span>
+                  <span data-label="Importer">{row.importer}</span>
+                  <span data-label="Route">{row.route}</span>
+                  <span data-label="CIF">{row.cif}</span>
+                  <span data-label="Note">{row.note}</span>
                 </div>
               ))}
             </div>
 
             <div className="report-preview-footer">
-              <span>Agrochemical</span>
-              <span>Pharma</span>
-              <span>Fertilizers</span>
+              <span>Monitoring package</span>
+              <span>Investigation add-on</span>
+              <span>Versioned export</span>
               <span>Executive-ready summary</span>
             </div>
           </article>

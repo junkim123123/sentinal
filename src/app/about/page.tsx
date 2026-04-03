@@ -7,23 +7,31 @@ import {
   aboutCredibility,
   aboutDifferentiators,
   aboutExpertise,
+  aboutOperatorCards,
   aboutPoints,
+  ctaDirectory,
   dataSources,
-  roadmapSignals,
 } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn how Sentinel Imports approaches agricultural chemical intelligence, reporting clarity, and future custom intelligence expansion.",
+    "Learn how Sentinel Imports approaches agricultural chemical intelligence, reporting clarity, and careful category expansion.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/consultation">Request consultation</LinkButton>}
-        description="Sentinel focuses on agricultural chemical and intermediate imports, recurring reporting, and workflow-ready delivery instead of broad generic trade-data claims."
+        actions={
+          <>
+            <LinkButton href={ctaDirectory.consultation.href}>{ctaDirectory.consultation.label}</LinkButton>
+            <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+              {ctaDirectory.contact.label}
+            </LinkButton>
+          </>
+        }
+        description="Sentinel is built around a narrower operating model: focused category coverage, named-source discipline, direct client follow-through, and a delivery posture designed for serious buying teams."
         eyebrow="About Sentinel"
         theme="dark"
         visual={
@@ -31,11 +39,11 @@ export default function AboutPage() {
             <div className="page-hero-brief-head">
               <div>
                 <span className="small-label">Operating posture</span>
-                <strong>Focused intelligence with a working delivery model</strong>
+                <strong>Focused intelligence with accountable review and delivery</strong>
               </div>
               <p>
-                Sentinel stays deliberately narrow so clients get a signal they can
-                trust, share, and act on without wading through platform noise.
+                Sentinel is easier to trust when buyers can see that it is built for
+                a small number of serious workflows rather than broad platform volume.
               </p>
             </div>
             <div className="page-hero-brief-grid">
@@ -56,7 +64,7 @@ export default function AboutPage() {
             </div>
           </div>
         }
-        title="A narrower intelligence model built for real operating teams"
+        title="A narrower operator-led model built to earn trust quickly"
       />
 
       <section className="section section-evidence home-proof-section about-proof-section">
@@ -73,12 +81,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight sentinel-subpage-emphasis about-value-section">
+      <section className="section page-section-tight sentinel-subpage-emphasis about-operator-section">
         <div className="section-inner">
           <SectionHeading
-            description="Sentinel is designed to create confidence quickly: narrow category focus, disciplined interpretation, and output that fits existing client workflows."
+            description="This page should help buyers understand who is really behind the work, how delivery is handled, and why the business remains focused instead of trying to be generic."
+            eyebrow="Operator credibility"
+            title="What makes the operating model believable"
+          />
+          <div className="page-panel-grid page-panel-grid-three">
+            {aboutOperatorCards.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tint page-section-tight about-value-section">
+        <div className="section-inner">
+          <SectionHeading
+            description="Sentinel creates confidence by staying narrow where it needs to be narrow and explicit about how adjacent category expansion actually happens."
             eyebrow="Why it works"
-            title="The value comes from focus, discipline, and delivery"
+            title="The value comes from focus, discipline, and workflow-ready delivery"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {aboutDifferentiators.map((item) => (
@@ -92,11 +119,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight about-operating-section">
+      <section className="section page-section-tight about-operating-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The business is easier to understand when the operating model, the client workflow, and the future growth path are shown side by side."
+              description="The business reads more credibly when the site shows the product posture, client workflow, and service boundaries side by side."
               eyebrow="Operating model"
               title="How Sentinel is built today"
             />
@@ -113,35 +140,6 @@ export default function AboutPage() {
             {aboutExpertise.map((item) => (
               <article className="page-panel-card page-panel-card-accent" key={item.title}>
                 <span className="small-label">{item.type}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section page-section-tight about-growth-section">
-        <div className="section-inner page-story-grid">
-          <div>
-            <SectionHeading
-              description="Sentinel can extend carefully from the current reporting model without diluting the core offer that makes the service credible today."
-              eyebrow="Where it can grow"
-              title="A careful path to deeper intelligence"
-            />
-            <div className="page-hero-tag-row page-hero-tag-row-light">
-              {dataSources.map((source) => (
-                <span className="page-hero-tag page-hero-tag-light" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="page-panel-grid">
-            {roadmapSignals.map((item) => (
-              <article className="page-panel-card" key={item.title}>
-                <span className="small-label">Next move</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
