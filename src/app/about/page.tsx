@@ -32,7 +32,7 @@ export default function AboutPage() {
         }
         description="Sentinel stays narrow on purpose: focused coverage, named sources, accountable review, and delivery built for serious buying teams."
         eyebrow="About Sentinel"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

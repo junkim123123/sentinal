@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         }
         description="This privacy page outlines how website inquiry information is used today and provides a clear legal destination until approved policy language is finalized."
         eyebrow="Privacy"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark">
             <div className="page-hero-brief-head">

@@ -55,7 +55,7 @@ export default function ProductPage() {
         }
         description="Sentinel centers on recurring molecule monitoring, company drill-down, landed-value context, and output that already feels client-ready."
         eyebrow="Product"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero product-hero-artifact">
             <BriefArtifactPreview />

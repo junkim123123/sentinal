@@ -38,7 +38,7 @@ export default function TermsPage() {
         }
         description="This terms page explains how public website information relates to Sentinel's commercial offer until final contract language is published."
         eyebrow="Terms"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark">
             <div className="page-hero-brief-head">

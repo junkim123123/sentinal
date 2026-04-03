@@ -78,7 +78,7 @@ export default function ReportsPage() {
         }
         description="This report preview is arranged like a real deliverable. Even in preview mode it shows how a reviewed monthly pack can move from executive summary into row-level detail, export, and circulation."
         eyebrow="Reports preview"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

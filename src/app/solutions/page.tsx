@@ -48,7 +48,7 @@ export default function SolutionsPage() {
         }
         description="Sentinel supports procurement, compliance, and strategy teams differently because the same signal has to arrive as a different output and next action."
         eyebrow="Solutions"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

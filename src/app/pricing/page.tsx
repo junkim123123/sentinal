@@ -55,7 +55,7 @@ export default function PricingPage() {
         }
         description="Sentinel does not post a rate card because scope changes with molecule breadth, cadence, investigation depth, and stakeholder surface."
         eyebrow="Engagement models"
-        theme="dark"
+        theme="light"
         visual={
           <AmbientSignalField
             description="The relationship grows as coverage, review cadence, depth, and stakeholder count expand."

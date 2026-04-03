@@ -88,7 +88,7 @@ export default function DashboardPage() {
         }
         description="This preview is intentionally open and presentation-first. The goal is to let buyers understand the dashboard structure, signal hierarchy, and drill-down logic immediately, even before live interactivity is added."
         eyebrow="Dashboard preview"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

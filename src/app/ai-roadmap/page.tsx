@@ -35,7 +35,7 @@ export default function AiRoadmapPage() {
         }
         description="AI belongs on the site as a later acceleration layer. Sentinel leads with current reviewed monitoring, delivery clarity, and human accountability first, then explains where AI could responsibly help."
         eyebrow="AI roadmap"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

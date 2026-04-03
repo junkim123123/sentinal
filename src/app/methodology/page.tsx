@@ -57,7 +57,7 @@ export default function MethodologyPage() {
         }
         description="Sentinel combines named sources, molecule-level normalization, human review, and client-ready delivery into a method buyers can inspect."
         eyebrow="Methodology"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

@@ -38,7 +38,7 @@ export default function SupportPage() {
         }
         description="Support is part of the relationship, not an afterthought. Buyers should be able to see response ownership, priority rules, and escalation paths before they submit."
         eyebrow="Support"
-        theme="dark"
+        theme="light"
         visual={
           <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
             <div className="page-hero-brief-head">

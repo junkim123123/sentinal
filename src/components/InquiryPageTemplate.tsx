@@ -81,7 +81,7 @@ export function InquiryPageTemplate({
         actions={actions}
         description={description}
         eyebrow={eyebrow}
-        theme="dark"
+        theme="light"
         visualMode="intake"
         visual={
           <div className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant}`}>
