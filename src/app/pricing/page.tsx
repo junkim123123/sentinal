@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 
-import { AmbientSignalField } from "@/components/AmbientSignalField";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { pricingBuckets, pricingNotes } from "@/content/site";
+import {
+  ctaDirectory,
+  pricingBuckets,
+  pricingNotes,
+  pricingScopeDrivers,
+} from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Engagement Models",
@@ -15,52 +19,59 @@ export const metadata: Metadata = {
 const pricingProcess = [
   {
     step: "01",
-    title: "Start with the reporting decision",
-    text: "Scope begins with the question the team needs answered, not a pre-fixed software package.",
+    title: "Start with the category and decision",
+    text: "Scope begins with the category surface, timing, and the decision the team is making.",
   },
   {
     step: "02",
-    title: "Shape coverage and delivery around the workflow",
-    text: "Molecule scope, cadence, custom work, and output format determine the right commercial level.",
+    title: "Set cadence and depth",
+    text: "Recurring monitoring, escalation speed, and investigation depth change the workload quickly.",
   },
   {
     step: "03",
-    title: "Turn the right bucket into a scoped proposal",
-    text: "The buckets clarify the buying conversation before detailed proposal work begins.",
+    title: "Turn that shape into a proposal",
+    text: "Sentinel uses the relationship models to frame scope before writing a proposal.",
   },
-];
+] as const;
 
 export default function PricingPage() {
-  const engagementSignals = pricingBuckets.map((bucket) => ({
-    label: bucket.name,
-    title: bucket.fit,
-    text: bucket.description,
-  }));
-
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/consultation">Discuss engagement fit</LinkButton>}
-        description="Sentinel scopes work around monitoring depth, investigation pressure, and stakeholder complexity rather than a public SaaS rate card."
-        eyebrow="Engagement models"
-        theme="dark"
-        visual={
-          <AmbientSignalField
-            description="The relationship expands as cadence, investigative depth, and internal stakeholder surface expand."
-            items={engagementSignals}
-            label="Scope architecture"
-            title="Three engagement models explain how Sentinel can sit inside the work."
-          />
+        actions={
+          <LinkButton href={ctaDirectory.contact.href}>{ctaDirectory.contact.label}</LinkButton>
         }
-        title="Three engagement models that make scope easier to understand"
+        description="Sentinel does not post a rate card because scope changes with molecule breadth, cadence, investigation depth, and stakeholder surface."
+        eyebrow="Engagement models"
+        variant="method"
+        title="Scope before price"
       />
 
-      <section className="section page-section-tight sentinel-subpage-emphasis engagement-models-section">
+      <section className="section section-evidence home-proof-section subpage-shorthead">
         <div className="section-inner">
           <SectionHeading
-            description="This page is meant to clarify operating fit, not publish public sticker prices."
+            eyebrow="Scope drivers"
+            title="What usually expands scope"
+            description="Buyers should be able to explain proposal size before the pricing conversation starts."
+          />
+          <div className="page-panel-grid page-panel-grid-four">
+            {pricingScopeDrivers.map((item) => (
+              <article className="page-panel-card" key={item.title}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section page-section-tight sentinel-subpage-emphasis subpage-shorthead engagement-models-section">
+        <div className="section-inner">
+          <SectionHeading
+            description="These models clarify relationship shape, not a SaaS-style pricing table."
             eyebrow="Relationship models"
-            title="How Sentinel scopes recurring and custom work"
+            title="How Sentinel structures the work"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {pricingBuckets.map((bucket) => (
@@ -79,13 +90,13 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight engagement-notes-section">
+      <section className="section section-tint page-section-tight subpage-shorthead engagement-notes-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="These notes do the trust-building work by showing how Sentinel scopes responsibly."
+              description="The point is to replace price-card confusion with clearer scope language."
               eyebrow="Scope notes"
-              title="What the engagement models are meant to clarify"
+              title="What this page should answer"
             />
             <div className="simple-text-list">
               {pricingNotes.map((note) => (
@@ -98,9 +109,9 @@ export default function PricingPage() {
 
           <div>
             <SectionHeading
-              description="The buying conversation is usually more straightforward when the process is visible."
+              description="A visible path lowers uncertainty before the first commercial call."
               eyebrow="How buying starts"
-              title="A short path from first question to scoped proposal"
+              title="How scope gets set"
             />
             <div className="compact-step-grid">
               {pricingProcess.map((item) => (

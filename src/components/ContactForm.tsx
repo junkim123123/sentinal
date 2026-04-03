@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
+import type { InquiryIntentKey, SupportingField } from "@/content/site";
+
 type FormState = {
   error: string | null;
 };
@@ -12,14 +14,24 @@ const initialState: FormState = {
 };
 
 type ContactFormProps = {
+  intent?: InquiryIntentKey;
   messagePlaceholder?: string;
   submitLabel?: string;
+  introTitle?: string;
+  introBody?: string;
+  successHref?: string;
+  supportingFields?: SupportingField[];
   variant?: "default" | "private";
 };
 
 export function ContactForm({
+  intent = "contact",
   messagePlaceholder = "Tell us the molecules, market question, or reporting need you want to discuss.",
   submitLabel = "Submit request",
+  introTitle,
+  introBody,
+  successHref = "/thanks?intent=contact",
+  supportingFields = [],
   variant = "default",
 }: ContactFormProps) {
   const router = useRouter();
@@ -33,11 +45,15 @@ export function ContactForm({
       const response = await fetch("/api/contact", {
         method: "POST",
         body: JSON.stringify({
+          intent,
           name: formData.get("name"),
           email: formData.get("email"),
           phone: formData.get("phone"),
           company: formData.get("company"),
           message: formData.get("message"),
+          clientStatus: formData.get("clientStatus"),
+          requestCategory: formData.get("requestCategory"),
+          expectedUse: formData.get("expectedUse"),
         }),
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +72,7 @@ export function ContactForm({
       }
 
       startTransition(() => {
-        router.push("/thanks");
+        router.push(successHref);
       });
     } catch {
       setState({
@@ -76,22 +92,18 @@ export function ContactForm({
         <span className="small-label">
           {variant === "private" ? "Private intake" : "Request details"}
         </span>
-        <h2>
-          {variant === "private"
-            ? "Prepare a private request for Sentinel review."
-            : "Give Sentinel the essentials."}
-        </h2>
+        <h2>{introTitle ?? (variant === "private" ? "Prepare a private request for Sentinel review." : "Give Sentinel the essentials.")}</h2>
         <p>
-          {variant === "private"
-            ? "A concise brief helps the team route advisory, briefing, or support review with more precision."
-            : "The more specific the request, the faster the team can route it well."}
+          {introBody ??
+            (variant === "private"
+              ? "A concise brief helps Sentinel route the request quickly."
+              : "The more specific the request, the faster the team can route it well.")}
         </p>
       </div>
       {variant === "private" ? (
         <div className="form-private-strip">
-          <span>Direct team review</span>
-          <span>Curated response</span>
-          <span>Secure follow-up</span>
+          <span>Direct review</span>
+          <span>Named follow-up</span>
         </div>
       ) : null}
       <div className="field-grid">
@@ -114,6 +126,27 @@ export function ContactForm({
           <input autoComplete="organization" name="company" type="text" />
         </label>
       </div>
+      {supportingFields.length > 0 ? (
+        <div
+          className={`field-grid supporting-field-grid ${
+            supportingFields.length === 1 ? "supporting-field-grid-single" : ""
+          }`.trim()}
+        >
+          {supportingFields.map((field) => (
+            <label className="field" key={field.name}>
+              <span>{field.label}</span>
+              <select defaultValue="" name={field.name}>
+                <option value="">Select one</option>
+                {field.options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      ) : null}
       <label className="field">
         <span>What should Sentinel review?</span>
         <textarea
@@ -125,7 +158,7 @@ export function ContactForm({
       </label>
       <p className="form-note">
         {variant === "private"
-          ? "Each request is reviewed directly by Sentinel rather than routed through a public queue."
+          ? "Each request is reviewed directly by Sentinel."
           : "A Sentinel team member reviews each request directly."}
       </p>
       <div aria-live="polite" className="form-status">

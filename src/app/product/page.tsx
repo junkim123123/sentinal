@@ -4,153 +4,117 @@ import { BriefArtifactPreview } from "@/components/BriefArtifactPreview";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import {
-  integrationPoints,
-  productClusters,
-  productHeroCapabilities,
-  productInclusions,
-  workflowStages,
-} from "@/content/site";
+import { ctaDirectory, integrationPoints, productInclusions } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Product",
   description:
-    "Explore Sentinel Imports product coverage, inclusions, workflows, integrations, and sample output visuals.",
+    "Explore Sentinel Imports product coverage, grouped molecule views, pricing models, deliverable structure, and direct demo or contact paths.",
 };
 
-const productSignals = [
+const proofRoutes = [
   {
-    label: "Coverage design",
-    value: "Watchlist-first",
-    detail: "Configured around the molecules your team actually follows.",
+    label: "Dashboard Preview",
+    title: "Move through the working surface",
+    description:
+      "See the dashboard as a product surface with active filters, drill-down, and hierarchy.",
+    href: "/dashboard",
+    action: "View dashboard",
   },
   {
-    label: "Decision support",
-    value: "Signal + context",
-    detail: "Supplier movement, landed value, and change interpretation in one read.",
+    label: "Reports Preview",
+    title: "See how the signal leaves the screen",
+    description:
+      "Review the report format buyers would circulate after the monthly read and escalation pass.",
+    href: "/reports",
+    action: "View reports",
   },
-  {
-    label: "Delivery model",
-    value: "Analyst-ready",
-    detail: "Excel, Tableau, and secure delivery fit for current workflows.",
-  },
-];
+] as const;
 
 export default function ProductPage() {
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/demo">Request private briefing</LinkButton>}
-        description="Sentinel is built around recurring molecule monitoring, landed-value context, and delivery formats that fit real operating teams."
-        eyebrow="Product"
-        theme="dark"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero product-hero-artifact">
-            <BriefArtifactPreview />
-            <div className="page-hero-tag-row">
-              {productHeroCapabilities.map((item) => (
-                <span className="page-hero-tag" key={item}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+        variant="proof"
+        actions={
+          <>
+            <LinkButton href={ctaDirectory.demo.href}>{ctaDirectory.demo.label}</LinkButton>
+            <LinkButton href={ctaDirectory.contact.href} variant="ghost">
+              {ctaDirectory.contact.label}
+            </LinkButton>
+          </>
         }
-        title="Import intelligence built to fit how teams already work"
+        description="Sentinel turns recurring monitoring into files buyers can circulate, question, and act on."
+        eyebrow="Product"
+        title="Monitoring built like a deliverable"
       />
 
-      <section className="section section-evidence home-proof-section">
+      <section className="section page-section-tight">
         <div className="section-inner">
-          <div className="page-signal-band">
-            {productSignals.map((item) => (
-              <article className="page-signal-card" key={item.label}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-                <p>{item.detail}</p>
-              </article>
-            ))}
+          <div className="simple-product-artifact">
+            <BriefArtifactPreview />
           </div>
         </div>
       </section>
 
-      <section className="section page-section-tight product-core-section">
+      <section className="section page-section-tight subpage-shorthead product-core-section">
         <div className="section-inner product-core-shell">
           <SectionHeading
-            description="The product works best when the page explains the operating model, the included intelligence, and the delivery fit in one pass."
-            eyebrow="Core design"
-            title="What the Sentinel product is structured to deliver"
+            description="Keep the product story anchored in what arrives, what gets reviewed, and where it fits in the workflow."
+            eyebrow="Core product"
+            title="What arrives each cycle"
           />
           <div className="page-panel-grid page-panel-grid-two">
-            {productClusters.map((item) => (
-              <article className="page-panel-card" key={item.title}>
-                <span className="small-label">Capability cluster</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul className="detail-list page-checklist">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tint page-section-tight">
-        <div className="section-inner page-story-grid">
-          <div>
-            <SectionHeading
-              description="A Sentinel scope is clearer when included output and workflow fit are shown together."
-              eyebrow="Scope and fit"
-              title="What teams receive and how the work lands"
-            />
-            <article className="page-panel-card page-panel-card-accent">
-              <span className="small-label">Standard inclusions</span>
-              <h3>What a typical product scope includes</h3>
+            <article className="page-panel-card">
+              <span className="small-label">Included intelligence</span>
+              <h3>Reviewed company, supplier, and molecule detail</h3>
+              <p>
+                Sentinel keeps the scope narrow enough to act on by centering company
+                drill-down, supplier movement, landed-value context, and files that move
+                cleanly across teams.
+              </p>
               <ul className="detail-list page-checklist">
                 {productInclusions.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </article>
-          </div>
 
-          <div className="stack-panel">
-            <div className="stack-panel-top">
-              <div>
-                <span className="small-label">Workflow fit</span>
-                <h3>Designed for teams reviewing the brief together</h3>
-              </div>
+            <article className="page-panel-card page-panel-card-accent">
+              <span className="small-label">Workflow fit</span>
+              <h3>Built for working teams</h3>
               <p>
-                Sentinel works best when delivery is easy to review, annotate,
-                share, and escalate.
+                Buyers should be able to see analyst review, manager circulation, and
+                executive briefing without imagining a heavy rollout.
               </p>
-            </div>
-            <div className="stack-panel-grid">
-              {integrationPoints.map((item) => (
-                <div className="stack-panel-row" key={item}>
-                  {item}
-                </div>
-              ))}
-            </div>
+              <ul className="detail-list page-checklist">
+                {integrationPoints.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
         </div>
       </section>
 
-      <section className="section page-section-tight">
+      <section className="section page-section-tight sentinel-subpage-emphasis subpage-shorthead">
         <div className="section-inner">
           <SectionHeading
-            description="The workflow can stay short as long as it is obvious how raw records turn into something the business can use."
-            eyebrow="Source to action"
-            title="How the product moves from records to decisions"
+            description="Dashboard and report previews stay live here as product proof instead of competing as primary site destinations."
+            eyebrow="Proof paths"
+            title="Use Product as the proof hub"
           />
-          <div className="page-panel-grid page-panel-grid-four">
-            {workflowStages.map((item) => (
-              <article className="page-panel-card" key={item.step}>
-                <span className="small-label">{item.step}</span>
+          <div className="page-panel-grid page-panel-grid-two product-proof-links">
+            {proofRoutes.map((item) => (
+              <article className="page-panel-card product-proof-link" key={item.href}>
+                <span className="small-label">{item.label}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
+                <div className="button-row page-button-row">
+                  <LinkButton href={item.href} variant="secondary">
+                    {item.action}
+                  </LinkButton>
+                </div>
               </article>
             ))}
           </div>

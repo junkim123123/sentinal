@@ -1,8 +1,14 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
-import type { OfferPath } from "@/content/site";
+import type {
+  ComparisonLink,
+  InquiryIntentKey,
+  OfferPath,
+  SupportingField,
+} from "@/content/site";
 
 type InquiryPageTemplateProps = {
   eyebrow: string;
@@ -24,7 +30,20 @@ type InquiryPageTemplateProps = {
   assuranceLabel: string;
   assuranceTitle: string;
   assuranceText: string;
+  intentKey: InquiryIntentKey;
+  introTitle: string;
+  introBody: string;
+  bestFor: string[];
+  notFor: string[];
+  nextStep: string;
+  responseWindow: string;
+  heroVariant: "contact" | "demo" | "consultation" | "support";
+  comparisonLinks: ComparisonLink[];
+  supportingFields?: SupportingField[];
   actions?: ReactNode;
+  layoutVariant?: "institutional";
+  railDensity?: "compact" | "regular";
+  layoutMode?: "full" | "simple";
 };
 
 export function InquiryPageTemplate({
@@ -47,96 +66,105 @@ export function InquiryPageTemplate({
   assuranceLabel,
   assuranceTitle,
   assuranceText,
+  intentKey,
+  introTitle,
+  introBody,
+  bestFor,
+  notFor,
+  nextStep,
+  responseWindow,
+  heroVariant,
+  comparisonLinks,
+  supportingFields,
   actions,
+  layoutVariant = "institutional",
+  railDensity = "compact",
+  layoutMode = "full",
 }: InquiryPageTemplateProps) {
   return (
     <>
       <PageHero
+        variant="contact"
         actions={actions}
         description={description}
         eyebrow={eyebrow}
-        theme="dark"
-        visualMode="intake"
-        visual={
-          <div className="intake-hero-visual private-intake-hero">
-            <div className="intake-hero-brief private-intake-brief">
-              <article className="intake-hero-card private-intake-card private-intake-card-lead">
+        visual={layoutMode === "simple" ? undefined : (
+          <div
+            className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant} inquiry-hero-layout-${layoutVariant}`}
+          >
+            <div className="inquiry-hero-brief">
+              <article className="intake-hero-card private-intake-card private-intake-card-lead inquiry-hero-card inquiry-hero-card-primary">
                 <span className="small-label">{heroLabel}</span>
                 <strong>{heroHighlight}</strong>
-                <p className="private-intake-card-copy">
-                  {description}
-                </p>
+                <p className="private-intake-card-copy">{responseWindow}</p>
+              </article>
+              <article className="intake-hero-card private-intake-card inquiry-hero-card">
+                <span className="small-label">Use this page for</span>
+                <strong>{bestFor[0]}</strong>
                 <ul className="page-hero-mini-list">
-                  {expectationItems.slice(0, 2).map((item) => (
+                  {bestFor.slice(1, 2).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </article>
-              <article className="intake-hero-card private-intake-card">
-                <span className="small-label">{pathLabel}</span>
-                <strong>{pathTitle}</strong>
-                <div className="intake-chip-row">
-                  {paths.map((item) => (
-                    <span className="intake-chip" key={item.title}>
-                      {item.title}
-                    </span>
+              <article className="intake-hero-card private-intake-card private-intake-card-accent inquiry-hero-card inquiry-hero-card-accent">
+                <span className="small-label">Need another route?</span>
+                <strong>Jump to the better fit</strong>
+                <div className="inquiry-hero-link-list">
+                  {comparisonLinks.map((item) => (
+                    <Link className="inquiry-hero-link" href={item.href} key={item.href}>
+                      {item.label}
+                    </Link>
                   ))}
-                </div>
-              </article>
-              <article className="intake-hero-card private-intake-card private-intake-card-accent">
-                <span className="small-label">{assuranceLabel}</span>
-                <strong>{assuranceTitle}</strong>
-                <p className="private-intake-card-copy">{assuranceText}</p>
-                <div className="private-intake-service-strip">
-                  <span>Direct review</span>
-                  <span>Curated response</span>
-                  <span>Secure follow-up</span>
                 </div>
               </article>
             </div>
           </div>
-        }
+        )}
         title={title}
       />
 
       <section className="section sentinel-inquiry-section">
         <div className="section-inner">
-          <div className="contact-summary-band private-intake-summary sentinel-inquiry-track">
-            {expectationItems.map((item, index) => (
-              <article className="contact-summary-card" key={item}>
-                <span>{`0${index + 1}`}</span>
-                <p>{item}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout">
-            <div>
+          <div
+            className={`contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout sentinel-inquiry-layout-${layoutVariant} sentinel-inquiry-layout-mode-${layoutMode}`}
+          >
+            <div className="sentinel-inquiry-form-column">
+              {layoutMode === "full" ? (
+                <article className="page-panel-card sentinel-inquiry-callout">
+                  <span className="small-label">Response window</span>
+                  <h3>{responseWindow}</h3>
+                  <p>{nextStep}</p>
+                </article>
+              ) : null}
               <ContactForm
+                intent={intentKey}
+                introBody={introBody}
+                introTitle={introTitle}
                 messagePlaceholder={formPlaceholder}
+                successHref={`/thanks?intent=${intentKey}`}
                 submitLabel={submitLabel}
+                supportingFields={supportingFields}
                 variant="private"
               />
             </div>
-            <aside className="contact-sidebar private-intake-sidebar">
-              <article className="source-panel inquiry-info-panel private-intake-panel sentinel-inquiry-panel">
-                <div className="private-intake-panel-intro">
-                  <span className="small-label">{assuranceLabel}</span>
-                  <h2>{assuranceTitle}</h2>
-                  <p>{assuranceText}</p>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">{expectationLabel}</span>
-                  <h2>{expectationTitle}</h2>
-                  <ul className="detail-list">
-                    {expectationItems.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="inquiry-block">
+            <aside
+              className={`contact-sidebar private-intake-sidebar sentinel-inquiry-sidegrid sentinel-inquiry-sidegrid-${railDensity}`}
+            >
+              <article className="page-panel-card sentinel-inquiry-sidecard">
+                <span className="small-label">{expectationLabel}</span>
+                <h3>{expectationTitle}</h3>
+                <ul className="detail-list page-checklist">
+                  {expectationItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+
+              {layoutMode === "full" ? (
+                <article className="page-panel-card sentinel-inquiry-sidecard">
                   <span className="small-label">{promptLabel}</span>
-                  <h2>{promptTitle}</h2>
+                  <h3>{promptTitle}</h3>
                   <div className="simple-text-list simple-text-list-tight">
                     {prompts.map((prompt) => (
                       <div className="simple-text-row" key={prompt}>
@@ -144,23 +172,39 @@ export function InquiryPageTemplate({
                       </div>
                     ))}
                   </div>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">{pathLabel}</span>
-                  <h2>{pathTitle}</h2>
-                  <div className="simple-text-list simple-text-list-tight">
-                    {paths.map((item) => (
-                      <div className="simple-text-row" key={item.title}>
-                        <strong>{item.title}</strong>
-                        <p>{item.description}</p>
-                      </div>
-                    ))}
+                  <div className="inquiry-chip-stack">
+                    <span className="small-label">{pathLabel}</span>
+                    <p className="inquiry-chip-stack-copy">{pathTitle}</p>
+                    <div className="intake-chip-row">
+                      {paths.map((item) => (
+                        <span className="intake-chip" key={item.title}>
+                          {item.title}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                </article>
+              ) : null}
+
+              <article className="page-panel-card sentinel-inquiry-sidecard sentinel-inquiry-sidecard-accent">
+                <span className="small-label">{layoutMode === "simple" ? "Best next step" : assuranceLabel}</span>
+                <h3>{layoutMode === "simple" ? responseWindow : assuranceTitle}</h3>
+                <p>{layoutMode === "simple" ? nextStep : assuranceText}</p>
+                <div className="inquiry-choice-list">
+                  {comparisonLinks.map((item) => (
+                    <Link className="inquiry-choice-link" href={item.href} key={item.href}>
+                      <strong>{item.label}</strong>
+                      <span>{item.description}</span>
+                    </Link>
+                  ))}
                 </div>
-                <div className="private-intake-disclosure">
-                  <span>Restricted intake</span>
-                  <span>Named follow-up</span>
-                  <span>Private service fit</span>
+                <div className="sentinel-inquiry-notfor">
+                  <span className="small-label">Use another page when</span>
+                  <ul className="detail-list page-checklist">
+                    {notFor.slice(0, 2).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             </aside>

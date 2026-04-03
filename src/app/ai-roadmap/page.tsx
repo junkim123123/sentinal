@@ -6,57 +6,51 @@ import { SectionHeading } from "@/components/SectionHeading";
 import {
   aiPilotSequence,
   aiPrinciples,
-  openAiProductWorkflowReference,
-  promptWorkflows,
+  aiRoadmapFrames,
   validatedAiCapabilities,
 } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "AI Roadmap",
   description:
-    "See the four AI capability areas Sentinel can credibly pursue, each framed with market precedent and a staged rollout approach.",
+    "See the AI capability areas Sentinel can credibly pursue after the core product and trust model are established.",
 };
 
 export default function AiRoadmapPage() {
   return (
     <>
       <PageHero
-        actions={<LinkButton href="/consultation">Discuss the roadmap</LinkButton>}
-        description="AI belongs on the site as a validation-backed roadmap, not as a broad product promise."
-        eyebrow="AI roadmap"
-        theme="dark"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Roadmap posture</span>
-                <strong>Measured, validated, and human-reviewed by design</strong>
-              </div>
-              <p>
-                The roadmap becomes more credible when it reads like a sequence of
-                grounded bets rather than a generic AI feature list.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {validatedAiCapabilities.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.precedent}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.summary}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+        actions={
+          <LinkButton href="/product" variant="secondary">
+            Review current product
+          </LinkButton>
         }
-        title="A measured path for Sentinel AI"
+        description="Sentinel leads with reviewed monitoring and working files first. AI only earns space after the core trust model already feels complete."
+        eyebrow="AI roadmap"
+        variant="method"
+        title="Keep AI behind the core product"
       />
+
+      <section className="section section-evidence home-proof-section">
+        <div className="section-inner">
+          <div className="page-panel-grid page-panel-grid-three">
+            {aiRoadmapFrames.map((item) => (
+              <article className="page-panel-card" key={item.label}>
+                <span className="small-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section page-section-tight">
         <div className="section-inner">
           <SectionHeading
-            description="Each capability area should connect precedent, buyer value, and Sentinel's practical use case in the same card."
+            description="Each capability area should connect precedent, buyer value, and a practical Sentinel use case while staying downstream of the current product."
             eyebrow="Validated capabilities"
-            title="Where AI could create the most leverage"
+            title="Where AI could help later"
           />
           <div className="page-panel-grid page-panel-grid-four">
             {validatedAiCapabilities.map((item) => (
@@ -104,45 +98,6 @@ export default function AiRoadmapPage() {
                 <span className="small-label">{`Phase 0${index + 1}`}</span>
                 <h3>{item.split(":")[0]}</h3>
                 <p>{item.split(":")[1]?.trim() ?? item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section page-section-tight">
-        <div className="section-inner page-story-grid">
-          <div>
-            <SectionHeading
-              description="The workflow reference is useful because it turns AI from a vague product claim into repeatable operating patterns."
-              eyebrow="Prompt-pack reference"
-              title="How Sentinel can use the product workflow pattern internally"
-            />
-            <article className="page-panel-card page-panel-card-accent">
-              <span className="small-label">{openAiProductWorkflowReference.source}</span>
-              <h3>{openAiProductWorkflowReference.title}</h3>
-              <p>
-                Published {openAiProductWorkflowReference.published}. Updated{" "}
-                {openAiProductWorkflowReference.updated}.
-              </p>
-              <div className="inline-cta">
-                <LinkButton
-                  external
-                  href={openAiProductWorkflowReference.href}
-                  variant="secondary"
-                >
-                  Open OpenAI Academy reference
-                </LinkButton>
-              </div>
-            </article>
-          </div>
-
-          <div className="page-panel-grid page-panel-grid-two">
-            {promptWorkflows.map((item) => (
-              <article className="page-panel-card" key={item.category}>
-                <span className="small-label">{item.category}</span>
-                <h3>{item.description}</h3>
-                <p>{item.sentinelUse}</p>
               </article>
             ))}
           </div>

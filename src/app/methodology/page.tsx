@@ -3,82 +3,52 @@ import type { Metadata } from "next";
 import { LinkButton } from "@/components/LinkButton";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { dataSources, methodologySteps, moleculeExamples, reportHighlights } from "@/content/site";
+import { ctaDirectory, methodologyGovernanceCards, reportHighlights } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "Explore Sentinel Imports data sources, workflow, and delivery approach for agricultural chemical import intelligence.",
+    "Explore Sentinel Imports data sources, review ownership, and delivery approach for import intelligence.",
 };
 
 const methodSignals = [
   {
-    label: "Source stack",
-    value: "7 named inputs",
-    detail: "Trade, customs, regulatory, and crop-data systems inform the current method.",
+    label: "Sources",
+    value: "Named trade and regulatory inputs",
+    detail: "The method starts with traceable inputs rather than a generic feed.",
   },
   {
-    label: "Normalization",
-    value: "Molecule-level",
-    detail: "Records are translated into views built for category-specific monitoring.",
+    label: "Review",
+    value: "Human checks stay explicit",
+    detail: "Interpretation points remain visible from cleanup to escalation framing.",
   },
   {
     label: "Delivery",
-    value: "Monthly brief",
-    detail: "The output is designed to support review, sharing, and escalation.",
+    value: "Monthly brief plus follow-through",
+    detail: "The output is built to move from review into sharing and action.",
   },
-];
+] as const;
 
 export default function MethodologyPage() {
   return (
     <>
       <PageHero
+        variant="method"
         actions={
-          <LinkButton href="/product" variant="secondary">
-            Review the product
+          <LinkButton href={ctaDirectory.contact.href} variant="secondary">
+            {ctaDirectory.contact.label}
           </LinkButton>
         }
-        description="Sentinel combines named data sources, molecule-level normalization, and client-ready delivery to make trade records more usable."
+        description="Sentinel keeps source inputs, review ownership, and delivery logic visible enough for buyers to inspect."
         eyebrow="Methodology"
-        theme="dark"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark page-hero-brief-hero">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Source to brief</span>
-                <strong>A short workflow with named inputs and visible discipline</strong>
-              </div>
-              <p>
-                The methodology needs to build trust quickly by showing how raw
-                records become a usable monthly brief.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {methodologySteps.map((item) => (
-                <article className="page-hero-stat" key={item.step}>
-                  <span>{item.step}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="page-hero-tag-row">
-              {dataSources.slice(0, 5).map((source) => (
-                <span className="page-hero-tag" key={source}>
-                  {source}
-                </span>
-              ))}
-            </div>
-          </div>
-        }
-        title="A disciplined path from source records to usable reporting"
+        title="A method buyers can inspect"
       />
 
       <section className="section section-evidence home-proof-section methodology-proof-section">
         <div className="section-inner">
-          <div className="page-signal-band">
+          <div className="method-strip">
             {methodSignals.map((item) => (
-              <article className="page-signal-card" key={item.label}>
+              <article className="method-strip-card" key={item.label}>
                 <span>{item.label}</span>
                 <strong>{item.value}</strong>
                 <p>{item.detail}</p>
@@ -88,66 +58,39 @@ export default function MethodologyPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight sentinel-subpage-emphasis methodology-process-section">
-        <div className="section-inner">
-          <SectionHeading
-            description="A method page should show the discipline clearly enough that buyers can understand both the input quality and the transformation logic."
-            eyebrow="How it works"
-            title="Three steps from records to working output"
-          />
-          <div className="page-panel-grid page-panel-grid-three">
-            {methodologySteps.map((item) => (
-              <article className="page-panel-card" key={item.step}>
-                <span className="small-label">{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tint page-section-tight methodology-detail-section">
+      <section className="section section-tint page-section-tight subpage-shorthead methodology-governance-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The reporting details matter because they explain what teams can actually expect from the output."
-              eyebrow="Report detail"
-              title="What Sentinel reporting is designed to surface"
+              description="Method buyers usually want to know where judgment enters, who owns escalations, and how caution is communicated."
+              eyebrow="Review control"
+              title="Where review happens"
             />
-            <article className="page-panel-card page-panel-card-accent">
+            <div className="methodology-note-list">
+              {methodologyGovernanceCards.map((item) => (
+                <article className="page-panel-card page-panel-card-accent" key={item.title}>
+                  <span className="small-label">{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <SectionHeading
+              description="The site should show what teams actually receive without restarting the page with another grid."
+              eyebrow="Delivery detail"
+              title="What the brief shows"
+            />
+            <article className="page-panel-card">
               <span className="small-label">Included context</span>
-              <h3>What teams can review in the monthly brief</h3>
+              <h3>What teams review each cycle</h3>
               <ul className="detail-list page-checklist">
                 {reportHighlights.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
-          </div>
-
-          <div className="page-panel-grid">
-            <article className="page-panel-card">
-              <span className="small-label">Named inputs</span>
-              <h3>Current source stack</h3>
-              <div className="page-hero-tag-row page-hero-tag-row-light">
-                {dataSources.map((source) => (
-                  <span className="page-hero-tag page-hero-tag-light" key={source}>
-                    {source}
-                  </span>
-                ))}
-              </div>
-            </article>
-            <article className="page-panel-card">
-              <span className="small-label">Representative coverage</span>
-              <h3>Molecule examples in the current lens</h3>
-              <div className="page-hero-tag-row page-hero-tag-row-light">
-                {moleculeExamples.map((molecule) => (
-                  <span className="page-hero-tag page-hero-tag-light" key={molecule}>
-                    {molecule}
-                  </span>
-                ))}
-              </div>
             </article>
           </div>
         </div>

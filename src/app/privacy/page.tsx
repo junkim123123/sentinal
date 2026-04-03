@@ -38,30 +38,7 @@ export default function PrivacyPage() {
         }
         description="This privacy page outlines how website inquiry information is used today and provides a clear legal destination until approved policy language is finalized."
         eyebrow="Privacy"
-        theme="dark"
-        visual={
-          <div className="page-hero-brief page-hero-brief-dark">
-            <div className="page-hero-brief-head">
-              <div>
-                <span className="small-label">Current policy posture</span>
-                <strong>Website form data is used to route and respond to requests</strong>
-              </div>
-              <p>
-                The structure is ready for approved legal language while still giving
-                visitors a clear explanation of current handling.
-              </p>
-            </div>
-            <div className="page-hero-brief-grid">
-              {privacyPoints.map((item) => (
-                <article className="page-hero-stat" key={item.title}>
-                  <span>{item.label}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        }
+        variant="method"
         title="Privacy information for website visitors and inquiry forms"
       />
 

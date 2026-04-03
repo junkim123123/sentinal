@@ -73,6 +73,56 @@ export type OfferPath = {
   description: string;
 };
 
+export type InquiryIntentKey =
+  | "contact"
+  | "demo"
+  | "consultation"
+  | "support-request";
+
+export type ComparisonLink = {
+  href: string;
+  label: string;
+  description: string;
+};
+
+export type SupportingField = {
+  name: "clientStatus" | "requestCategory" | "expectedUse";
+  label: string;
+  options: { label: string; value: string }[];
+};
+
+export type InquiryPageContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  heroLabel: string;
+  heroHighlight: string;
+  expectationLabel: string;
+  expectationTitle: string;
+  expectationItems: string[];
+  promptLabel: string;
+  promptTitle: string;
+  prompts: string[];
+  pathLabel: string;
+  pathTitle: string;
+  paths: OfferPath[];
+  formPlaceholder: string;
+  submitLabel: string;
+  assuranceLabel: string;
+  assuranceTitle: string;
+  assuranceText: string;
+  intentKey: InquiryIntentKey;
+  introTitle: string;
+  introBody: string;
+  bestFor: string[];
+  notFor: string[];
+  nextStep: string;
+  responseWindow: string;
+  heroVariant: "contact" | "demo" | "consultation" | "support";
+  comparisonLinks: ComparisonLink[];
+  supportingFields?: SupportingField[];
+};
+
 export type PricingBucket = {
   name: string;
   fit: string;
@@ -99,29 +149,32 @@ export type PromptWorkflow = {
 export const siteConfig = {
   name: "Sentinel Imports",
   shortName: "Sentinel",
+  logo: {
+    src: "/brand/sentinel-logo-white.png",
+    width: 735,
+    height: 584,
+  },
   url: "https://www.sentinelimports.online",
   description:
-    "Import intelligence for agricultural chemicals and intermediates entering the United States.",
+    "Molecule-level import intelligence for company, supplier, and shipment monitoring across strategic chemical categories entering the United States.",
   contactEndpoint: "/api/contact",
   loginHref: "https://SentinelImports.sharefile.com",
+  dashboardPreviewHref: "/dashboard",
+  reportsPreviewHref: "/reports",
   primaryCta: {
-    label: "Request a private briefing",
-    href: "/demo",
+    label: "Contact",
+    href: "/contact",
   },
   secondaryCta: {
-    label: "View methodology",
-    href: "/methodology",
+    label: "View Product",
+    href: "/product",
   },
 } as const;
 
 export const navItems: NavItem[] = [
   { label: "Product", href: "/product" },
-  { label: "Solutions", href: "/solutions" },
   { label: "Engagement", href: "/pricing" },
-  { label: "Methodology", href: "/methodology" },
-  { label: "Support", href: "/support" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Method", href: "/methodology" },
 ];
 
 export const proofPoints: ProofPoint[] = [
@@ -129,7 +182,7 @@ export const proofPoints: ProofPoint[] = [
     label: "Tracked coverage",
     value: "140+ molecules",
     detail:
-      "Current monitoring across agricultural chemicals and intermediates entering the U.S.",
+      "Current monitoring across agricultural chemicals plus adjacent strategic chemical lanes entering the U.S.",
   },
   {
     label: "Delivery cadence",
@@ -223,7 +276,7 @@ export const servicePillars: ServicePillar[] = [
 export const personaCards: PersonaCard[] = [
   {
     role: "Procurement teams",
-    title: "Benchmark suppliers before the next negotiation",
+    title: "Benchmark suppliers faster",
     challenge:
       "Raw shipment data is noisy and hard to translate into sourcing decisions.",
     payoff:
@@ -231,7 +284,7 @@ export const personaCards: PersonaCard[] = [
   },
   {
     role: "Trade compliance",
-    title: "Catch changes before they become surprises",
+    title: "Catch changes sooner",
     challenge:
       "Classification, shipment detail, and source validation often live in separate places.",
     payoff:
@@ -250,21 +303,21 @@ export const personaCards: PersonaCard[] = [
 export const methodologySteps: MethodStep[] = [
   {
     step: "01",
-    title: "Source and normalize records",
+    title: "Source and normalize",
     description:
-      "Sentinel draws from trade and regulatory sources including Datamyne, PIERS, US Census Foreign Trade Statistics, the US Customs Harmonized Schedule, EPA FOIA requests, NPIRS, and crop data systems.",
+      "Sentinel draws from named trade and regulatory sources, then normalizes them into a cleaner working structure.",
   },
   {
     step: "02",
-    title: "Map records to usable molecule intelligence",
+    title: "Build molecule views",
     description:
-      "Shipment records are translated into molecule-level views so clients can work from a cleaner, decision-ready picture rather than raw manifests.",
+      "Shipment records are translated into molecule-level views so clients can work from a decision-ready picture instead of raw manifests.",
   },
   {
     step: "03",
-    title: "Deliver reporting that fits the question",
+    title: "Deliver the output",
     description:
-      "Outputs are shaped around recurring monitoring or project-based analysis, with room for custom company, supplier, and molecule slices.",
+      "Outputs are shaped around recurring monitoring or project work, with room for custom company, supplier, and molecule slices.",
   },
 ];
 
@@ -344,9 +397,9 @@ export const faqItems: FaqItem[] = [
 ];
 
 export const aboutPoints = [
-  "Sentinel is built for teams that need recurring import visibility in a specialized category, not a generic trade-data portal.",
-  "The service is designed to make shipment records easier to review, share, and act on across sourcing, compliance, and strategy workflows.",
-  "Recurring monitoring remains the core offer, with custom investigations available when a standard monthly file is not enough.",
+  "Sentinel is built for teams that need recurring import visibility in a specialized category, not a generic portal.",
+  "The service makes shipment records easier to review, share, and act on across sourcing, compliance, and strategy workflows.",
+  "Recurring monitoring stays at the center, with custom investigations when a standard monthly file is not enough.",
 ];
 
 export const contactPrompts = [
@@ -357,8 +410,8 @@ export const contactPrompts = [
 
 export const demoPrompts = [
   "Which molecules or product categories do you want to see in a live walkthrough?",
-  "Do you want the demo framed around procurement, compliance, or market visibility?",
-  "Should the session focus on recurring monitoring, custom analysis, or workflow delivery?",
+  "Do you want the demo framed around procurement, compliance, market visibility, or sample-data depth?",
+  "Should the session focus on recurring monitoring, custom analysis, sample review, or workflow delivery?",
 ];
 
 export const consultationPrompts = [
@@ -377,7 +430,7 @@ export const engagementModels = [
   {
     title: "Recurring monitoring",
     description:
-      "For teams that need a standing view of molecules, suppliers, and shipment movement over time.",
+      "For teams that need a standing view of molecules, suppliers, and shipment movement.",
   },
   {
     title: "Custom project scope",
@@ -489,18 +542,141 @@ export const productClusters: ContentCluster[] = [
 ];
 
 export const productHeroCapabilities = [
-  "Molecule watchlists with monthly delivery",
-  "Supplier, consignee, quantity, and landed-value visibility",
-  "Excel, Tableau, and secure client delivery",
+  "Reviewed monthly watchlists",
+  "Workbook, export, and summary-pack structure",
+  "Excel, Tableau, and secure delivery",
 ];
 
 export const productInclusions = [
   "Current molecule coverage and configured watchlists",
-  "Supplier, consignee, and shipment-level visibility",
+  "Supplier, consignee, and shipment visibility",
   "Import value plus shipping and insurance (CIF) when available",
-  "Monthly delivery cadence for recurring monitoring",
-  "Custom project support for one-off market questions",
-  "Excel, Tableau, and secure client-delivery workflows",
+  "Monthly delivery for recurring monitoring",
+  "Custom support for one-off market questions",
+  "Excel, Tableau, and secure client delivery",
+];
+
+export const companyDetailCards: InfoCard[] = [
+  {
+    label: "Company detail",
+    title: "See what a company is importing, sourcing, and shipping",
+    description:
+      "Track importer, supplier, consignee, origin, port, and movement cadence so teams can see what a company is doing and what it is dealing with.",
+  },
+  {
+    label: "Commercial depth",
+    title: "Read quantity, formulation, value, and CIF context faster",
+    description:
+      "Move beyond a shipment count into formulation detail, landed value, freight, insurance, and CIF context where available.",
+  },
+  {
+    label: "Competitive lens",
+    title: "Benchmark suppliers, competitors, and category pressure",
+    description:
+      "Compare changes across named companies, route shifts, and watchlist movement before a negotiation or escalation becomes urgent.",
+  },
+  {
+    label: "Working files",
+    title: "Inspect downloadable sample depth before scoping work",
+    description:
+      "Use an illustrative sample file to review field depth by molecule and decide whether a broader Sentinel scope fits the team.",
+  },
+];
+
+export const verticalIntegrationCards: InfoCard[] = [
+  {
+    label: "01 Source",
+    title: "Named trade, customs, regulatory, and crop-data inputs",
+    description:
+      "Sentinel begins with raw import and supporting records rather than a thin dashboard summary.",
+  },
+  {
+    label: "02 Normalize",
+    title: "Company, supplier, and molecule cleanup",
+    description:
+      "Records are translated into company views and molecule-level structure that teams can review without manual cleanup first.",
+  },
+  {
+    label: "03 Integrate",
+    title: "Excel, Tableau, and briefing delivery that fits the workflow",
+    description:
+      "Sentinel connects the data to the files, briefings, and internal review motions clients already use.",
+  },
+  {
+    label: "04 Support",
+    title: "Direct follow-through with the Sentinel team",
+    description:
+      "Teams can move from monitoring into custom investigation quickly when a molecule, supplier, or company needs a deeper read.",
+  },
+];
+
+export const moleculeCategoryGroups: ContentCluster[] = [
+  {
+    title: "Agricultural chemicals",
+    description:
+      "The deepest current lane, organized around herbicide, fungicide, and insecticide watchlists.",
+    bullets: [
+      "Glyphosate",
+      "Dicamba",
+      "2,4-D",
+      "Imidacloprid",
+      "Clothianidin",
+      "Propiconazole",
+    ],
+  },
+  {
+    title: "Pharma ingredients and APIs",
+    description:
+      "Illustrative pharmaceutical molecules and intermediates that can fit the same molecule-first operating model.",
+    bullets: [
+      "Acetaminophen",
+      "Ibuprofen",
+      "Metformin HCl",
+      "Amoxicillin",
+      "Ciprofloxacin",
+      "Aspirin",
+    ],
+  },
+  {
+    title: "Fertilizers and nutrients",
+    description:
+      "Illustrative nutrient and fertilizer inputs grouped into a comparable import-intelligence view.",
+    bullets: [
+      "Urea",
+      "Ammonium Sulfate",
+      "Monoammonium Phosphate (MAP)",
+      "Diammonium Phosphate (DAP)",
+      "Potassium Chloride (MOP)",
+      "Ammonium Nitrate",
+    ],
+  },
+];
+
+export const accessPathCards: InfoCard[] = [
+  {
+    label: "Request a demo",
+    title: "Review a live workflow around your target molecules",
+    description:
+      "Walk through company detail, landed-value depth, and delivery fit with the Sentinel team in a private session.",
+  },
+  {
+    label: "Free sample",
+    title: "Download an illustrative dataset and inspect field depth",
+    description:
+      "Use a sample file to see how molecule, supplier, shipment, route, and CIF detail can be structured before commercial scoping starts.",
+  },
+  {
+    label: "Direct contact",
+    title: "Reach the team without waiting on a generic support queue",
+    description:
+      "Send a molecule, company, or category question directly to Sentinel when the next step is a conversation, not another form field.",
+  },
+];
+
+export const sampleDataHighlights = [
+  "Illustrative downloadable CSV",
+  "Company, supplier, route, formulation, and CIF fields",
+  "Depth preview before commercial scoping",
 ];
 
 export const workflowStages: WorkflowStage[] = [
@@ -560,9 +736,9 @@ export const supportChannels: InfoCard[] = [
 
 export const supportAccessPoints: InfoCard[] = [
   {
-    title: "Start new questions through the contact flow",
+    title: "Start new issues through the support request desk",
     description:
-      "Use the contact form for new support requests, product questions, or scoped custom-reporting conversations.",
+      "Use the support request form when delivery, workflow interpretation, or escalation needs to be routed against urgency and client status.",
     label: "Primary channel",
   },
   {
@@ -583,7 +759,7 @@ export const supportFaqs: FaqItem[] = [
   {
     question: "How do clients get help once they are onboarded?",
     answer:
-      "Support is designed around direct access to the Sentinel team through guided review, scoped help, and the existing secure client workflow.",
+      "Support is designed around direct access to the Sentinel team through guided review, scoped help, and the existing secure client workflow, with current-client operational issues prioritized first.",
   },
   {
     question: "Is there support for advanced or custom requests?",
@@ -673,13 +849,13 @@ export const aboutExpertise = [
     type: "Leadership and client strategy",
     title: "Commercial framing",
     description:
-      "Engagements are shaped around the business question first so the reporting maps cleanly to sourcing, compliance, or market-review needs.",
+      "Engagements are shaped around the business question first so reporting maps cleanly to sourcing, compliance, or market review.",
   },
   {
     type: "Research and trade-data analysis",
     title: "Source-to-signal interpretation",
     description:
-      "Source records are normalized into molecule, supplier, and shipment views that are easier for a client team to evaluate together.",
+      "Source records are normalized into molecule, supplier, and shipment views that are easier for client teams to evaluate together.",
   },
   {
     type: "Delivery and support",
@@ -692,9 +868,9 @@ export const aboutExpertise = [
 export const pricingBuckets: PricingBucket[] = [
   {
     name: "Monitoring",
-    fit: "A standing relationship for teams that need dependable recurring visibility.",
+    fit: "Standing recurring visibility.",
     description:
-      "Best when the core need is a disciplined monthly watchlist, a private briefing rhythm, and quiet escalation when something shifts.",
+      "Best when the core need is a disciplined monthly watchlist, a private briefing rhythm, and quiet escalation.",
     inclusions: [
       "Configured molecule watchlists",
       "Monthly reporting cadence",
@@ -704,9 +880,9 @@ export const pricingBuckets: PricingBucket[] = [
   },
   {
     name: "Investigation",
-    fit: "An expanded scope for teams that need deeper questions answered alongside monitoring.",
+    fit: "Deeper questions alongside monitoring.",
     description:
-      "Adds sharper supplier, competitor, and market work when a standard recurring brief is not enough on its own.",
+      "Adds sharper supplier, competitor, and market work when a standard recurring brief is not enough.",
     inclusions: [
       "Everything in Monitoring",
       "Custom market or supplier investigations",
@@ -716,7 +892,7 @@ export const pricingBuckets: PricingBucket[] = [
   },
   {
     name: "Embedded",
-    fit: "A more private operating model for teams that want Sentinel inside a broader decision workflow.",
+    fit: "A more embedded operating model.",
     description:
       "Framed around executive communication, cross-functional review, and a more embedded intelligence relationship.",
     inclusions: [
@@ -729,8 +905,8 @@ export const pricingBuckets: PricingBucket[] = [
 ];
 
 export const pricingNotes = [
-  "Commercial specifics are still handled through conversation rather than posted dollar figures.",
-  "The three engagement models help clients understand scope before detailed scoping and commercial discussion.",
+  "Commercial specifics are still handled through conversation rather than posted figures.",
+  "The three engagement models help buyers understand scope before detailed scoping.",
   "Final proposals still depend on molecule coverage, delivery format, and customization depth.",
 ];
 
@@ -849,3 +1025,578 @@ export const promptWorkflows: PromptWorkflow[] = [
       "Analyze the latest Sentinel team and client feedback. Identify the top themes, the highest-priority concerns, and the changes that should be reflected in the website and AI roadmap next.",
   },
 ];
+
+export const ctaDirectory = {
+  demo: {
+    href: "/demo",
+    label: "Demo",
+    purpose: "Validate the product and working output in a live session.",
+  },
+  contact: {
+    href: "/contact",
+    label: "Contact",
+    purpose: "Start a commercial conversation when scope is still broad.",
+  },
+  consultation: {
+    href: "/consultation",
+    label: "Consultation",
+    purpose: "Open a strategic advisory discussion around scope and stakeholders.",
+  },
+  support: {
+    href: "/support-request",
+    label: "Support Request",
+    purpose: "Route delivery, workflow, and escalation questions quickly.",
+  },
+} as const;
+
+export const inquiryPageContent: Record<InquiryIntentKey, InquiryPageContent> = {
+  contact: {
+    eyebrow: "Commercial intake",
+    title: "Bring Sentinel the commercial question",
+    description:
+      "Use Contact when the need is real but the next step still needs routing.",
+    heroLabel: "Commercial intake",
+    heroHighlight: "Start with the business question and Sentinel will route the next move.",
+    expectationLabel: "What happens next",
+    expectationTitle: "The first reply clarifies route, timing, and who should join.",
+    expectationItems: [
+      "Sentinel reads the molecule scope, timing pressure, and internal stakeholders behind the request.",
+      "The team recommends whether the best next move is a demo, a scoped commercial conversation, or a strategy consultation.",
+      "You get a named follow-up with a concrete next step instead of a generic sales sequence.",
+    ],
+    promptLabel: "Useful intake context",
+    promptTitle: "What helps Sentinel route the request well",
+    prompts: contactPrompts,
+    pathLabel: "Typical routes",
+    pathTitle: "Where a broad intake usually goes next",
+    paths: engagementModels,
+    formPlaceholder:
+      "Tell Sentinel what changed, which molecules matter, and what decision your team is trying to make.",
+    submitLabel: "Send commercial intake",
+    assuranceLabel: "Routing standard",
+    assuranceTitle: "Commercial requests are reviewed by a person who can direct the next move.",
+    assuranceText:
+      "The goal is to narrow ambiguity quickly and point you to the most useful next conversation.",
+    intentKey: "contact",
+    introTitle: "Brief the situation.",
+    introBody:
+      "A short note on timing, category pressure, and the team involved is enough.",
+    bestFor: [
+      "The need is real, but the best next move is still unclear.",
+      "You need help choosing between recurring monitoring, custom work, or workflow-fit discussion.",
+      "A commercial owner wants Sentinel to recommend the next motion before a deeper call is booked.",
+    ],
+    notFor: [
+      "Use Demo when you already want a live walkthrough or sample-file review.",
+      "Use Consultation when stakeholder alignment or advisory scope is the main need.",
+      "Use Support Request for delivery issues, interpretation help, or active-client escalations.",
+    ],
+    nextStep:
+      "Expect Sentinel to recommend the best next motion, usually demo, consultation, or scoped commercial follow-up.",
+    responseWindow:
+      "Usually within one business day, with route and likely next call format.",
+    heroVariant: "contact",
+    comparisonLinks: [
+      {
+        href: "/demo",
+        label: "Need Demo?",
+        description: "Go to Demo if the main question is what the workflow, file depth, and walkthrough will look like.",
+      },
+      {
+        href: "/consultation",
+        label: "Need Consultation?",
+        description: "Go to Consultation if the discussion starts with business stakes, executive alignment, or advisory framing.",
+      },
+    ],
+    supportingFields: [
+      {
+        name: "expectedUse",
+        label: "What kind of follow-up do you expect?",
+        options: [
+          { label: "Need help choosing the next step", value: "route-selection" },
+          { label: "Recurring monitoring conversation", value: "monitoring" },
+          { label: "Custom investigation or project", value: "investigation" },
+          { label: "Workflow or delivery fit review", value: "workflow-fit" },
+        ],
+      },
+    ],
+  },
+  demo: {
+    eyebrow: "Product validation",
+    title: "Use Demo to validate the workflow",
+    description:
+      "Use Demo when the team wants a live walkthrough, a sample review, or both.",
+    heroLabel: "Demo session",
+    heroHighlight: "This is a working session, not a generic product tour.",
+    expectationLabel: "Session structure",
+    expectationTitle: "The session is organized around what the team needs to verify.",
+    expectationItems: [
+      "Sentinel confirms the category scope, target stakeholders, and whether the session should emphasize live walkthrough or sample review.",
+      "The session agenda typically covers workflow fit, watchlist logic, company drill-down, and delivery mechanics in one pass.",
+      "Follow-up focuses on whether the product is credible enough for the next buying conversation, not on keeping the meeting alive.",
+    ],
+    promptLabel: "Best demo inputs",
+    promptTitle: "What helps Sentinel prepare a sharper session",
+    prompts: demoPrompts,
+    pathLabel: "Session types",
+    pathTitle: "How the walkthrough can be tailored",
+    paths: demoPaths,
+    formPlaceholder:
+      "Tell Sentinel which molecules, categories, or files the session should cover and whether you want live walkthrough, sample review, or both.",
+    submitLabel: "Request demo",
+    assuranceLabel: "Demo design",
+    assuranceTitle: "Every demo is built around a real buying question.",
+    assuranceText:
+      "Use this page when the team wants to verify what Sentinel will show, who should attend, and what the working output feels like.",
+    intentKey: "demo",
+    introTitle: "Shape the session before it is booked.",
+    introBody:
+      "A short note on buyer questions, sample-review needs, and attendees helps Sentinel prepare well.",
+    bestFor: [
+      "You want a live walkthrough or sample review next.",
+      "The team wants to compare live workflow against sample-file depth before committing.",
+      "You want to know who should attend, how long the session runs, and what Sentinel will show.",
+    ],
+    notFor: [
+      "Use Contact if you still need help deciding whether demo, consultation, or direct scoping is right.",
+      "Use Consultation for strategic conversations that start with business pressure rather than product proof.",
+      "Use Support Request if you already have files or delivery issues that need resolution.",
+    ],
+    nextStep:
+      "Sentinel usually replies with a proposed agenda, recommended attendees, and whether live walkthrough or sample review should lead.",
+    responseWindow:
+      "Usually within one business day, with agenda and session format guidance.",
+    heroVariant: "demo",
+    comparisonLinks: [
+      {
+        href: "/contact",
+        label: "Need Contact?",
+        description: "Go to Contact if the conversation is still broad and you want Sentinel to recommend the next move.",
+      },
+      {
+        href: "/consultation",
+        label: "Need Consultation?",
+        description: "Go to Consultation if the main issue is strategic scope, stakeholder alignment, or executive decision support.",
+      },
+    ],
+    supportingFields: [
+      {
+        name: "expectedUse",
+        label: "What should the session emphasize?",
+        options: [
+          { label: "Live walkthrough", value: "live-walkthrough" },
+          { label: "Sample file review", value: "sample-review" },
+          { label: "Both live and sample", value: "live-and-sample" },
+          { label: "Delivery workflow fit", value: "delivery-fit" },
+        ],
+      },
+    ],
+  },
+  consultation: {
+    eyebrow: "Strategic advisory",
+    title: "Use Consultation to shape scope",
+    description:
+      "Use Consultation when scope judgment and stakeholder alignment matter more than another walkthrough.",
+    heroLabel: "Advisory path",
+    heroHighlight: "Start with the decision and end with a clearer operating shape.",
+    expectationLabel: "Advisory flow",
+    expectationTitle: "The conversation is designed for executive or cross-functional scoping moments.",
+    expectationItems: [
+      "Sentinel clarifies the business decision, the stakeholder group, and the timing pressure behind the request.",
+      "The session can end with a proposed engagement shape, stakeholder sequence, or scoped advisory path rather than a generic next-call suggestion.",
+      "Outputs often include scope framing, delivery guidance, and what leadership should see first.",
+    ],
+    promptLabel: "Useful strategy context",
+    promptTitle: "What makes the consultation sharper",
+    prompts: consultationPrompts,
+    pathLabel: "Advisory outcomes",
+    pathTitle: "Where consultation usually helps most",
+    paths: consultationPaths,
+    formPlaceholder:
+      "Tell Sentinel what decision is in front of the business, which stakeholders need to align, and what pressure is driving the request.",
+    submitLabel: "Request consultation",
+    assuranceLabel: "Advisory standard",
+    assuranceTitle: "This path is for teams that need a clearer recommendation.",
+    assuranceText:
+      "Use this page when the real need is scoping judgment around category surface, executive audience, and workflow fit.",
+    intentKey: "consultation",
+    introTitle: "Outline the decision.",
+    introBody:
+      "A short note on stakes, stakeholders, and the decision in front of the team is enough.",
+    bestFor: [
+      "Leadership needs scope judgment before another walkthrough.",
+      "The main question is how Sentinel should fit the operating model, not just what the product looks like.",
+      "You want an advisory conversation about recurring monitoring, custom work, or executive-facing delivery.",
+    ],
+    notFor: [
+      "Use Demo if the main need is to see the product, sample depth, or live walkthrough.",
+      "Use Contact if the commercial path is still broad and you want Sentinel to route the next motion.",
+      "Use Support Request for active delivery, interpretation, or escalation issues.",
+    ],
+    nextStep:
+      "Sentinel usually responds with the right participants, conversation format, and the kind of recommendation the consultation can produce.",
+    responseWindow:
+      "Usually within one business day, with participant guidance and likely outputs.",
+    heroVariant: "consultation",
+    comparisonLinks: [
+      {
+        href: "/demo",
+        label: "Need Demo?",
+        description: "Go to Demo if your team first needs to verify the product and working files before advisory scoping.",
+      },
+      {
+        href: "/contact",
+        label: "Need Contact?",
+        description: "Go to Contact if the route is still broad and you want Sentinel to recommend the right motion.",
+      },
+    ],
+    supportingFields: [
+      {
+        name: "expectedUse",
+        label: "What kind of advisory outcome matters most?",
+        options: [
+          { label: "Engagement shape and scope", value: "engagement-shape" },
+          { label: "Stakeholder and leadership framing", value: "stakeholder-framing" },
+          { label: "Workflow and delivery model", value: "workflow-model" },
+          { label: "Custom investigation path", value: "custom-path" },
+        ],
+      },
+    ],
+  },
+  "support-request": {
+    eyebrow: "Support desk",
+    title: "Open a support request for delivery or escalation",
+    description:
+      "Use this desk for delivery issues, workflow help, and deeper escalations.",
+    heroLabel: "Support routing",
+    heroHighlight: "Route file, workflow, and escalation issues through the right owner quickly.",
+    expectationLabel: "Routing logic",
+    expectationTitle: "Support requests are separated by client status, request type, and urgency.",
+    expectationItems: [
+      "Sentinel identifies whether the request is from an active client, a pre-onboarding team, or a prospective buyer needing guided support.",
+      "The desk distinguishes file delivery, workflow interpretation, deeper research follow-up, and escalation cases instead of mixing them together.",
+      "Response timing is set by impact and current relationship status so the request lands with the right owner.",
+    ],
+    promptLabel: "Fastest-response inputs",
+    promptTitle: "What helps the support desk route quickly",
+    prompts: supportRequestPrompts,
+    pathLabel: "Support lanes",
+    pathTitle: "How Sentinel routes support requests",
+    paths: supportRequestPaths,
+    formPlaceholder:
+      "Tell Sentinel what changed, which file or workflow is involved, whether you are a current client, and what response is needed.",
+    submitLabel: "Send support request",
+    assuranceLabel: "Support desk standard",
+    assuranceTitle: "Requests are triaged against delivery impact, not dropped into a generic inbox.",
+    assuranceText:
+      "Current-client issues, pre-onboarding questions, interpretation help, and escalations each follow a clearer route and response expectation.",
+    intentKey: "support-request",
+    introTitle: "Describe the support issue.",
+    introBody:
+      "Client status, request type, and urgency are enough to route the issue.",
+    bestFor: [
+      "A file, workflow, or escalation needs fast routing.",
+      "A recurring file surfaced a deeper question that needs guided escalation.",
+      "A pre-onboarding team needs operational help before a broader engagement is fully underway.",
+    ],
+    notFor: [
+      "Use Contact for broad commercial intake and scope discovery.",
+      "Use Demo for live product validation and workflow walkthroughs.",
+      "Use Consultation for strategic or executive scoping conversations.",
+    ],
+    nextStep:
+      "Sentinel replies with the route owner, urgency band, and whether the issue stays in support or moves into deeper review.",
+    responseWindow:
+      "Current-client issues are prioritized first, with other requests acknowledged within one business day.",
+    heroVariant: "support",
+    comparisonLinks: [
+      {
+        href: "/support",
+        label: "Need Support Policy?",
+        description: "Go to Support to review response expectations, ownership, and escalation rules before submitting.",
+      },
+      {
+        href: "/contact",
+        label: "Need Contact?",
+        description: "Go to Contact if the question is really about fit, scope, or a new commercial request.",
+      },
+    ],
+    supportingFields: [
+      {
+        name: "clientStatus",
+        label: "What best describes your status?",
+        options: [
+          { label: "Current client", value: "current-client" },
+          { label: "Pre-onboarding team", value: "pre-onboarding" },
+          { label: "Prospective buyer", value: "prospective" },
+        ],
+      },
+      {
+        name: "requestCategory",
+        label: "What kind of support is this?",
+        options: [
+          { label: "Delivery or file access", value: "delivery" },
+          { label: "Interpretation or workflow help", value: "interpretation" },
+          { label: "Advanced escalation", value: "escalation" },
+          { label: "Custom follow-up request", value: "custom-follow-up" },
+        ],
+      },
+    ],
+  },
+};
+
+export const thanksPageContent: Record<
+  InquiryIntentKey,
+  {
+    eyebrow: string;
+    title: string;
+    description: string;
+    responseWindow: string;
+    nextSteps: string[];
+    primaryHref: string;
+    primaryLabel: string;
+    secondaryHref: string;
+    secondaryLabel: string;
+  }
+> = {
+  contact: {
+    eyebrow: "Commercial intake received",
+    title: "Sentinel has the intake.",
+    description:
+      "The reply will confirm the route, likely participants, and the next step.",
+    responseWindow: "Usually within one business day.",
+    nextSteps: [
+      "Expect a response that clarifies route, likely participants, and whether a demo or consultation makes more sense.",
+      "If the need is urgent, include timing or decision pressure in any follow-up reply so routing stays accurate.",
+    ],
+    primaryHref: "/pricing",
+    primaryLabel: "Review engagement models",
+    secondaryHref: "/product",
+    secondaryLabel: "Review product fit",
+  },
+  demo: {
+    eyebrow: "Demo request received",
+    title: "Sentinel has the demo request.",
+    description:
+      "The follow-up will confirm agenda, attendees, and whether live walkthrough or sample review should lead.",
+    responseWindow: "Usually within one business day.",
+    nextSteps: [
+      "Expect agenda guidance, attendee recommendations, and a note on whether a sample review should accompany the session.",
+      "If internal stakeholders change, reply to the confirmation so Sentinel can tune the walkthrough before the meeting is set.",
+    ],
+    primaryHref: "/reports",
+    primaryLabel: "Review report preview",
+    secondaryHref: "/dashboard",
+    secondaryLabel: "Review dashboard preview",
+  },
+  consultation: {
+    eyebrow: "Consultation request received",
+    title: "Sentinel has the consultation request.",
+    description:
+      "The response will clarify participants, likely outputs, and what context sharpens the discussion.",
+    responseWindow: "Usually within one business day.",
+    nextSteps: [
+      "Expect a note on who should join, what decision the consultation can help resolve, and what scope framing is realistic.",
+      "If the conversation becomes more product-validation oriented, Sentinel may recommend adding a demo or sample review before the advisory session.",
+    ],
+    primaryHref: "/pricing",
+    primaryLabel: "Review engagement models",
+    secondaryHref: "/about",
+    secondaryLabel: "Review operating model",
+  },
+  "support-request": {
+    eyebrow: "Support request received",
+    title: "Sentinel has the support request.",
+    description:
+      "Current-client operational issues are prioritized first, while interpretation and escalation requests go to the right owner.",
+    responseWindow: "Current-client issues first; other requests within one business day.",
+    nextSteps: [
+      "Expect a reply that confirms the owner, urgency band, and whether the issue stays in support or moves into a deeper escalation.",
+      "If the request involves a specific file, workflow, or access issue, keep that reference in the reply chain so routing stays intact.",
+    ],
+    primaryHref: "/support",
+    primaryLabel: "Review support expectations",
+    secondaryHref: "/contact",
+    secondaryLabel: "Return to commercial contact",
+  },
+};
+
+export const homeCategoryProof = [
+  {
+    label: "Core coverage",
+    title: "Agrochemical monitoring remains the deepest current lane.",
+    description:
+      "Sentinel is still anchored in agricultural chemical imports, company drill-down, and recurring watchlist review.",
+  },
+  {
+    label: "Adjacent categories",
+    title: "Pharma and fertilizer are treated as real adjacent lanes, not a footnote.",
+    description:
+      "The same molecule-first model can extend into strategic chemical categories when the buying team needs a broader view.",
+  },
+  {
+    label: "Trust model",
+    title: "Named sources, analyst review, and working-file delivery show up early.",
+    description:
+      "The offer is not just data access. It is a reviewed signal with Excel, Tableau, and briefing-friendly delivery.",
+  },
+] as const;
+
+export const pricingScopeDrivers: InfoCard[] = [
+  {
+    label: "Scope driver",
+    title: "Molecule breadth",
+    description:
+      "Broader watchlists and more category surfaces expand recurring coverage and review load.",
+  },
+  {
+    label: "Scope driver",
+    title: "Cadence and urgency",
+    description:
+      "Monthly monitoring, faster escalation expectations, and timing-sensitive support change the engagement shape.",
+  },
+  {
+    label: "Scope driver",
+    title: "Investigation depth",
+    description:
+      "Supplier, competitor, and market investigations add work beyond the standing monitoring layer.",
+  },
+  {
+    label: "Scope driver",
+    title: "Stakeholder surface",
+    description:
+      "Executive summaries, cross-functional delivery, and wider circulation increase the packaging burden.",
+  },
+];
+
+export const aboutOperatorCards: InfoCard[] = [
+  {
+    label: "Operator credibility",
+    title: "Human review stays visible",
+    description:
+      "Review ownership stays visible from source cleanup through escalation framing and final delivery.",
+  },
+  {
+    label: "Operating model",
+    title: "Built for focused workflows",
+    description:
+      "The business favors controlled delivery, direct follow-up, and repeatable review motions over broad self-serve volume.",
+  },
+  {
+    label: "Coverage posture",
+    title: "Narrow by design",
+    description:
+      "Agricultural chemicals stay at the center while adjacent pharma and fertilizer scopes can be added carefully when the fit is real.",
+  },
+];
+
+export const methodologyGovernanceCards: InfoCard[] = [
+  {
+    label: "Governance",
+    title: "Review ownership stays visible",
+    description:
+      "Source collection, normalization, and final output each include a human review step.",
+  },
+  {
+    label: "Quality control",
+    title: "Escalations get tighter checks",
+    description:
+      "When a signal matters more, Sentinel tightens validation, framing, and delivery notes.",
+  },
+  {
+    label: "Cadence handling",
+    title: "Gaps get explained",
+    description:
+      "The methodology surfaces what changed, what is stable, and where caution is warranted.",
+  },
+];
+
+export const solutionWorkflowCards = [
+  {
+    role: "Procurement",
+    output: "Supplier pressure brief",
+    change:
+      "Moves negotiation prep from raw shipment hunting into a faster supplier and landed-value review rhythm.",
+  },
+  {
+    role: "Compliance",
+    output: "Reviewed movement trace",
+    change:
+      "Keeps shipment context, source interpretation, and follow-up notes closer together for audit and escalation use.",
+  },
+  {
+    role: "Strategy",
+    output: "Executive category brief",
+    change:
+      "Turns monthly trade motion into something leadership can scan, share, and use in planning conversations.",
+  },
+] as const;
+
+export const supportResponseCards: InfoCard[] = [
+  {
+    label: "Response window",
+    title: "Current-client delivery issues are prioritized first",
+    description:
+      "Operational issues tied to active delivery get the fastest triage because they affect current workflows immediately.",
+  },
+  {
+    label: "Ownership",
+    title: "Requests are routed to a named owner",
+    description:
+      "Support is tied to the same service relationship, so the person replying can usually clarify route and next action in the same thread.",
+  },
+  {
+    label: "Escalation",
+    title: "Deeper questions can move into custom review",
+    description:
+      "When a support issue becomes a broader market or supplier question, Sentinel can escalate it without losing context.",
+  },
+];
+
+export const dashboardPreviewCues = [
+  "Company dossier drill-down available in the live engagement",
+  "Signal badges tuned for weekly review and stakeholder handoff",
+  "Export and report pack paths sit beside the dashboard, not outside it",
+] as const;
+
+export const reportDeliveryCards: InfoCard[] = [
+  {
+    label: "Included in",
+    title: "Monitoring and Investigation packages",
+    description:
+      "The report preview represents a deliverable buyers can expect inside recurring monitoring and deeper investigation scopes.",
+  },
+  {
+    label: "Distribution",
+    title: "Built for analyst and leadership circulation",
+    description:
+      "The structure supports row-level review, manager summary, and executive scan without rewriting the whole output.",
+  },
+  {
+    label: "Mechanics",
+    title: "Versioned, exportable, and easy to brief from",
+    description:
+      "Preview mode stands in for a real deliverable that can be exported, archived, and circulated in a controlled workflow.",
+  },
+];
+
+export const aiRoadmapFrames = [
+  {
+    label: "Current product first",
+    title: "The core product has to feel complete before AI earns attention.",
+    description:
+      "Sentinel leads with reviewed monitoring, working files, and delivery clarity. AI is framed as a later accelerant, not as cover for an unfinished core offer.",
+  },
+  {
+    label: "Near term",
+    title: "Summaries, pattern explanation, and internal drafting come first.",
+    description:
+      "The most credible early AI uses make reviewed output easier to summarize and route without moving judgment off the product team.",
+  },
+  {
+    label: "Not now",
+    title: "High-consequence automation stays off the front edge.",
+    description:
+      "Compliance-sensitive recommendations, autonomous actions, and opaque decisioning remain out of scope until the core trust model is much deeper.",
+  },
+] as const;

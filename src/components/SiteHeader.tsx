@@ -1,24 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { navItems, siteConfig } from "@/content/site";
-
-const headerLabels: Record<string, string> = {
-  "/product": "Product",
-  "/methodology": "Method",
-  "/pricing": "Engagement",
-  "/contact": "Contact",
-};
-
-const headerNavItems = navItems
-  .filter((item) => headerLabels[item.href] !== undefined)
-  .map((item) => ({
-    ...item,
-    label: headerLabels[item.href],
-  }));
+import { LinkButton } from "@/components/LinkButton";
+import { ctaDirectory, navItems, siteConfig } from "@/content/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -30,12 +18,20 @@ export function SiteHeader() {
       <div className="section-inner site-header-inner">
         <Link
           aria-label={siteConfig.name}
-          className="sentinel-header-logo"
+          className="brand-lockup header-brand-lockup"
           href="/"
           onClick={closeMenu}
         >
-          {siteConfig.shortName}
-          <span>.</span>
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="brand-logo"
+            height={siteConfig.logo.height}
+            priority
+            sizes="(max-width: 700px) 120px, (max-width: 1040px) 138px, 156px"
+            src={siteConfig.logo.src}
+            width={siteConfig.logo.width}
+          />
         </Link>
 
         <button
@@ -51,7 +47,7 @@ export function SiteHeader() {
 
         <div className={`site-nav-menu ${open ? "is-open" : ""}`}>
           <nav aria-label="Primary" className="site-nav">
-            {headerNavItems.map((item) => {
+            {navItems.map((item) => {
               const isActive =
                 item.href === "/" ? pathname === item.href : pathname.startsWith(item.href);
 
@@ -70,15 +66,9 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header-actions">
-            <a
-              className="site-nav-link site-nav-utility"
-              href={siteConfig.loginHref}
-              onClick={closeMenu}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Client Login
-            </a>
+            <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu}>
+              {ctaDirectory.contact.label}
+            </LinkButton>
           </div>
         </div>
       </div>
