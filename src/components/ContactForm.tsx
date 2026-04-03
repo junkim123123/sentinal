@@ -96,15 +96,14 @@ export function ContactForm({
         <p>
           {introBody ??
             (variant === "private"
-              ? "A concise brief helps the team route advisory, briefing, or support review with more precision."
+              ? "A concise brief helps Sentinel route the request quickly."
               : "The more specific the request, the faster the team can route it well.")}
         </p>
       </div>
       {variant === "private" ? (
         <div className="form-private-strip">
-          <span>Direct team review</span>
-          <span>Curated response</span>
-          <span>Secure follow-up</span>
+          <span>Direct review</span>
+          <span>Named follow-up</span>
         </div>
       ) : null}
       <div className="field-grid">
@@ -159,7 +158,7 @@ export function ContactForm({
       </label>
       <p className="form-note">
         {variant === "private"
-          ? "Each request is reviewed directly by Sentinel rather than routed through a public queue."
+          ? "Each request is reviewed directly by Sentinel."
           : "A Sentinel team member reviews each request directly."}
       </p>
       <div aria-live="polite" className="form-status">

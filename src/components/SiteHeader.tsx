@@ -71,8 +71,8 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header-actions">
-            <Link className="site-nav-link site-nav-utility" href={ctaDirectory.consultation.href} onClick={closeMenu}>
-              {ctaDirectory.consultation.label}
+            <Link className="site-nav-link site-nav-utility" href={siteConfig.dashboardPreviewHref} onClick={closeMenu}>
+              Dashboard Preview
             </Link>
             <LinkButton className="site-header-cta" href={ctaDirectory.contact.href} onClick={closeMenu} variant="ghost">
               {ctaDirectory.contact.label}

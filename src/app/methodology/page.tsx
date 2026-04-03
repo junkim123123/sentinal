@@ -22,22 +22,22 @@ const methodSignals = [
   {
     label: "Source stack",
     value: "7 named inputs",
-    detail: "Trade, customs, regulatory, and crop-data systems inform the current method.",
+    detail: "Trade, customs, regulatory, and crop-data systems feed the current method.",
   },
   {
     label: "Normalization",
     value: "Molecule-level structure",
-    detail: "Records are translated into views built for category-specific monitoring and company drill-down.",
+    detail: "Records are translated into views built for monitoring and company drill-down.",
   },
   {
     label: "Review ownership",
     value: "Human checks stay visible",
-    detail: "Sentinel makes the human review step explicit so buyers know where interpretation enters the workflow.",
+    detail: "Human review stays explicit so buyers can see where interpretation enters.",
   },
   {
     label: "Delivery",
     value: "Monthly brief + follow-through",
-    detail: "The output is designed to support review, sharing, escalation, and direct support.",
+    detail: "The output is built for review, sharing, escalation, and support.",
   },
 ] as const;
 
@@ -55,7 +55,7 @@ export default function MethodologyPage() {
             </LinkButton>
           </>
         }
-        description="Sentinel combines named data sources, molecule-level normalization, human review ownership, and client-ready delivery to make trade records more usable and more defensible."
+        description="Sentinel combines named sources, molecule-level normalization, human review, and client-ready delivery into a method buyers can inspect."
         eyebrow="Methodology"
         theme="dark"
         visual={
@@ -63,12 +63,11 @@ export default function MethodologyPage() {
             <div className="page-hero-brief-head">
               <div>
                 <span className="small-label">Source to delivery</span>
-                <strong>A short workflow with visible review and governance</strong>
+                <strong>A short workflow with visible review</strong>
               </div>
               <p>
-                The method builds more trust when buyers can see where raw records
-                are normalized, where judgment enters, and how output is shaped for
-                client use.
+                Trust improves when buyers can see where data is normalized,
+                where judgment enters, and how the output gets packaged.
               </p>
             </div>
             <div className="page-hero-brief-grid">
@@ -89,7 +88,7 @@ export default function MethodologyPage() {
             </div>
           </div>
         }
-        title="A disciplined path from source records to client-ready reporting"
+        title="From source records to review-ready output"
       />
 
       <section className="section section-evidence home-proof-section methodology-proof-section">
@@ -106,31 +105,12 @@ export default function MethodologyPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight sentinel-subpage-emphasis methodology-process-section">
+      <section className="section section-tint page-section-tight subpage-shorthead methodology-governance-section">
         <div className="section-inner">
           <SectionHeading
-            description="A method page needs to explain both the technical path and the human controls that keep the output reviewable."
-            eyebrow="How it works"
-            title="Three steps from records to working output"
-          />
-          <div className="page-panel-grid page-panel-grid-three">
-            {methodologySteps.map((item) => (
-              <article className="page-panel-card" key={item.step}>
-                <span className="small-label">{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tint page-section-tight methodology-governance-section">
-        <div className="section-inner">
-          <SectionHeading
-            description="These governance notes answer the buyer question behind the methodology page: who reviews the output, how anomalies are handled, and what happens when a signal deserves tighter checking."
-            eyebrow="Review and governance"
-            title="How Sentinel handles quality control and escalations"
+            description="Method buyers usually want three answers: who reviews anomalies, how escalations are handled, and where judgment enters."
+            eyebrow="Review control"
+            title="Where review happens"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {methodologyGovernanceCards.map((item) => (
@@ -144,17 +124,17 @@ export default function MethodologyPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight methodology-detail-section">
+      <section className="section page-section-tight subpage-shorthead methodology-detail-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The output details matter because they show what teams can actually review in the monthly brief, not only how the data was sourced."
+              description="The page should also show what teams can actually inspect in the deliverable, not only how the data is sourced."
               eyebrow="Report detail"
-              title="What Sentinel reporting is designed to surface"
+              title="What the brief shows"
             />
             <article className="page-panel-card page-panel-card-accent">
               <span className="small-label">Included context</span>
-              <h3>What teams can review in the monthly brief</h3>
+              <h3>What teams review each cycle</h3>
               <ul className="detail-list page-checklist">
                 {reportHighlights.map((item) => (
                   <li key={item}>{item}</li>
@@ -177,7 +157,7 @@ export default function MethodologyPage() {
             </article>
             <article className="page-panel-card">
               <span className="small-label">Representative coverage</span>
-              <h3>Molecule examples in the current lens</h3>
+              <h3>Molecule examples in scope</h3>
               <div className="page-hero-tag-row page-hero-tag-row-light">
                 {moleculeExamples.map((molecule) => (
                   <span className="page-hero-tag page-hero-tag-light" key={molecule}>

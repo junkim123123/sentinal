@@ -88,6 +88,14 @@ export default function HomePage() {
                 {ctaDirectory.consultation.label}
               </LinkButton>
             </div>
+            <div className="button-row sentinel-home-proof-links">
+              <LinkButton href="/dashboard" variant="ghost">
+                Open dashboard preview
+              </LinkButton>
+              <LinkButton href="/reports" variant="ghost">
+                Open reports preview
+              </LinkButton>
+            </div>
           </div>
 
           <div className="sentinel-home-data">

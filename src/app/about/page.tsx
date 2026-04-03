@@ -5,7 +5,6 @@ import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
   aboutCredibility,
-  aboutDifferentiators,
   aboutExpertise,
   aboutOperatorCards,
   aboutPoints,
@@ -31,7 +30,7 @@ export default function AboutPage() {
             </LinkButton>
           </>
         }
-        description="Sentinel is built around a narrower operating model: focused category coverage, named-source discipline, direct client follow-through, and a delivery posture designed for serious buying teams."
+        description="Sentinel stays narrow on purpose: focused coverage, named sources, accountable review, and delivery built for serious buying teams."
         eyebrow="About Sentinel"
         theme="dark"
         visual={
@@ -39,11 +38,11 @@ export default function AboutPage() {
             <div className="page-hero-brief-head">
               <div>
                 <span className="small-label">Operating posture</span>
-                <strong>Focused intelligence with accountable review and delivery</strong>
+                <strong>Operator-led review, narrow focus</strong>
               </div>
               <p>
-                Sentinel is easier to trust when buyers can see that it is built for
-                a small number of serious workflows rather than broad platform volume.
+                Buyers trust Sentinel faster when the site shows a controlled model
+                instead of a broad portal story.
               </p>
             </div>
             <div className="page-hero-brief-grid">
@@ -64,7 +63,7 @@ export default function AboutPage() {
             </div>
           </div>
         }
-        title="A narrower operator-led model built to earn trust quickly"
+        title="An operator-led model that earns trust fast"
       />
 
       <section className="section section-evidence home-proof-section about-proof-section">
@@ -81,12 +80,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section page-section-tight sentinel-subpage-emphasis about-operator-section">
+      <section className="section page-section-tight sentinel-subpage-emphasis subpage-shorthead about-operator-section">
         <div className="section-inner">
           <SectionHeading
-            description="This page should help buyers understand who is really behind the work, how delivery is handled, and why the business remains focused instead of trying to be generic."
+            description="Buyers should be able to see who owns the work, how delivery runs, and why the model stays intentionally narrow."
             eyebrow="Operator credibility"
-            title="What makes the operating model believable"
+            title="Why it feels credible"
           />
           <div className="page-panel-grid page-panel-grid-three">
             {aboutOperatorCards.map((item) => (
@@ -100,32 +99,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-tint page-section-tight about-value-section">
-        <div className="section-inner">
-          <SectionHeading
-            description="Sentinel creates confidence by staying narrow where it needs to be narrow and explicit about how adjacent category expansion actually happens."
-            eyebrow="Why it works"
-            title="The value comes from focus, discipline, and workflow-ready delivery"
-          />
-          <div className="page-panel-grid page-panel-grid-three">
-            {aboutDifferentiators.map((item) => (
-              <article className="page-panel-card" key={item.title}>
-                <span className="small-label">Differentiator</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section page-section-tight about-operating-section">
+      <section className="section page-section-tight subpage-shorthead about-operating-section">
         <div className="section-inner page-story-grid">
           <div>
             <SectionHeading
-              description="The business reads more credibly when the site shows the product posture, client workflow, and service boundaries side by side."
+              description="Product posture, service boundaries, and client workflow should read together instead of as separate brand claims."
               eyebrow="Operating model"
-              title="How Sentinel is built today"
+              title="How Sentinel runs"
             />
             <div className="simple-text-list">
               {aboutPoints.map((point) => (

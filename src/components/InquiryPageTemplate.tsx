@@ -85,43 +85,29 @@ export function InquiryPageTemplate({
         visualMode="intake"
         visual={
           <div className={`intake-hero-visual private-intake-hero inquiry-hero inquiry-hero-${heroVariant}`}>
-            <div className="intake-hero-brief private-intake-brief inquiry-hero-brief">
-              <article className="intake-hero-card private-intake-card private-intake-card-lead inquiry-hero-card">
+            <div className="inquiry-hero-brief">
+              <article className="intake-hero-card private-intake-card private-intake-card-lead inquiry-hero-card inquiry-hero-card-primary">
                 <span className="small-label">{heroLabel}</span>
                 <strong>{heroHighlight}</strong>
-                <ul className="page-hero-mini-list">
-                  {bestFor.slice(0, 2).map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <p className="private-intake-card-copy">{responseWindow}</p>
               </article>
               <article className="intake-hero-card private-intake-card inquiry-hero-card">
-                <span className="small-label">Best for</span>
-                <strong>This page works best when</strong>
-                <div className="intake-chip-row">
-                  {bestFor.map((item) => (
-                    <span className="intake-chip" key={item}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </article>
-              <article className="intake-hero-card private-intake-card inquiry-hero-card">
-                <span className="small-label">Use another page when</span>
-                <strong>Choose a different intake if</strong>
+                <span className="small-label">Use this page for</span>
+                <strong>{bestFor[0]}</strong>
                 <ul className="page-hero-mini-list">
-                  {notFor.slice(0, 2).map((item) => (
+                  {bestFor.slice(1, 3).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </article>
               <article className="intake-hero-card private-intake-card private-intake-card-accent inquiry-hero-card inquiry-hero-card-accent">
-                <span className="small-label">Response and next step</span>
-                <strong>{responseWindow}</strong>
-                <p className="private-intake-card-copy">{nextStep}</p>
-                <div className="private-intake-service-strip">
+                <span className="small-label">Need another route?</span>
+                <strong>Jump straight to the better fit</strong>
+                <div className="inquiry-hero-link-list">
                   {comparisonLinks.map((item) => (
-                    <span key={item.href}>{item.label}</span>
+                    <Link className="inquiry-hero-link" href={item.href} key={item.href}>
+                      {item.label}
+                    </Link>
                   ))}
                 </div>
               </article>
@@ -133,22 +119,13 @@ export function InquiryPageTemplate({
 
       <section className="section sentinel-inquiry-section">
         <div className="section-inner">
-          <div className="contact-summary-band private-intake-summary sentinel-inquiry-track inquiry-difference-grid">
-            {[
-              { title: "Best for", detail: bestFor[0] },
-              { title: "Not for", detail: notFor[0] },
-              { title: "Response window", detail: responseWindow },
-            ].map((item, index) => (
-              <article className="contact-summary-card" key={item.title}>
-                <span>{`0${index + 1}`}</span>
-                <p>{item.detail}</p>
-                <small>{item.title}</small>
-              </article>
-            ))}
-          </div>
-
           <div className="contact-layout contact-layout-refined private-intake-shell sentinel-inquiry-layout">
-            <div>
+            <div className="sentinel-inquiry-form-column">
+              <article className="page-panel-card sentinel-inquiry-callout">
+                <span className="small-label">Response window</span>
+                <h3>{responseWindow}</h3>
+                <p>{nextStep}</p>
+              </article>
               <ContactForm
                 intent={intentKey}
                 introBody={introBody}
@@ -160,84 +137,59 @@ export function InquiryPageTemplate({
                 variant="private"
               />
             </div>
-            <aside className="contact-sidebar private-intake-sidebar">
-              <article className="source-panel inquiry-info-panel private-intake-panel sentinel-inquiry-panel">
-                <div className="private-intake-panel-intro">
-                  <span className="small-label">{assuranceLabel}</span>
-                  <h2>{assuranceTitle}</h2>
-                  <p>{assuranceText}</p>
+            <aside className="contact-sidebar private-intake-sidebar sentinel-inquiry-sidegrid">
+              <article className="page-panel-card sentinel-inquiry-sidecard">
+                <span className="small-label">{expectationLabel}</span>
+                <h3>{expectationTitle}</h3>
+                <ul className="detail-list page-checklist">
+                  {expectationItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="page-panel-card sentinel-inquiry-sidecard">
+                <span className="small-label">{promptLabel}</span>
+                <h3>{promptTitle}</h3>
+                <div className="simple-text-list simple-text-list-tight">
+                  {prompts.map((prompt) => (
+                    <div className="simple-text-row" key={prompt}>
+                      <p>{prompt}</p>
+                    </div>
+                  ))}
                 </div>
-                <div className="inquiry-block">
-                  <span className="small-label">Best use</span>
-                  <h2>Use this page when</h2>
-                  <ul className="detail-list">
-                    {bestFor.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">Use another path when</span>
-                  <h2>This page is not the best fit if</h2>
-                  <ul className="detail-list">
-                    {notFor.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">{expectationLabel}</span>
-                  <h2>{expectationTitle}</h2>
-                  <ul className="detail-list">
-                    {expectationItems.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">Response window</span>
-                  <h2>{responseWindow}</h2>
-                  <p>{nextStep}</p>
-                </div>
-                <div className="inquiry-block">
-                  <span className="small-label">{promptLabel}</span>
-                  <h2>{promptTitle}</h2>
-                  <div className="simple-text-list simple-text-list-tight">
-                    {prompts.map((prompt) => (
-                      <div className="simple-text-row" key={prompt}>
-                        <p>{prompt}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="inquiry-block">
+                <div className="inquiry-chip-stack">
                   <span className="small-label">{pathLabel}</span>
-                  <h2>{pathTitle}</h2>
-                  <div className="simple-text-list simple-text-list-tight">
+                  <p className="inquiry-chip-stack-copy">{pathTitle}</p>
+                  <div className="intake-chip-row">
                     {paths.map((item) => (
-                      <div className="simple-text-row" key={item.title}>
-                        <strong>{item.title}</strong>
-                        <p>{item.description}</p>
-                      </div>
+                      <span className="intake-chip" key={item.title}>
+                        {item.title}
+                      </span>
                     ))}
                   </div>
                 </div>
-                <div className="inquiry-block">
-                  <span className="small-label">Need another route?</span>
-                  <h2>Jump to the better-matched page</h2>
-                  <div className="inquiry-choice-list">
-                    {comparisonLinks.map((item) => (
-                      <Link className="inquiry-choice-link" href={item.href} key={item.href}>
-                        <strong>{item.label}</strong>
-                        <span>{item.description}</span>
-                      </Link>
-                    ))}
-                  </div>
+              </article>
+
+              <article className="page-panel-card sentinel-inquiry-sidecard sentinel-inquiry-sidecard-accent">
+                <span className="small-label">{assuranceLabel}</span>
+                <h3>{assuranceTitle}</h3>
+                <p>{assuranceText}</p>
+                <div className="inquiry-choice-list">
+                  {comparisonLinks.map((item) => (
+                    <Link className="inquiry-choice-link" href={item.href} key={item.href}>
+                      <strong>{item.label}</strong>
+                      <span>{item.description}</span>
+                    </Link>
+                  ))}
                 </div>
-                <div className="private-intake-disclosure">
-                  <span>Named follow-up</span>
-                  <span>Clear route recommendation</span>
-                  <span>Private service fit</span>
+                <div className="sentinel-inquiry-notfor">
+                  <span className="small-label">Use another page when</span>
+                  <ul className="detail-list page-checklist">
+                    {notFor.slice(0, 2).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             </aside>
